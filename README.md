@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/andela/technites-bn-frontend.svg?style=svg)](https://circleci.com/gh/andela/technites-bn-frontend)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9d7545d77daf6cd48fc4/maintainability)](https://codeclimate.com/github/andela/technites-bn-frontend/maintainability)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

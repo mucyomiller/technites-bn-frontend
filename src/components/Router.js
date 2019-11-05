@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import {LandingPage, LoginPage, NotFound } from './index'
+import { LandingPage, LoginPage, NotFound } from './index';
 
 const Router = () => (
   <Switch>

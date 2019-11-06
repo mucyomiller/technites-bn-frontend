@@ -41,7 +41,8 @@ export class LoginForm extends Form {
           </p>
           <SocialLogins />
           <p>
-            Forgot password? <Link to="/reset-password"> Reset </Link>
+            Forgot password?
+            <Link to="/reset-password"> Reset </Link>
           </p>
         </form>
       </div>

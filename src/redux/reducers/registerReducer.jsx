@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
-import { REGISTER } from '../actions/actionType';
-import initialState from './initialState';
+import { REGISTER } from "../actions/actionType";
+import initialState from "./initialState";
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {

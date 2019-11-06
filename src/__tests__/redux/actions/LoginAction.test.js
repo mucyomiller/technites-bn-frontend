@@ -9,7 +9,7 @@ import { loginPayload } from "../../../__mocks__/fixtures";
 
 let store;
 const mockedStore = configureMockStore([thunk]);
-const flushPromises = () => new Promise(resolve => setImmediate(resolve));
+const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
 
 const { token, user } = loginPayload;
 
@@ -44,9 +44,9 @@ describe("Async Login Actions", () => {
           status: 200,
           message: "Login Successful",
           data: {
-            token: token
-          }
-        }
+            token,
+          },
+        },
       });
     });
 
@@ -57,14 +57,14 @@ describe("Async Login Actions", () => {
           status: 200,
           message: "Login Successful",
           data: {
-            token: token
-          }
-        }
+            token,
+          },
+        },
       },
       {
         type: SET_TOKEN,
-        token: token
-      }
+        token,
+      },
     ];
 
     const spyPush = jest.spyOn(history, "push");

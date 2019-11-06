@@ -7,13 +7,9 @@ import { LOGIN, SET_TOKEN } from "./actionType";
 import history from "../../services/history";
 import { authLogin } from "../../services/authServices";
 
-export const loginSuccess = response => {
-  return { type: LOGIN, response };
-};
+export const loginSuccess = response => ({ type: LOGIN, response });
 
-export const setToken = token => {
-  return { type: SET_TOKEN, token };
-};
+export const setToken = token => ({ type: SET_TOKEN, token });
 
 export const loginUser = data => async dispatch => {
   try {

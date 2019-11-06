@@ -1,0 +1,80 @@
+@import '../../styles/App.scss';
+
+/*home-nav styling*/
+
+#logo {
+  width: 80px;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+.home-link {
+  text-decoration: none;
+  &:hover {
+    background: none;
+  }
+  img {
+    width: 60%;
+    height: 150%;
+  }
+}
+.icons {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+}
+.divider {
+  display: inline-block;
+  width: 1px;
+  height: 2rem;
+  background-color: #fff;
+}
+.home-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: $primaryColor;
+  align-content: center;
+}
+.avatar {
+  -webkit-background-size: 32px 32px;
+  background-size: 32px 32px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  height: 42px;
+  width: 42px;
+  z-index: 0;
+  img {
+    width: 100%;
+    width: 100%;
+  }
+}
+.action-side {
+  display: flex;
+  flex: 0.3;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.profile-action {
+  display: flex;
+  flex: 0.5;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.profile-name {
+  color: #fff;
+}

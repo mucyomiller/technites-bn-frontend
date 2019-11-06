@@ -1,0 +1,71 @@
+// helpers classes
+@import "./variables";
+
+// margin & padding
+$space_values: (5, 10, 15, 20);
+$sides: (top, bottom, right, left);
+
+@each $space in $space_values {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+// common classes
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+// grids
+
+// btn class
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-family: $font-family;
+  font-size: 1em;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+$btn-classes: (
+  "primary": $primaryColor,
+  "secondary": $secondaryColor,
+  "success": #2ecc71,
+  "info": #3498db,
+  "warning": #f1c40f,
+  "danger": #e74c3c
+);
+@each $name, $color in $btn-classes {
+  .btn-#{$name} {
+    @include button-bg($color);
+  }
+}
+
+// colors helpers

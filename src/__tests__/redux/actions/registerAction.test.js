@@ -8,9 +8,9 @@ import moxios from "moxios";
 import Enzyme from "enzyme/build";
 import configureStore from "redux-mock-store";
 import Adapter from "enzyme-adapter-react-16/build";
-import http from "../../services/httpServices";
-import { register } from "../../redux/actions/registerAction";
-import { REGISTER } from "../../redux/actions/actionType";
+import http from "../../../services/httpServices";
+import { register } from "../../../redux/actions/registerAction";
+import { REGISTER } from "../../../redux/actions/actionType";
 
 
 Enzyme.configure({ adapter: new Adapter() });

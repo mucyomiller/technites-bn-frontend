@@ -4,14 +4,14 @@ import React from "react";
 import thunk from "redux-thunk";
 import moxios from "moxios";
 import configureStore from "redux-mock-store";
-import http from "../../services/httpServices";
-import { GET_REQUESTS, GET_ERRORS } from "../../redux/actions/actionType";
-import { getUserRequests } from "../../redux/actions/UserRequestActions";
-import successresponse from "../../__mocks__/__get_user_request_success__.json";
-import errorreponse from "../../__mocks__/__get_user_request_failure__.json";
+import http from "../../../services/httpServices";
+import { GET_REQUESTS, GET_ERRORS } from "../../../redux/actions/actionType";
+import { getUserRequests } from "../../../redux/actions/UserRequestActions";
+import successresponse from "../../../__mocks__/__get_user_request_success__.json";
+import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
 
 const mockedStore = configureStore([thunk]);
-const flushPromises = () => new Promise(resolve => setImmediate(resolve));
+const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
 let store;
 
 describe("Get User Requests actions", () => {

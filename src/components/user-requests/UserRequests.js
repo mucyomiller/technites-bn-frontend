@@ -27,7 +27,8 @@ export class UserRequests extends Component {
     this.props.getUserRequests();
   }
 
-  componentWillReceiveProps({ requests, errors }) {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillReceiveProps({ requests, errors }) {
     this.setState({ errors, requests });
     if (errors.error && typeof errors.error !== "object") {
       toast.error(errors.error, {

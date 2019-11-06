@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
@@ -5,9 +6,7 @@ import React, { Fragment, Component } from "react";
 import { heroku } from "../../services/httpServices";
 
 export class SocialLogin extends Component {
-  componentDidMount() {
-    console.log(this.props.location);
-  }
+  componentDidMount() {}
 
   gmailLogin = () => {
     window.location.replace(`${heroku}/auth/google`);
@@ -19,10 +18,10 @@ export class SocialLogin extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <div className="socialMediaButtons">
           <button
-            className="socialMedia mr-20 facebook "
+            className="socialMedia mr-20 facebook"
             type="button"
             onClick={this.facebookLogin}
           />{" "}
@@ -34,7 +33,7 @@ export class SocialLogin extends Component {
             {" "}
           </button>
         </div>
-      </Fragment>
+      </>
     );
   }
 }

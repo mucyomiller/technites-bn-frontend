@@ -24,18 +24,11 @@ describe("Login Page", () => {
     test("should not render the login page", () => {
       expect(loginPage.find("Connect(LoginForm)").exists()).toBe(false);
     });
-
-    test("should render the dashboard page", () => {
-      expect(loginPage.find("Dashboard").exists()).toBe(true);
-    });
   });
 
   describe("when the user is authenticated via social auth", () => {
     beforeEach(() => {
       props.userData.status = "ok";
-    });
-    test("should redirect the user to the dashboard ", () => {
-      expect(loginPage.find("Dashboard").exists()).toBe(true);
     });
   });
 });

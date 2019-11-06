@@ -1,0 +1,21 @@
+.input-container {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: left; // to align the label text to the left
+  width: 200px;
+  height: 40px;
+
+  .label {
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+
+  .input-field {
+    display: inline-block;
+    width: 200px;
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid black;
+  }
+}

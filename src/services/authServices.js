@@ -25,7 +25,7 @@ const authLogin = async (data) => {
 
 const authLogout = async () => {
   const res = await http.post("/auth/logout");
-  setJwtToLocalStorage(null);
+  await setJwtToLocalStorage(null);
   return res.data;
 };
 
@@ -37,6 +37,17 @@ const getCurrentUser = () => {
     return null;
   }
 };
+
+const passWordReset = async (data) => {
+  const res = await http.post("/auth/reset", data);
+  return res;
+};
+
+const passwordChange = async (data, token) => {
+  const res = await http.put(`/auth/reset/${token}`, data);
+  return res;
+};
+
 export {
   getCurrentUser,
   setJwtToLocalStorage,
@@ -44,4 +55,6 @@ export {
   authRegister,
   authLogin,
   authLogout,
+  passWordReset,
+  passwordChange,
 };

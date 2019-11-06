@@ -12,19 +12,23 @@ const TopNav = () => (
           <div id="logo">
             <img src={logo} alt="logo" />
           </div>
-        </Link>{' '}
+        </Link>
+        {' '}
       </li>
     </ul>
 
     <ul className="flex-parent">
       <li>
         {' '}
-        <Link to="/signup"> Sign Up </Link>{' '}
-      </li>{' '}
+        <Link to="/signup"> Sign Up </Link>
+        {' '}
+      </li>
+      {' '}
       |
       <li>
         {' '}
-        <Link to="/login"> Login </Link>{' '}
+        <Link to="/login"> Login </Link>
+        {' '}
       </li>
     </ul>
   </nav>

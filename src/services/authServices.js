@@ -7,8 +7,8 @@ const getJwt = () => localStorage.getItem(tokenKey);
 
 http.setJwt(getJwt());
 
-const setJwtToLocalStorage = (jwt) => {
-  localStorage.setItem(tokenKey, jwt);
+const setJwtToLocalStorage = async (jwt) => {
+  await localStorage.setItem(tokenKey, jwt);
 };
 
 const authRegister = async (data) => {
@@ -18,7 +18,8 @@ const authRegister = async (data) => {
 
 const authLogin = async (data) => {
   const res = await http.post("/auth/login", data);
-  setJwtToLocalStorage(res.data.data.token);
+  await setJwtToLocalStorage(res.data.data.token);
+  await http.setJwt(getJwt());
   return res.data;
 };
 

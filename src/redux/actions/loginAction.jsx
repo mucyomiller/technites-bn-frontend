@@ -14,8 +14,8 @@ export const setToken = token => ({ type: SET_TOKEN, token });
 export const loginUser = data => async dispatch => {
   try {
     const response = await authLogin(data);
-    dispatch(loginSuccess(response));
-    dispatch(setToken(response.data.token));
+    await dispatch(setToken(response.data.token));
+    await dispatch(loginSuccess(response));
     history.push("/dashboard");
     toast.success("Login successful");
   } catch (error) {

@@ -7,7 +7,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import { getJwt } from "../../services/authServices";
 
 export class ProtectedRoute extends Component {
   render() {

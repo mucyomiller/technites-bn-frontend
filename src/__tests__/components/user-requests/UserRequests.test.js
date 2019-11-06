@@ -8,6 +8,7 @@ import Enzyme, { mount, shallow } from "enzyme";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import Adapter from "enzyme-adapter-react-16/build";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import UserRequests, {
   UserRequests as UserRequestsComponent,
@@ -16,6 +17,28 @@ import successresponse from "../../../__mocks__/__get_user_request_success__.jso
 
 Enzyme.configure({ adapter: new Adapter() });
 const store = configureStore([thunk])({
+  notifications: {
+    notifications: [
+      {
+        createdAt: "2019-11-13T10:07:21.401Z",
+        id: 8,
+        message: "visit nairobi",
+        request_id: 12,
+        seen: "false",
+        type: "ReturnTrip",
+        updatedAt: "2019-11-15T13:13:44.347Z",
+        user_id: 49,
+        notPaneDisplay: false,
+      },
+    ],
+    markThisRead: jest.fn(),
+    toggleNotDisplay: jest.fn(),
+    notPaneDisplay: false,
+    notificationCount: 1,
+  },
+  loginState: {
+    isAuthenticated: true,
+  },
   profile: {
     user: {},
   },
@@ -23,7 +46,7 @@ const store = configureStore([thunk])({
 const props = {
   user: {
     firstname: "Rugumbira",
-    image_url: "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png"
+    image_url: "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
   },
   postsPerPage: 4,
   currentPage: 1,
@@ -59,9 +82,11 @@ const props = {
 };
 describe("User Requests View", () => {
   const component = mount(
-    <Router>
-      <UserRequestsComponent {...props} history={{ push: jest.fn() }} />
-    </Router>,
+    <Provider store={store}>
+      <Router>
+        <UserRequestsComponent {...props} history={{ push: jest.fn() }} />
+      </Router>
+    </Provider>,
   );
   const component2 = shallow(
     <UserRequestsComponent {...props} history={{ push: jest.fn() }} />,

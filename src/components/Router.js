@@ -11,6 +11,7 @@ const Router = () => (
     <Route path="/login" component={LoginPage} />
     <Route path="/register" component={Register} />
     <Route path="/verify" component={VerifyEmailPage} />
+    <ProtectedRoute path="/requests/request_id" component={UserRequests} />
     <ProtectedRoute path="/requests" component={UserRequests} />
     <ProtectedRoute path="/allRequests" component={AdminRequests} />
     <Route exact path="/" component={LandingPage} />

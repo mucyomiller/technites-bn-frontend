@@ -1,24 +1,24 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import * as Sentry from '@sentry/browser';
-import App from './components/App';
-import * as serviceWorker from './serviceWorker';
-import './styles/index.scss';
+import React from "react";
+import ReactDOM from "react-dom";
+import * as Sentry from "@sentry/browser";
+import App from "./components/App";
+import * as serviceWorker from "./serviceWorker";
+import "./styles/index.scss";
 
 // this is the first version of our app
-const RELEASE = '1.0.0';
+const RELEASE = "1.0.0";
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   Sentry.init({
-    dsn: 'https://02067a0572a0487e8be16f4a6b401829@sentry.io/1806812',
+    dsn: "https://02067a0572a0487e8be16f4a6b401829@sentry.io/1806812",
     release: RELEASE,
   });
 }
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root'),
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

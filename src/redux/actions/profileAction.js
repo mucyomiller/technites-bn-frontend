@@ -19,7 +19,7 @@ export const retrieveProfile = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: RETRIEVE_FAIL,
-      payload: error.response.data,
+      payload: error.response ? error.response.data : { error: error.message },
     });
   }
 };
@@ -35,7 +35,7 @@ export const updateProfile = (data) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATE_FAIL,
-      payload: error.response.data,
+      payload: error.response ? error.response.data : { error: error.message },
     });
   }
 };

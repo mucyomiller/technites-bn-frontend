@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  background: url('../../assets/traveller.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #0a0a0b;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cover {
+  height: 100vh;
+  width: 100%;
+  padding: 20px 50px;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome{
+    background: radial-gradient(
+    rgba(84, 184, 235, 0.9),
+    rgba(245, 243, 243, 0.9)
+  );
+}

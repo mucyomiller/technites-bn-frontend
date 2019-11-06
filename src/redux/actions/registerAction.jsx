@@ -17,7 +17,6 @@ export const register = data => async dispatch => {
     window.location.href = "/verify";
     // toast.success("Registered successfully");
   } catch (error) {
-    console.log(">>>>>> there is an error: ", error);
     if (error.response.data.error instanceof Array) {
       toast.error(`${error.response.data.error[0].msg}`);
     }

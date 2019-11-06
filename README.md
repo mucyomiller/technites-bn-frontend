@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/andela/technites-bn-frontend.svg?style=svg)](https://circleci.com/gh/andela/technites-bn-frontend)
+[![CircleCI](https://circleci.com/gh/andela/technites-bn-frontend.svg?style=svg)](https://circleci.com/gh/andela/technites-bn-frontend) [![Build Status](https://travis-ci.org/andela/technites-bn-frontend.svg?branch=develop)](https://travis-ci.org/andela/technites-bn-frontend)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9d7545d77daf6cd48fc4/maintainability)](https://codeclimate.com/github/andela/technites-bn-frontend/maintainability) [![Coverage Status](https://coveralls.io/repos/github/andela/technites-bn-frontend/badge.svg)](https://coveralls.io/github/andela/technites-bn-frontend)
 
 # Barefoot Nomad (frontend)

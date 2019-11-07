@@ -1,8 +1,9 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import LandingPage from "./landing-page/LandingPage";
 import LoginPage from "./login-page/LoginPage";
 import NotFound from "./not-found/NotFound";
 import Register from "./register-page/RegisterPage";
+import UserRequests from "./user-requests/UserRequests";
 
-export {
-  LandingPage, LoginPage, NotFound, Register,
-};
+export { LandingPage, LoginPage, NotFound, Register, UserRequests };

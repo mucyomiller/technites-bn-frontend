@@ -1,12 +1,22 @@
 $dangerColor: rgba(250, 70, 70, 0.883);
 $hoverColor: #2a89f5;
 
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .card-container {
   text-align: center;
 
   .card {
+    background-color: yellowgreen;
     display: inline-block;
-    margin-top: 50px;
+    margin: 50px 0px 10px 0px;
     background-color: white;
     border-radius: 8px;
     width: 320px;
@@ -38,7 +48,7 @@ $hoverColor: #2a89f5;
 .button {
   width: 120px;
   height: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border: 1px solid #0082a7;
   border-radius: 20px;
   margin-right: 10px;

@@ -3,20 +3,29 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import { getCurrentUser } from "../../services/authServices";
+import { getJwt } from "../../services/authServices";
 
-const ProtectedRoute = ({ path, component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      if (!getCurrentUser()) {
-        return <Redirect to="/login" />;
-      }
-      return <Component {...props} />;
-    }}
-  />
-);
+class ProtectedRoute extends Component {
+  render() {
+    const { isAuthenticated, component: Component, ...rest } = this.props;
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+        }
+      />
+    );
+  }
+}
 
-export default ProtectedRoute;
+const mapStateToProps = ({ loginState }) => {
+  return {
+    isAuthenticated: loginState.isAuthenticated
+  };
+};
+
+export default connect(mapStateToProps)(ProtectedRoute);

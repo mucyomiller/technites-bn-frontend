@@ -6,14 +6,7 @@ import "./form.scss";
 
 class Form extends Component {
   state = {
-    data: {
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    },
+    data: {},
     errors: {}
   };
 
@@ -21,9 +14,11 @@ class Form extends Component {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
     if (!error) {
-      if (this.state.data.password !== this.state.data.confirmPassword) {
-        toast.error("Password and Confirm password should be the same");
-        return {};
+      if (this.state.data.confirmPassword) {
+        if (this.state.data.password !== this.state.data.confirmPassword) {
+          toast.error("Password and Confirm password should be the same");
+          return {};
+        }
       }
       return null;
     }
@@ -46,7 +41,6 @@ class Form extends Component {
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
-
     this.doSubmit();
   };
 

@@ -19,27 +19,27 @@ export class Register extends Form {
     firstname: Joi.string()
       .required()
       .min(3)
-      .label("First Name"),
+      .label('First Name'),
     lastname: Joi.string()
       .required()
       .min(3)
-      .label("Last Name"),
+      .label('Last Name'),
     username: Joi.string()
       .required()
       .min(3)
-      .label("Username"),
+      .label('Username'),
     email: Joi.string()
       .email()
       .required()
-      .label("Email"),
+      .label('Email'),
     password: Joi.string()
       .required()
       .min(6)
-      .label("Password"),
+      .label('Password'),
     confirmPassword: Joi.string()
       .required()
       .min(6)
-      .label("Confirm Password")
+      .label('Confirm Password')
   };
 
   render() {
@@ -71,7 +71,4 @@ const mapStateToProps = ({ register }) => ({
   users: register
 });
 
-export default connect(
-  mapStateToProps,
-  { register }
-)(Register);
+export default connect(mapStateToProps, { register })(Register);

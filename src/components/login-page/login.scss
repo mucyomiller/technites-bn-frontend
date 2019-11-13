@@ -1,0 +1,33 @@
+.login-alt {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  span {
+    background: #fff;
+    padding: 0 5px;
+  }
+}
+
+.socialMediaButtons {
+  margin-top: 1%;
+  .mr-20 {
+    margin-right: 20px !important;
+  }
+
+  .socialMedia {
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+  
+  .gmail {
+    background: url('../../assets/images/socialMedia/gmail.svg');
+  }
+  .facebook {
+    background: url('../../assets/images/socialMedia/facebook.svg');
+  }
+}

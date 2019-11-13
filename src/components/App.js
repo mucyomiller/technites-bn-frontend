@@ -1,11 +1,11 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import configureStore from "../redux/store/configureStore";
-import "../styles/App.scss";
-import "react-toastify/dist/ReactToastify.css";
-import Router from "./Router";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import configureStore from '../redux/store/configureStore';
+import '../styles/App.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import Router from './Router';
 
 const store = configureStore();
 const App = () => (

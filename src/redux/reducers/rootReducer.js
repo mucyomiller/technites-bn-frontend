@@ -18,6 +18,8 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   notifications: notificationReducer,
   passwordReset: passWordResetReducer,
+  accomodations: RequestReducer,
+  rooms: RequestReducer,
 });
 
 export default rootReducer;

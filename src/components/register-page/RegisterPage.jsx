@@ -19,27 +19,27 @@ export class Register extends Form {
     firstname: Joi.string()
       .required()
       .min(3)
-      .label('First Name'),
+      .label("First Name"),
     lastname: Joi.string()
       .required()
       .min(3)
-      .label('Last Name'),
+      .label("Last Name"),
     username: Joi.string()
       .required()
       .min(3)
-      .label('Username'),
+      .label("Username"),
     email: Joi.string()
       .email()
       .required()
-      .label('Email'),
+      .label("Email"),
     password: Joi.string()
       .required()
       .min(6)
-      .label('Password'),
+      .label("Password"),
     confirmPassword: Joi.string()
       .required()
       .min(6)
-      .label('Confirm Password')
+      .label("Confirm Password")
   };
 
   render() {
@@ -47,7 +47,7 @@ export class Register extends Form {
       <div className="container">
         <NavBar />
         <div className="card-container">
-          <form className="card" onSubmit={this.handleSubmit}>
+          <div className="card">
             <div className="title">Create an account</div>
             {this.renderInput("firstname", "First Name")}
             {this.renderInput("lastname", "Last Name")}
@@ -59,15 +59,15 @@ export class Register extends Form {
               "Confirm Password",
               "password"
             )}
-            {this.renderButton("Sign up")}
-          </form>
+            {this.renderButton("Sign up", "register")}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ register }) => ({
+export const mapStateToProps = ({ register }) => ({
   users: register
 });
 

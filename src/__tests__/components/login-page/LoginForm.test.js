@@ -20,6 +20,11 @@ describe("Login Form", () => {
     expect(loginForm.find(".title").text()).toEqual("Login");
   });
 
+  it("should test for login a user", () => {
+    const button = loginForm.find("button[className=\"button\"]");
+    button.simulate("click");
+  });
+
   test("should render the login button", () => {
     expect(loginForm.find(".button").text()).toEqual("Login");
   });

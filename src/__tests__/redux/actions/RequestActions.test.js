@@ -12,6 +12,8 @@ import { getUserRequests, getMyUsersRequests, approveReject } from "../../../red
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
 import { token, request as testRequest } from "../../../__mocks__/fixtures";
+import { getAccomodations } from "../../../redux/actions/getAccomodations";
+import { getRooms } from "../../../redux/actions/getRooms";
 
 const mockedStore = configureStore([thunk]);
 const flushPromises = () => new Promise((resolve) => setImmediate(resolve));

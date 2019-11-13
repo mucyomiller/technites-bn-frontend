@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -74,7 +75,19 @@ export class UserRequests extends Component {
     const elements = currentElements.map((request) => (
       <tr className="table-row" key={request.id}>
         <td className="table-element" id={request.id}>
-          {request.reason}
+          {request.reason ? (
+            <p
+              className="comment-content"
+              dangerouslySetInnerHTML={{
+                __html: request.reason.replace(
+                  /(<? *script)/gi,
+                  "illegalscript",
+                ),
+              }}
+            />
+          ) : (
+              "Fill your reason down there..."
+            )}
         </td>
         <td className="table-element" id={request.id}>
           {request.departure_date}
@@ -96,7 +109,7 @@ export class UserRequests extends Component {
             </button>
             <div className="dropdown-content">
               {request.status === "Pending" ? edit : null}
-              <a href="#">View more</a>
+              <a href={`/requests/${request.id}`}>View more</a>
             </div>
           </div>
         </td>

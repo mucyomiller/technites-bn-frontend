@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class Dashboard extends Component {
-  logout = () => {
-    this.props.logoutUser();
-  };
   render() {
     return (
       <div>

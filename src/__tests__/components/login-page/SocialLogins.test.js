@@ -11,4 +11,27 @@ describe("Social Logins", () => {
   test("should render the social login buttons", () => {
     expect(socialLogin.find(".socialMediaButtons").exists()).toBe(true);
   });
+
+  describe("when the gmail button is clicked", () => {
+    test("should redirect to google callback", () => {
+      const spyGmailCall = jest.spyOn(socialLogin.instance(), "gmailLogin");
+      socialLogin.instance().forceUpdate();
+      socialLogin.find(".gmail").simulate("click", spyGmailCall);
+
+      expect(spyGmailCall).toHaveBeenCalled();
+    });
+  });
+
+  describe("when the facebook button is clicked", () => {
+    test("should redirect to facebook callback", () => {
+      const spyFacebookCall = jest.spyOn(
+        socialLogin.instance(),
+        "facebookLogin"
+      );
+      socialLogin.instance().forceUpdate();
+      socialLogin.find(".facebook").simulate("click", spyFacebookCall);
+
+      expect(spyFacebookCall).toHaveBeenCalled();
+    });
+  });
 });

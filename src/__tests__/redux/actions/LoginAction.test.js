@@ -12,7 +12,6 @@ const mockedStore = configureMockStore([thunk]);
 const flushPromises = () => new Promise(resolve => setImmediate(resolve));
 
 const { token, user } = loginPayload;
-// jest.mock("history");
 
 describe("Login Actions", () => {
   test("should create the login success action", () => {
@@ -27,9 +26,6 @@ describe("Login Actions", () => {
 });
 
 describe("Async Login Actions", () => {
-  //   const history = {
-  //     push: jest.fn()
-  //   };
   beforeEach(() => {
     store = mockedStore({});
     moxios.install(http.dbCall);
@@ -52,17 +48,6 @@ describe("Async Login Actions", () => {
           }
         }
       });
-      // await flushPromises();
-      //   request.resolve({
-      //     status: 200,
-      //     response: {
-      //       status: 200,
-      //       message: "Successfully registered in",
-      //       data: {
-      //         token: token
-      //       }
-      //     }
-      //   });
     });
 
     const expectedActions = [

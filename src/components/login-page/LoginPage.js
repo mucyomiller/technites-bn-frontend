@@ -5,12 +5,15 @@ import LoginForm from "./LoginForm";
 import NavBar from "../navbar/navbar";
 import { getJwt } from "../../services/authServices";
 import Dashboard from "../dashboard/Dashboard";
+import { socialAuthAction } from "../../redux/actions/socialAuthAction";
 import "./login.scss";
 
-export const LoginPage = ({ location, isAuthenticated }) => {
+export const LoginPage = ({ location, isAuthenticated, socialAuthAction }) => {
   const url = location.search;
-
   const userData = queryString.parse(url);
+  if (userData.status === "ok") {
+    socialAuthAction(userData);
+  }
 
   return getJwt() || isAuthenticated ? (
     <Dashboard />
@@ -18,7 +21,7 @@ export const LoginPage = ({ location, isAuthenticated }) => {
     <>
       <NavBar />
       <div>
-        <LoginForm socialAuth={userData} />
+        <LoginForm />
       </div>
     </>
   );
@@ -30,4 +33,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps, { socialAuthAction })(LoginPage);

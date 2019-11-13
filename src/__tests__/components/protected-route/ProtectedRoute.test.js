@@ -34,11 +34,4 @@ describe("<ProtectedRoute />", () => {
     const form = wrapper.find('form[className="card"]');
     expect(form).toHaveLength(1);
   });
-
-  it("should mount the not found component", () => {
-    setJwtToLocalStorage(null);
-    const wrapper = mount(<NotFound />);
-    const div = wrapper.find("div");
-    expect(div).toHaveLength(1);
-  });
 });

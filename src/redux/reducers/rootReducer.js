@@ -1,12 +1,14 @@
-/* eslint-disable indent */
-/* eslint-disable comma-dangle */
-import { combineReducers } from "redux";
-import testReducer from "./testReducer";
+import { combineReducers } from 'redux';
+import testReducer from './testReducer';
+import UserRequestReducer from './UserRequestsReducer';
+import ErrorReducer from './ErrorReducer';
 import registerReducer from "./registerReducer";
 
 const rootReducer = combineReducers({
-    test: testReducer,
-    register: registerReducer
+  test: testReducer,
+  userRequests: UserRequestReducer,
+  errors: ErrorReducer,
+  register: registerReducer,
 });
 
 export default rootReducer;

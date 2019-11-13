@@ -1,0 +1,10 @@
+$primaryColor: #1976d2 !default;
+$primaryLight: lighten($primaryColor, 50%);
+$primaryDark: darken($primaryColor, 50%);
+$textColor: #4d4f5c;
+$textDark: darken($textColor, 50%);
+$black: #000;
+$background: #fff;
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+$font-family: 'Roboto', sans-serif;
+$secondaryColor: #F5F6FA;

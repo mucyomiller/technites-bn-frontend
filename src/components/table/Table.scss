@@ -1,0 +1,110 @@
+@import "../../styles/variables";
+
+@mixin dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+@mixin request-button {
+  width: 100px;
+  height: 25px;
+  margin-bottom: 10px;
+  border-radius: 50px / 50px;
+  font-size: 0.9em;
+}
+a {
+  text-decoration: none;
+}
+.wrapper {
+  background-color: $background;
+  padding: 50px 20px 50px 20px;
+  height: 500px;
+  width: auto;
+  @media screen and (max-width: 480px) {
+    width: fit-content;
+    height: 700px;
+  }
+  .table-container {
+    font-family: source sans pro;
+    h1 {
+      float: left;
+      color: $textColor;
+    }
+    .table {
+      background-color: $background;
+      width: 100%;
+      .table-head {
+        background-color: $secondaryColor;
+        font-size: 20px;
+        .table-row {
+          .table-element {
+            text-align: justify;
+            padding: 15px 0px 15px 0px;
+          }
+        }
+      }
+      .table-body {
+        .table-row {
+          .table-element {
+            padding: 15px 0px 15px 0px;
+            border-bottom: 1px solid $secondaryColor;
+            text-align: justify;
+            .approved-dot {
+              background-color: green;
+              @include dot();
+            }
+            .pending-dot {
+              background-color: yellow;
+              @include dot();
+            }
+            .rejected-dot {
+              background-color: red;
+              @include dot();
+            }
+            .accept-request-btn {
+              @include request-button();
+              background-color: $primaryColor;
+              color: $background;
+              &:hover {
+                background-color:$background;
+                color:$primaryColor;
+              }
+            }
+            .reject-request-btn {
+              @include request-button();
+              &:hover {
+                background-color: $primaryColor;
+                color:$background;
+              }
+            }
+          }
+        }
+      }
+    }
+    .pagination-container {
+      float: right;
+      margin: 100px 20px 0px 0px;
+      width: 50%;
+      .pagination-box {
+        border: 1px solid #7f7d7d;
+        color: #7f7d7d;
+        margin-right: 3px;
+        display: inline-block;
+        width: 40px;
+        height: 30px;
+        padding-top: 10px;
+        &:hover {
+          background-color: #1976d2b0;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.pagination-selected {
+  background-color: $primaryColor;
+  color: $background !important;
+  border: none !important;
+}

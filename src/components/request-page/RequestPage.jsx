@@ -141,8 +141,7 @@ export class RequestPage extends Form {
       request.check_in = request.destinations[0].check_in;
       request.check_out = request.destinations[0].check_out;
       request.destination_id = request.destinations[0].destination_id;
-      request.destinations[0].destination_id =
-        request.destinations[0].destination_id;
+      request.destinations[0].destination_id =        request.destinations[0].destination_id;
       request.accomodation_id = request.destinations[0].accomodation_id;
       request.room_id = request.destinations[0].room_id;
       request.departure_date = request.departure_date;
@@ -153,7 +152,7 @@ export class RequestPage extends Form {
       request.return_date = request.return_date;
       request.request_type = "ReturnTrip";
 
-      // //>>>>>>>>>>>>>>>>>>>>. POPULATE ROOMS >>>>>>>>>>>>>>>>>>//
+      // //. POPULATE ROOMS //
 
       // initialize the current accomodation with the accomodations of the first location once the page is mounted
       const initialAccomodation = allAccomodations.filter(
@@ -214,15 +213,15 @@ export class RequestPage extends Form {
               </button>
             ) : null}
 
-            {data.destinations !== undefined &&
-            counter.count < data.destinations.length - 1 ? (
+            {data.destinations !== undefined
+            && counter.count < data.destinations.length - 1 ? (
               <button
                 onClick={() => this.handleSubmit("forward")}
                 className="button"
               >
                 forward
               </button>
-            ) : null}
+              ) : null}
           </div>
           {counter.count > 0 ? <div className="box stack-top" /> : null}
           <div>
@@ -249,8 +248,8 @@ export class RequestPage extends Form {
             {/* <div>{this.renderInput("reason", "Reason")}</div> */}
             <p className="reason">Reason</p>
             <p className="reason-label">
-              {this.props.match.params.id !== "new" &&
-              this.state.data.reason ? (
+              {this.props.match.params.id !== "new"
+              && this.state.data.reason ? (
                 <p
                   className="comment-content"
                   dangerouslySetInnerHTML={{
@@ -260,9 +259,9 @@ export class RequestPage extends Form {
                     )
                   }}
                 />
-              ) : (
-                "Fill your reason down there..."
-              )}
+                ) : (
+                  "Fill your reason down there..."
+                )}
             </p>
             {this.renderEditor()}
             <div>

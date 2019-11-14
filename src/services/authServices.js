@@ -38,7 +38,6 @@ const getCurrentUser = () => {
     return null;
   }
 };
-
 export {
   getCurrentUser,
   setJwtToLocalStorage,

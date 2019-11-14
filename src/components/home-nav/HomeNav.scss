@@ -78,3 +78,19 @@
 .profile-name {
   color: #fff;
 }
+.hamburger-menu{
+  display: none;
+  color: $background;
+  margin-right: 10px;
+  font-size: 1.3em;
+  @media screen and (max-width: 480px) {
+    display: block!important;
+    &:hover{
+      .side-bar{
+        display: block;
+        position: absolute;
+        width: 80%;
+      }
+    }
+  }
+}

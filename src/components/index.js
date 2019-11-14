@@ -7,7 +7,15 @@ import Register from "./register-page/RegisterPage";
 import Dashboard from "./dashboard/Dashboard";
 import UserRequests from "./user-requests/UserRequests";
 import Profile from "./profile-page/ProfilePage";
+import AdminRequests from "./admin-requests/AdminRequests";
 
 export {
-  LandingPage, LoginPage, NotFound, Register, UserRequests, Dashboard, Profile,
+  LandingPage,
+  LoginPage,
+  NotFound,
+  Register,
+  UserRequests,
+  Dashboard,
+  Profile,
+  AdminRequests,
 };

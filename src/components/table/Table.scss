@@ -14,20 +14,38 @@
   border-radius: 50px / 50px;
   font-size: 0.9em;
 }
+body{
+  background: none;
+  background-color: #edeff3!important;
+}
+.table-title{
+  color: #0000008c;
+}
 a {
   text-decoration: none;
+}
+.flex-parent{
+  display: flex;
+	flex-wrap: wrap;
+	align-content: center;
 }
 .wrapper {
   background-color: $background;
   padding: 50px 20px 50px 20px;
-  height: 500px;
-  width: auto;
+  height: auto;
+  width: 75%;
+  margin: 0px 20px 0px 10px;
+  float: right;
   @media screen and (max-width: 480px) {
-    width: fit-content;
+    width: -webkit-fill-available;
     height: 700px;
+    margin: 0px 10px 0px 0px!important;
+  }
+  @media screen and (max-width: 960px) {
+    margin: 0px 10px 0px 0px!important;
   }
   .table-container {
-    font-family: source sans pro;
+    font-family: $font-family;
     h1 {
       float: left;
       color: $textColor;
@@ -35,13 +53,23 @@ a {
     .table {
       background-color: $background;
       width: 100%;
+      @media screen and (max-width: 480px) {
+      overflow-x: auto;
+      display: block;
+      }
       .table-head {
         background-color: $secondaryColor;
+        // background-color: white;
         font-size: 20px;
+        font-weight: bold;
+        color: #0000008c;
         .table-row {
           .table-element {
             text-align: justify;
             padding: 15px 0px 15px 0px;
+            
+            // border-bottom: 5px solid $secondaryColor;
+            // border-top: 5px solid $secondaryColor;
           }
         }
       }
@@ -51,6 +79,29 @@ a {
             padding: 15px 0px 15px 0px;
             border-bottom: 1px solid $secondaryColor;
             text-align: justify;
+            &:hover{
+              .tooltip{
+                display: block;
+              }
+            }
+              .user-avatar{
+                width: 40px;
+                border-radius: 50%;
+                border: 2px solid $primaryColor;
+              }
+              .tooltip{
+                display: none;
+                width: 250px;
+                background-color: black;
+                color: #fff;
+                text-align: justify;
+                border-radius: 6px;
+                padding: 5px 0;
+                position: absolute;
+                z-index: 1;
+                opacity: 80%;
+                padding: 10px 0px 10px 10px;
+              }
             .approved-dot {
               background-color: green;
               @include dot();
@@ -63,42 +114,94 @@ a {
               background-color: red;
               @include dot();
             }
+            .actions-dropdown-disabled {
+              position: relative;
+              display: inline-block;
+              .drop-btn{
+                background-color: $textColor;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+              }
+              .dropdown-content{
+                display: none;
+              }
+            }
+            .actions-dropdown{
+              position: relative;
+              display: inline-block;
+              &:hover{
+                .dropdown-content{
+                  display: block;
+                }
+              }
+              .drop-btn{
+                background-color: $primaryColor;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+              }
+              .dropdown-content{
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                a{
+                  color: black;
+                  padding: 12px 16px;
+                  text-decoration: none;
+                  display: block;
+                  &:hover {
+                    background-color: #f1f1f1
+                  }
+                }
+              }
+            }
             .accept-request-btn {
               @include request-button();
               background-color: $primaryColor;
               color: $background;
               &:hover {
-                background-color:$background;
-                color:$primaryColor;
+                background-color: $background;
+                color: $primaryColor;
               }
             }
             .reject-request-btn {
               @include request-button();
               &:hover {
                 background-color: $primaryColor;
-                color:$background;
+                color: $background;
               }
             }
           }
         }
       }
     }
-    .pagination-container {
-      float: right;
-      margin: 100px 20px 0px 0px;
-      width: 50%;
-      .pagination-box {
-        border: 1px solid #7f7d7d;
-        color: #7f7d7d;
-        margin-right: 3px;
-        display: inline-block;
-        width: 40px;
-        height: 30px;
-        padding-top: 10px;
-        &:hover {
-          background-color: #1976d2b0;
-          color: white;
-        }
+  }
+  .pagination-container {
+    float: right;
+    margin: 20px 20px 20px 0px;
+    width: 50%;
+    @media screen and (max-width: 480px) {
+    width: 80%;
+    }
+    .pagination-box {
+      border: 1px solid #7f7d7d;
+      color: #7f7d7d;
+      margin-right: 3px;
+      display: inline-block;
+      width: 40px;
+      height: 30px;
+      padding: 5px 0px 0px 10px;
+      &:hover {
+        background-color: #1976d2b0;
+        color: white;
       }
     }
   }

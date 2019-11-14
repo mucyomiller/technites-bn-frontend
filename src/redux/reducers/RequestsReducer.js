@@ -1,5 +1,5 @@
-import { GET_REQUESTS } from '../actions/actionType';
-import IsEmpty from '../../validation/IsEmpty';
+import { GET_REQUESTS, GET_ALL_REQUESTS } from "../actions/actionType";
+import IsEmpty from "../../validation/IsEmpty";
 
 const initialState = {
   requestFound: false,
@@ -8,6 +8,12 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case GET_REQUESTS:
+      return {
+        ...state,
+        requestFound: !IsEmpty(action.payload),
+        requests: action.payload,
+      };
+    case GET_ALL_REQUESTS:
       return {
         ...state,
         requestFound: !IsEmpty(action.payload),

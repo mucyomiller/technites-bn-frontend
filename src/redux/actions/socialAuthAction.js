@@ -10,7 +10,7 @@ export const socialAuthSuccess = payload => {
   return { type: SOCIAL_LOGIN_SUCCESS, payload };
 };
 
-export const loadUser = payload => async dispatch => {
+export const socialAuthAction = payload => async dispatch => {
   setJwtToLocalStorage(payload.token);
   dispatch(setToken(payload.token));
   dispatch(socialAuthSuccess(payload));

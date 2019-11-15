@@ -10,7 +10,7 @@ const loginReducer = (state = initialState, action) => {
         isAuthenticated: true
       };
     case SET_TOKEN:
-      return { ...state, token: action.token };
+      return { ...state, token: action.token};
 
     default:
       return state;

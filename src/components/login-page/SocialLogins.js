@@ -2,10 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { Fragment, Component } from "react";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
 import { heroku } from "../../services/httpServices";
-import { loadUser } from "../../redux/actions/socialAuthAction";
 
 export class SocialLogin extends Component {
   componentDidMount() {
@@ -42,4 +39,4 @@ export class SocialLogin extends Component {
   }
 }
 
-export default connect(null, { loadUser })(SocialLogin);
+export default SocialLogin;

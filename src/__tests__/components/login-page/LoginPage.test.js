@@ -4,7 +4,8 @@ import { LoginPage } from "../../../components/login-page/LoginPage";
 
 const props = {
   location: { search: "test query" },
-  isAuthenticated: false
+  isAuthenticated: false,
+  userData: { status: null }
 };
 
 describe("Login Page", () => {
@@ -25,6 +26,15 @@ describe("Login Page", () => {
     });
 
     test("should render the dashboard page", () => {
+      expect(loginPage.find("Dashboard").exists()).toBe(true);
+    });
+  });
+
+  describe("when the user is authenticated via social auth", () => {
+    beforeEach(() => {
+      props.userData.status = "ok";
+    });
+    test("should redirect the user to the dashboard ", () => {
       expect(loginPage.find("Dashboard").exists()).toBe(true);
     });
   });

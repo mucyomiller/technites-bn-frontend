@@ -17,10 +17,6 @@ export class LoginForm extends Form {
     this.props.loginUser(this.state.data);
   };
 
-  socialLogin = userData => {
-    this.props.loginUser(userData);
-  };
-
   schema = {
     email: Joi.string()
       .email()

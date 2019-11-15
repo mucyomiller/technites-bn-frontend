@@ -9,7 +9,7 @@ const event = {
 
 const props = {
   socialAuth: { token: "test token", user: { name: "test", email: "test" } },
-  loadUser: jest.fn()
+  socialAuthAction: jest.fn()
 };
 
 describe("Login Form", () => {
@@ -24,7 +24,7 @@ describe("Login Form", () => {
   });
 
   test("should render the sociallogin buttons", () => {
-    expect(loginForm.find("Connect(SocialLogin)").exists()).toBe(true);
+    expect(loginForm.find("SocialLogin").exists()).toBe(true);
   });
 
   test("should render forgot password Link", () => {

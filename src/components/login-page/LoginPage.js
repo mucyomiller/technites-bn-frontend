@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import NavBar from "../navbar/navbar";
 import { getJwt } from "../../services/authServices";
 import Profile from "../profile-page/ProfilePage";
-import socialAuthAction from "../../redux/actions/socialAuthAction";
+import { socialAuthAction } from "../../redux/actions/socialAuthAction";
 import "./login.scss";
 
 export const LoginPage = ({ location, isAuthenticated, socialAuthAction }) => {

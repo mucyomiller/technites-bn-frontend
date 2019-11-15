@@ -11,10 +11,6 @@ const props = {
 describe("Login Page", () => {
   let loginPage = shallow(<LoginPage {...props} />);
 
-  test("should render when user is not Authenticated", () => {
-    expect(loginPage.find("Connect(LoginForm)").exists()).toBe(true);
-  });
-
   describe("when the user is authenticated", () => {
     beforeEach(() => {
       props.isAuthenticated = true;

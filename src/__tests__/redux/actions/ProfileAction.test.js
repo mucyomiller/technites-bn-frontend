@@ -12,6 +12,7 @@ import successresponse from "../../../__mocks__/__profile_response_success.json"
 import errorreponse from "../../../__mocks__/__profile_response_error__.json";
 import updatesuccess from "../../../__mocks__/__profile_update_success__.json";
 import errorupdate from "../../../__mocks__/__profile_update_error__.json";
+import { token } from "../../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
@@ -21,6 +22,7 @@ describe("Profile actions", () => {
   beforeEach(() => {
     store = mockedStore();
     moxios.install(http.dbCall);
+    Storage.prototype.getItem = jest.fn(() => token);
   });
 
   afterEach(() => {

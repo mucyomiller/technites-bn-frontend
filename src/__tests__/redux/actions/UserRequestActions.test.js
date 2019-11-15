@@ -9,6 +9,7 @@ import { GET_REQUESTS, GET_ERRORS } from "../../../redux/actions/actionType";
 import { getUserRequests } from "../../../redux/actions/UserRequestActions";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
+import { token } from "../../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
@@ -18,6 +19,7 @@ describe("Get User Requests actions", () => {
   beforeEach(() => {
     store = mockedStore();
     moxios.install(http.dbCall);
+    Storage.prototype.getItem = jest.fn(() => token);
   });
 
   afterEach(() => {

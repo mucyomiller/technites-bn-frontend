@@ -1,0 +1,101 @@
+@import '../../styles/App.scss';
+
+// none edit mode
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4rem;
+}
+
+.profile-divider {
+  height: 1px;
+  width: 90%;
+  margin: 1rem 0;
+  background-color: $primaryColor;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bolder;
+  margin-top: 1rem;
+  color: $primaryColor;
+}
+
+#btn_edit_toggle:focus,
+#btn_update:focus {
+  outline: 0;
+}
+input#profileselector {
+  color: white;
+  background: $primaryColor;
+  padding: 8px;
+  border-radius: 5px;
+  width: 60%;
+}
+
+// edit mode
+.e-profile-content {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: 1;
+  //edit mode profile divided
+  .profile-divider {
+    height: 1px;
+    width: 100%;
+    background-color: $primaryColor;
+  }
+}
+.e-column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-rows: 1;
+  grid-gap: 12px;
+}
+.section-divider {
+  height: 1px;
+  width: 60%;
+  margin-top: 0.5rem;
+  background-color: $primaryColor;
+}
+
+.label {
+  font-weight: bold;
+  color: $primaryColor;
+}
+.input {
+  border: none;
+  border-bottom: 1px solid $primaryColor;
+  display: block;
+  font-size: 16px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 4px 0;
+  width: 100%;
+  background: 0 0;
+  text-align: left;
+  color: grey;
+  width: 80%;
+  &:focus {
+    outline-style: inherit;
+  }
+}
+.input-error {
+  color: red !important;
+  border-bottom: 1px solid red !important;
+}
+.image-preview {
+  img {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+.select {
+  height: 2rem !important;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  appearance: none;
+  background: url('../../assets/input_arrow_down.svg') no-repeat right;
+}

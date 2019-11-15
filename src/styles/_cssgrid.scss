@@ -1,0 +1,36 @@
+// cssgrid helper classes
+
+// media breakpoints
+$breakpoints: (
+   ('xs', 480px),
+   ('s', 624px),
+   ('sm', 768px),
+   ('m', 896px),
+   ('md', 1024px),
+   ('l', 1195px),
+   ('lg', 1366px)
+);
+
+// works from specified media size usage -> @include work-from(md) {your content}
+@mixin work-from($media) {
+  @each $breakpoint in $breakpoints {
+    @if $media == nth($breakpoint, 1) {
+      @media (min-width: #{nth($breakpoint, 2)}) {
+        @content;
+      }
+    }
+  }
+}
+
+// works until specified media size
+@mixin work-until($media) {
+  @each $breakpoint in $breakpoints {
+    @if $media == nth($breakpoint, 1) {
+      @media (max-width: #{nth($breakpoint, 2)}) {
+        @content;
+      }
+    }
+  }
+}
+
+// generate grid helper classes

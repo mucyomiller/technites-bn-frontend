@@ -4,9 +4,9 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable quotes */
 import React from "react";
-import Form from "../form/form";
-import Joi from "joi-browser";
 import { connect } from "react-redux";
+import Joi from "joi-browser";
+import Form from "../form/form";
 import { register } from "../../redux/actions/registerAction";
 import NavBar from "../navbar/navbar";
 
@@ -44,7 +44,7 @@ export class Register extends Form {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <NavBar />
         <div className="card-container">
           <form className="card" onSubmit={this.handleSubmit}>

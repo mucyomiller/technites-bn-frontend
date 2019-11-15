@@ -1,0 +1,32 @@
+{
+  "status": 200,
+  "response": {
+    "data": {
+      "status": 200,
+      "message": "User found!",
+      "data": {
+        "id": 5,
+        "firstname": "firstname",
+        "lastname": "user",
+        "email": "requester@request.com",
+        "username": "requesting",
+        "is_verified": true,
+        "role_value": 1,
+        "phone": null,
+        "gender": "Male",
+        "dob": null,
+        "address": null,
+        "country": null,
+        "language": null,
+        "currency": null,
+        "image_url": "https://avatars0.githubusercontent.com/u/11447549?s=460&v=4",
+        "company": null,
+        "department": null,
+        "line_manager": "manager@admin.com",
+        "isEmailAllowed": "true",
+        "createdAt": "2019-10-11T10:50:28.214Z",
+        "updatedAt": "2019-11-12T09:49:06.152Z"
+      }
+    }
+  }
+}

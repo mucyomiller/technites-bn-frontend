@@ -6,3 +6,7 @@ export const LOGIN = "LOGIN";
 export const SOCIAL_LOGIN_SUCCESS = "SOCIAL_LOGIN_SUCCESS";
 export const SET_TOKEN = "SET_TOKEN";
 export const LOGOUT = "LOGOUT";
+export const RETRIEVE_PROFILE = "RETRIEVE_PROFILE";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const RETRIEVE_FAIL = "RETRIEVE_FAIL";
+export const UPDATE_FAIL = "UPDATE_FAIL";

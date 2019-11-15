@@ -4,7 +4,10 @@ import LandingPage from "./landing-page/LandingPage";
 import LoginPage from "./login-page/LoginPage";
 import NotFound from "./not-found/NotFound";
 import Register from "./register-page/RegisterPage";
-import Dashboard from './dashboard/Dashboard'
+import Dashboard from "./dashboard/Dashboard";
 import UserRequests from "./user-requests/UserRequests";
+import Profile from "./profile-page/ProfilePage";
 
-export { LandingPage, LoginPage, NotFound, Register, UserRequests, Dashboard };
+export {
+  LandingPage, LoginPage, NotFound, Register, UserRequests, Dashboard, Profile,
+};

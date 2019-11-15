@@ -14,18 +14,14 @@ class ProtectedRoute extends Component {
     return (
       <Route
         {...rest}
-        render={props =>
-          isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
-        }
+        render={props => (isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)}
       />
     );
   }
 }
 
-const mapStateToProps = ({ loginState }) => {
-  return {
-    isAuthenticated: loginState.isAuthenticated
-  };
-};
+const mapStateToProps = ({ loginState }) => ({
+  isAuthenticated: loginState.isAuthenticated
+});
 
 export default connect(mapStateToProps)(ProtectedRoute);

@@ -7,25 +7,25 @@ const getJwt = () => localStorage.getItem(tokenKey);
 
 http.setJwt(getJwt());
 
-const setJwtToLocalStorage = jwt => {
+const setJwtToLocalStorage = (jwt) => {
   localStorage.setItem(tokenKey, jwt);
 };
 
-const authRegister = async data => {
+const authRegister = async (data) => {
   const res = await http.post("/auth/register", data);
 
   // setJwtToLocalStorage(res.data.token);
   return res.data;
 };
 
-const authLogin = async data => {
-  const res = await http.post('/auth/login', data);
+const authLogin = async (data) => {
+  const res = await http.post("/auth/login", data);
   setJwtToLocalStorage(res.data.data.token);
   return res.data;
 };
 
 const authLogout = async () => {
-  const res = await http.post('/auth/logout');
+  const res = await http.post("/auth/logout");
   setJwtToLocalStorage(null);
   return res.data;
 };
@@ -45,5 +45,5 @@ export {
   getJwt,
   authRegister,
   authLogin,
-  authLogout
+  authLogout,
 };

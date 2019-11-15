@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
-import Input from "../input/input";
 import { toast } from "react-toastify";
+import Input from "../input/input";
 import "./form.scss";
 
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -24,7 +24,7 @@ class Form extends Component {
     }
 
     const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
+    for (const item of error.details) errors[item.path[0]] = item.message;
     return errors;
   };
 
@@ -35,7 +35,7 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
@@ -60,7 +60,7 @@ class Form extends Component {
     return <button className="button">{label}</button>;
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = 'text') {
     const { data, errors } = this.state;
 
     return (

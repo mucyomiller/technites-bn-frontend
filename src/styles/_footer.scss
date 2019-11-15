@@ -1,0 +1,9 @@
+@import'./variables';
+#footer{
+    color: $primaryColor;
+    text-align: center!important;
+    padding: 1.5rem!important;
+    background-color: $background;
+    height: 10px;
+    box-shadow: 0 7px 12px 0 rgba(62,57,107,.16);
+}

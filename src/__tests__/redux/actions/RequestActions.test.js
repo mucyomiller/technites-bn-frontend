@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 import moxios from "moxios";
 import configureStore from "redux-mock-store";
 import http from "../../../services/httpServices";
-import { GET_REQUESTS, GET_ERRORS, GET_ALL_REQUESTS } from "../../../redux/actions/actionType";
-import { getUserRequests, getMyUsersRequests } from "../../../redux/actions/RequestActions";
+import {
+  GET_REQUESTS, GET_ERRORS, GET_ALL_REQUESTS, REQUEST_ACTION,
+} from "../../../redux/actions/actionType";
+import { getUserRequests, getMyUsersRequests, approveReject } from "../../../redux/actions/RequestActions";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
-import { token } from "../../../__mocks__/fixtures";
+import { token, request as testRequest } from "../../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
@@ -79,5 +81,30 @@ describe("Get All Requests by Admin actions", () => {
     await store.dispatch(getMyUsersRequests());
     const calledActions = store.getActions();
     expect(calledActions[0].type).toEqual(GET_ERRORS);
+  });
+});
+
+describe("Approve/Reject Action", () => {
+  describe("and `REQUEST_ACTION` dispatched with success", () => {
+    beforeEach(() => {
+      store = mockedStore();
+      moxios.install(http.dbCall);
+      Storage.prototype.getItem = jest.fn(() => token);
+    });
+
+    afterEach(() => {
+      moxios.uninstall(http.dbCall);
+    });
+
+    test("should dispatch the action", async () => {
+      moxios.wait(async () => {
+        const requestAction = moxios.requests.mostRecent();
+        requestAction.respondWith({ status: 200 });
+        await flushPromises();
+      });
+      await store.dispatch(approveReject({ testRequest, action: "test_actio", status: "test_status" }));
+      const calledActions = store.getActions();
+      expect(calledActions[0].type).toEqual(REQUEST_ACTION);
+    });
   });
 });

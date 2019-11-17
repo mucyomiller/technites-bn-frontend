@@ -1,4 +1,7 @@
 import UserRequestsReducer from "../../redux/reducers/RequestsReducer";
+import * as types from "../../redux/actions/actionType";
+import initialState from "../../redux/store/initialState";
+import { requests } from "../../__mocks__/fixtures";
 
 describe("UserRequestsReducer unit tests", () => {
   it("should reduce user requests", () => {
@@ -59,7 +62,6 @@ describe("UserRequestsReducer unit tests", () => {
     });
   });
 });
-
 
 describe("Admin viewing all requests unit tests", () => {
   it("should reduce all requests", () => {
@@ -160,5 +162,19 @@ describe("Admin viewing all requests unit tests", () => {
         },
       ],
     });
+  });
+});
+
+describe("Approve/Reject", () => {
+  beforeEach(() => {
+    initialState.requests = requests;
+  });
+
+  test("should update the status of an approved request to `Approved`", () => {
+    const newState = UserRequestsReducer(
+      initialState,
+      { type: types.REQUEST_ACTION, response: { data: { id: 5 }, status: "Approved" } },
+    );
+    expect(newState.requests).toEqual(requests);
   });
 });

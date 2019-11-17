@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable comma-dangle */
 /* eslint-disable arrow-parens */
-import { toast } from 'react-toastify';
-import { REGISTER } from './actionType';
-import { authRegister } from '../../services/authServices';
+import { toast } from "react-toastify";
+import { REGISTER } from "./actionType";
+import { authRegister } from "../../services/authServices";
 
 export const register = data => async dispatch => {
   try {

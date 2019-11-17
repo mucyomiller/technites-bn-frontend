@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable comma-dangle */
 /* eslint-disable arrow-parens */
 /* eslint-disable object-curly-newline */
@@ -8,7 +9,7 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { getJwt } from "../../services/authServices";
 
-class ProtectedRoute extends Component {
+export class ProtectedRoute extends Component {
   render() {
     const { isAuthenticated, component: Component, ...rest } = this.props;
     return (

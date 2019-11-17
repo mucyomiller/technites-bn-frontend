@@ -17,6 +17,8 @@ import HomeNav from "../home-nav/HomeNav";
 import { Table } from "../table";
 import SideBar from "../side-bar";
 import Footer from "../footer";
+import Modal from "../shared/modal/Modal";
+import "../../styles/modal.scss";
 
 export class AdminRequests extends Component {
   constructor() {
@@ -71,7 +73,6 @@ export class AdminRequests extends Component {
     );
     // Change page
     const paginate = (currentPage) => this.setState({ currentPage });
-
     const elements = currentElements.map((request) => (
       <tr className="table-row" key={request.id}>
         <td className="table-element" id={request.id}>
@@ -162,9 +163,18 @@ export class AdminRequests extends Component {
               Actions
             </button>
             <div className="dropdown-content">
-              <a href="#">Accept</a>
-              <a href="#">Reject</a>
-              <a href="#">View more</a>
+              <Modal
+                triggerText="Approve"
+                data={request}
+                action="approve"
+                status="Approved"
+              />
+              <Modal
+                triggerText="Reject"
+                data={request}
+                action="reject"
+                status="Rejected"
+              />
             </div>
           </div>
         </td>

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import testReducer from "./testReducer";
-import UserRequestReducer from "./UserRequestsReducer";
+import RequestReducer from "./RequestsReducer";
 import ErrorReducer from "./ErrorReducer";
 import registerReducer from "./registerReducer";
 import loginReducer from "./loginReducer";
@@ -8,7 +8,7 @@ import profileReducer from "./profileReducer";
 
 const rootReducer = combineReducers({
   test: testReducer,
-  userRequests: UserRequestReducer,
+  Requests: RequestReducer,
   errors: ErrorReducer,
   register: registerReducer,
   loginState: loginReducer,

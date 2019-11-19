@@ -61,4 +61,21 @@ code {
     }
   }
 }
+.page-info{
+  float: left;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .page-title{
+    color:$textColor;
+  }
+  .sub-title{
+    .sub-title-info{
+      a{
+        text-decoration: none;
+        color: $primaryColor;
+      }
+    }
+  }
+}
 

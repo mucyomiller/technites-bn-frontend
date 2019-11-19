@@ -13,8 +13,6 @@ const setJwtToLocalStorage = (jwt) => {
 
 const authRegister = async (data) => {
   const res = await http.post("/auth/register", data);
-
-  // setJwtToLocalStorage(res.data.token);
   return res.data;
 };
 

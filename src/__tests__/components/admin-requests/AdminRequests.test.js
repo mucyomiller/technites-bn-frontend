@@ -40,10 +40,12 @@ const props = {
   loginState: {
     isAuthenticated: true,
   },
-  user: {
-    firstname: "Rugumbira",
-    image_url:
+  profile: {
+    user: {
+      firstname: "Rugumbira",
+      image_url:
       "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+    },
   },
   postsPerPage: 4,
   currentPage: 1,
@@ -106,7 +108,7 @@ describe("Admin Panel for viewing User Requests", () => {
   it("should render Admin panel for Users Request View without crashing", () => {
     const nextPropsSuccess = { ...props };
     component.setProps(nextPropsSuccess);
-    expect(component).toHaveLength(1);
+    expect(component.props()).toHaveProperty("requests", props.requests);
   });
   it(" should trigger componentWillReceiveProps in Admin Requests view", () => {
     const nextPropsSuccess = { ...props };
@@ -134,5 +136,10 @@ describe("Admin Panel for viewing User Requests", () => {
     };
     component2.setProps(nextPropsSuccess);
     expect(component2).toHaveLength(1);
+  });
+  it("should test pagination", () => {
+    // console.log('qwerty', component.debug());
+    component2.find("Table").props().paginate(2);
+    expect(component2.state().currentPage).toEqual(2);
   });
 });

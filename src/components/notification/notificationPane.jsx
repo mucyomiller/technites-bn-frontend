@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -9,8 +11,10 @@ import PropTypes from "prop-types";
 import "./notidicationPane.scss";
 import "./notificationModal.scss";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
 import SingleNotification from "./singleNotification";
 import CloseIconButton from "../common/close-icon-button";
+import { socket } from "../../config/sockets";
 import {
   getNotifications,
   markAllRead,
@@ -18,9 +22,20 @@ import {
 } from "../../redux/actions/notificationActions";
 
 export class NotificationPane extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     const { loadNotifications } = this.props;
-    await loadNotifications();
+    loadNotifications();
+    if (socket) {
+      socket.on("request_update", (data) => {
+        const { id } = this.props.user;
+        if (id === data.user_id) {
+          loadNotifications();
+          toast.success(data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      });
+    }
   }
 
   render() {
@@ -96,6 +111,7 @@ const mapStateToProps = (state) => ({
   notifications: state.notifications.notifications,
   displayNots: state.notifications.notPaneDisplay,
   isAuthenticated: state.loginState.isAuthenticated,
+  user: state.profile.user,
 });
 
 const mapDispatchToProps = {

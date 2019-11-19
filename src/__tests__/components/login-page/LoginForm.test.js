@@ -4,15 +4,16 @@ import { LoginForm } from "../../../components/login-page/LoginForm";
 
 const event = {
   target: {},
-  defaultPrevented: jest.fn()
+  defaultPrevented: jest.fn(),
 };
 
 const props = {
   socialAuth: { token: "test token", user: { name: "test", email: "test" } },
-  socialAuthAction: jest.fn()
+  socialAuthAction: jest.fn(),
 };
 
 describe("Login Form", () => {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   const loginForm = shallow(<LoginForm {...props} />);
 
   test("should render the title as `Login`", () => {
@@ -33,16 +34,16 @@ describe("Login Form", () => {
 
   describe("and input in forms change", () => {
     beforeEach(() => {
-      const emailInput = loginForm.find('Input[name="email"]');
-      const passwordInput = loginForm.find('Input[name="password"]');
+      const emailInput = loginForm.find("Input[name=\"email\"]");
+      const passwordInput = loginForm.find("Input[name=\"password\"]");
 
       emailInput.simulate("change", {
         ...event,
-        target: { name: "email", value: "test@email.com" }
+        target: { name: "email", value: "test@email.com" },
       });
       passwordInput.simulate("change", {
         ...event,
-        target: { name: "password", value: "test@pass" }
+        target: { name: "password", value: "test@pass" },
       });
     });
 

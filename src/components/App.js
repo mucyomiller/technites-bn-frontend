@@ -19,8 +19,10 @@ const App = () => (
   <Provider store={store}>
     <ToastContainer />
     <BrowserRouter>
-      <div className="App">
-        <Router />
+      <div className="main-wrapper">
+        <div className="App">
+          <Router />
+        </div>
       </div>
     </BrowserRouter>
   </Provider>

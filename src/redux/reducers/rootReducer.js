@@ -5,6 +5,8 @@ import ErrorReducer from "./ErrorReducer";
 import registerReducer from "./registerReducer";
 import loginReducer from "./loginReducer";
 import profileReducer from "./profileReducer";
+import notificationReducer from "./notificationReducer";
+
 
 const rootReducer = combineReducers({
   test: testReducer,
@@ -13,6 +15,7 @@ const rootReducer = combineReducers({
   register: registerReducer,
   loginState: loginReducer,
   profile: profileReducer,
+  notifications: notificationReducer,
 });
 
 export default rootReducer;

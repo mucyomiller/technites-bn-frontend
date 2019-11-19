@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { heroku } from "../../services/httpServices";
 
 export class SocialLogin extends Component {
@@ -24,7 +24,8 @@ export class SocialLogin extends Component {
             className="socialMedia mr-20 facebook"
             type="button"
             onClick={this.facebookLogin}
-          />{" "}
+          />
+          {" "}
           <button
             type="button"
             onClick={this.gmailLogin}

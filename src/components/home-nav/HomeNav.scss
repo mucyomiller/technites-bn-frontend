@@ -1,4 +1,4 @@
-@import '../../styles/App.scss';
+@import "../../styles/App.scss";
 
 /*home-nav styling*/
 
@@ -78,19 +78,44 @@
 .profile-name {
   color: #fff;
 }
-.hamburger-menu{
+.hamburger-menu {
   display: none;
   color: $background;
   margin-right: 10px;
   font-size: 1.3em;
   @media screen and (max-width: 480px) {
-    display: block!important;
-    &:hover{
-      .side-bar{
+    display: block !important;
+    &:hover {
+      .side-bar {
         display: block;
         position: absolute;
         width: 80%;
       }
     }
   }
+}
+
+// notification pane
+.notification {
+  background-color: $primaryColor;
+  color: white;
+  text-decoration: none;
+  padding: 13px 5px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: inherit;
+}
+
+.notification .badge {
+  position: absolute;
+  top: 5px;
+  right: -3px;
+  padding: 1px 4px;
+  border-radius: 50%;
+  color: white;
+  background-color: orange;
 }

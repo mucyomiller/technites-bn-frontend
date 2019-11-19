@@ -132,7 +132,7 @@ export class ProfilePage extends Component {
       if (error.error) {
         return error.error;
       }
-      if (_.isArray(error.errors)) return error.errors[0];
+      if (error && _.isArray(error.errors)) return error.errors[0];
       return error.errors.message;
     }
     return null;

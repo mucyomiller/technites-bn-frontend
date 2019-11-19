@@ -3,8 +3,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/button-has-type */
 /* eslint-disable quotes */
-import React, { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Joi from "joi-browser";
 import "../form/form.scss";

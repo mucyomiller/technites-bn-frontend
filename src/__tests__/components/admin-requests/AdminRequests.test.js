@@ -8,6 +8,7 @@ import Enzyme, { mount, shallow } from "enzyme";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import Adapter from "enzyme-adapter-react-16/build";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import AdminRequests, {
   AdminRequests as AdminRequestsComponent,
@@ -15,11 +16,34 @@ import AdminRequests, {
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 
 Enzyme.configure({ adapter: new Adapter() });
-const store = configureStore([thunk])();
+const mockedStore = configureStore([thunk]);
 const props = {
+  notifications: {
+    notifications: [
+      {
+        createdAt: "2019-11-13T10:07:21.401Z",
+        id: 8,
+        message: "visit nairobi",
+        request_id: 12,
+        seen: "false",
+        type: "ReturnTrip",
+        updatedAt: "2019-11-15T13:13:44.347Z",
+        user_id: 49,
+        notPaneDisplay: false,
+      },
+    ],
+    markThisRead: jest.fn(),
+    toggleNotDisplay: jest.fn(),
+    notPaneDisplay: false,
+    notificationCount: 1,
+  },
+  loginState: {
+    isAuthenticated: true,
+  },
   user: {
     firstname: "Rugumbira",
-    image_url: "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+    image_url:
+      "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
   },
   postsPerPage: 4,
   currentPage: 1,
@@ -65,11 +89,16 @@ const props = {
   },
 };
 
+const store = mockedStore(props);
+
 describe("Admin Panel for viewing User Requests", () => {
   const component = mount(
-    <Router>
-      <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />
-    </Router>,
+    <Provider store={store}>
+      <Router>
+        <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />
+      </Router>
+      ,
+    </Provider>,
   );
   const component2 = shallow(
     <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />,
@@ -107,4 +136,3 @@ describe("Admin Panel for viewing User Requests", () => {
     expect(component2).toHaveLength(1);
   });
 });
-

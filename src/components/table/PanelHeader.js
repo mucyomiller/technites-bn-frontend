@@ -51,12 +51,12 @@ const PanelHeader = ({
         </button>
         <div className="transparent-button last-button page-number-div">
           <FontAwesomeIcon className="panel-icons" icon={faFile} />
-          <span className="button-label">Page</span>
+          <span className="button-label">Change Rows </span>
           <select className="panel-page-number" onChange={handleChange}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4">4</option>
+            <option selected value="4">4</option>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>

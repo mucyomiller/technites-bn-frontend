@@ -20,13 +20,16 @@
   .panel-commands{
       float: right;
       margin: 20px 20px 20px 0px;
+      @media screen and (max-width: 480px) {
+      	float: left;
+	      margin: 20px 0px 20px 60px;
+      }
       .panel-page-number{
         height: 40px;
         background: inherit;
-        margin-right: 50px;
+        margin-right: 20px;
         border: none;
         color: $primaryColor;
-        -webkit-appearance: none;
         font-size: 0.9em;
       }
       .transparent-button {

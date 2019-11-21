@@ -62,7 +62,7 @@ export const Table = ({
 Table.propTypes = {
   columns: PropTypes.array.isRequired,
   elements: PropTypes.array.isRequired,
-  postsPerPage: PropTypes.number.isRequired,
+  postsPerPage: PropTypes.string.isRequired,
   totalPosts: PropTypes.number.isRequired,
   paginate: PropTypes.func.isRequired,
   currentPageNumber: PropTypes.number.isRequired,

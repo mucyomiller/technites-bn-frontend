@@ -1,0 +1,94 @@
+@import "../../styles/variables";
+
+.panel-header {
+    width: 100%;
+  .page-info {
+    float: left;
+    margin: 20px 0px 20px 50px;
+    .page-title {
+      color: $textColor;
+    }
+    .sub-title {
+      .sub-title-info {
+        a {
+          text-decoration: none;
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+  .panel-commands{
+      float: right;
+      margin: 20px 20px 20px 0px;
+      .panel-page-number{
+        height: 40px;
+        background: inherit;
+        margin-right: 50px;
+        border: none;
+        color: $primaryColor;
+        -webkit-appearance: none;
+        font-size: 0.9em;
+      }
+      .transparent-button {
+        background-color: inherit;
+        height: 40px;
+        margin-bottom: 10px;
+        border: 1px solid $primaryColor;
+        font-size: 0.9em;
+        color: $primaryColor;
+        float: left;
+        &:hover{
+            background-color: $primaryColor;
+            color: $background;
+            .panel-icons{
+                color: $background;
+            }
+        }
+      }
+      .search-div{
+        background-color: #fff;
+        height: 50px;
+        width: 300px;
+        float: right;
+        position: absolute;
+        border: 1px solid #2a89f51f;
+        margin-left: 300px;
+        display: none;
+          input[type=text]{
+              width: 90%;
+              height: 100%;
+              font-size:1.3em;
+              border: none;
+          }
+      }
+  }
+}
+.panel-icons{
+    color: $primaryColor;
+    margin-right: 5px;
+}
+.first-button{
+    border-radius: 20px 0px 0px 20px;
+}
+.last-button{
+    border-radius: 0px 20px 20px 0px;
+}
+.button-label{
+    @media screen and (max-width: 480px) {
+        display: none;
+    }
+}
+.search-button{
+    background-color: black;
+}
+.search-button:hover .search-div{
+    display: block;
+}
+.page-number-div{
+  padding: 0px 0px 0px 5px;
+  &:hover{
+    .panel-page-number{
+      color:$background;
+    }
+  }
+}

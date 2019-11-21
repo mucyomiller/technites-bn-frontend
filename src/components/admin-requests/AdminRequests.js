@@ -19,6 +19,7 @@ import SideBar from "../side-bar";
 import Footer from "../footer";
 import Modal from "../shared/modal/Modal";
 import "../../styles/modal.scss";
+import PanelHeader from "../table/PanelHeader";
 
 export class AdminRequests extends Component {
   constructor() {
@@ -34,7 +35,7 @@ export class AdminRequests extends Component {
   }
 
   componentDidMount() {
-    this.props.getMyUsersRequests();
+    this.props.getMyUsersRequests("All");
     this.props.retrieveProfile();
   }
 
@@ -43,9 +44,9 @@ export class AdminRequests extends Component {
       window.location.href = "/dashboard";
     }
     this.setState({ errors, requests, user });
-    if (errors.message && typeof errors.message !== "object") {
-      toast.error(errors.message, {
-        position: toast.POSITION.TOP_RIGHT,
+    if (errors) {
+      toast.error(errors.message ? errors.message : errors, {
+        position: toast.POSITION.TOP_RIGHT
       });
     }
   }
@@ -69,11 +70,13 @@ export class AdminRequests extends Component {
     const indexOfFirstElement = indexOfLastElement - this.state.postsPerPage;
     const currentElements = requests.slice(
       indexOfFirstElement,
-      indexOfLastElement,
+      indexOfLastElement
     );
     // Change page
-    const paginate = (currentPage) => this.setState({ currentPage });
-    const elements = currentElements.map((request) => (
+    const paginate = currentPage => this.setState({ currentPage });
+    const setPageNumbers = postsPerPage => this.setState({ postsPerPage });
+
+    const elements = currentElements.map(request => (
       <tr className="table-row" key={request.id}>
         <td className="table-element" id={request.id}>
           <img
@@ -82,53 +85,21 @@ export class AdminRequests extends Component {
             alt={`${request.User.firstname} ${request.User.lastname}`}
           />
           <div className="tooltip">
-            <span>
-              Email:
-              {" "}
-              {request.User.email}
-            </span>
+            <span>Email: {request.User.email}</span>
             <br />
-            <span>
-              Phone:
-              {" "}
-              {request.User.phone}
-            </span>
+            <span>Phone: {request.User.phone}</span>
             <br />
-            <span>
-              Gender:
-              {" "}
-              {request.User.gender}
-            </span>
+            <span>Gender: {request.User.gender}</span>
             <br />
-            <span>
-              Address:
-              {" "}
-              {request.User.address}
-            </span>
+            <span>Address: {request.User.address}</span>
             <br />
-            <span>
-              Country:
-              {" "}
-              {request.User.country}
-            </span>
+            <span>Country: {request.User.country}</span>
             <br />
-            <span>
-              Language:
-              {" "}
-              {request.User.language}
-            </span>
+            <span>Language: {request.User.language}</span>
             <br />
-            <span>
-              Company:
-              {" "}
-              {request.User.company}
-            </span>
+            <span>Company: {request.User.company}</span>
             <br />
-            <span>
-              Department:
-              {" "}
-              {request.User.department}
-            </span>
+            <span>Department: {request.User.department}</span>
             <br />
           </div>
         </td>
@@ -184,23 +155,15 @@ export class AdminRequests extends Component {
       <>
         <HomeNav user={user} />
         <SideBar />
-        <div className="page-info">
-          <h1 className="page-title">All Requests</h1>
-          <h4 className="sub-title">
-            {" "}
-            <span className="sub-title-info">
-              <a href="#">Dashboard </a>
-            </span>
-            /
-            <span className="sub-title-info">
-              <a href="#"> All Requests</a>
-            </span>
-          </h4>
-        </div>
+        <PanelHeader
+          pageTitle="All Requests"
+          setPageNumbers={setPageNumbers}
+          getRequests={this.props.getMyUsersRequests}
+        />
         <Table
           columns={columns}
           elements={elements}
-          postsPerPage={this.state.postsPerPage}
+          postsPerPage={this.state.postsPerPage.toString()}
           totalPosts={requests.length}
           paginate={paginate}
           currentPageNumber={this.state.currentPage}
@@ -210,9 +173,12 @@ export class AdminRequests extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   requests: state.Requests,
   errors: state.errors,
   user: state.profile.user,
 });
-export default connect(mapStateToProps, { getMyUsersRequests, retrieveProfile })(AdminRequests);
+export default connect(mapStateToProps, {
+  getMyUsersRequests,
+  retrieveProfile,
+})(AdminRequests);

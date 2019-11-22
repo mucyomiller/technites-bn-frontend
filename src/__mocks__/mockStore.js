@@ -1,7 +1,11 @@
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import initialState from '../redux/store/initialState';
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import initialState from "../redux/store/initialState";
 
 export const middleWares = [thunk];
 export const mockStore = configureMockStore(middleWares);
+initialState.notifications = {
+  notifications: [],
+  notPaneDisplay: false,
+};
 export default mockStore(initialState);

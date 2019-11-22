@@ -16,6 +16,7 @@
     "draftjs-to-html": "^0.8.4",
     "react-draft-wysiwyg": "^1.13.2",
     "focus-trap-react": "^6.0.0",
+    "google-maps-react": "^2.0.2",
     "history": "^4.10.1",
     "immutable": "^3.8.2",
     "joi-browser": "^13.4.0",

@@ -13,7 +13,6 @@ export const getRooms = (id) => async (dispatch) => {
       payload: response,
     });
   } catch (error) {
-    // console.log(">>>> there is an error in get rooms action: ", error.response);
     // toast.error(error.response.data.error);
   }
 };

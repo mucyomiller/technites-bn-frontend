@@ -63,4 +63,15 @@ describe("Async Login Actions", () => {
     expect(store.getActions().length).toEqual(2);
     expect(spyPush).toHaveBeenCalled();
   });
+
+  test("test login fails", async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 403,
+        message: "Network Error",
+      });
+    });
+    await store.dispatch(loginActions.loginUser(loginPayload));
+  });
 });

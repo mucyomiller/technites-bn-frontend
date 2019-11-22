@@ -14,6 +14,7 @@ import verifyPasswordReset from "./passwordReset/passwordResetConfirmation";
 import PasswordChange from "./passwordReset/resetPassword";
 import AddHost from "./admin/AddHost";
 import HostReset from "./host/HostReset";
+import RoleSettings from "./role-settings/RoleSettings";
 
 export {
   LandingPage,
@@ -30,4 +31,5 @@ export {
   PasswordChange,
   AddHost,
   HostReset,
+  RoleSettings,
 };

@@ -12,22 +12,28 @@ import Joi from "joi-browser";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
+import _ from "lodash";
 import { createRequest } from "../../redux/actions/createRequest";
 import Form from "../form/form";
 import Counter from "../counter/Counter";
 import { deleteRequest } from "../../redux/actions/deleteRequest";
 import { editRequest } from "../../redux/actions/editRequest";
-import { getUserRequests } from "../../redux/actions/RequestActions";
+import { getUserRequests, setAutoFill } from "../../redux/actions/RequestActions";
 import { getAccomodations } from "../../redux/actions/getAccomodations";
 import { getRooms } from "../../redux/actions/getRooms";
 import ImageContainer from "../image-container/ImageContainer";
 
+import "./RequestPage.scss";
+
 export class RequestPage extends Form {
-  doSubmit = async type => {
+  doSubmit = async (type, value = "") => {
     if (type === "delete") {
       this.props.deleteRequest(this.props.match.params.id);
     } else if (type === "edit") {
       this.props.editRequest(this.props.match.params.id, this.state.data);
+    } else if (type === "autoFill") {
+      // do something
+      this.props.setAutoFill(value);
     } else {
       this.props.createRequest(this.state.data);
     }
@@ -115,9 +121,21 @@ export class RequestPage extends Form {
       });
 
       const requestId = this.props.match.params.id;
-      if (requestId === "new") return;
-
       await this.props.getUserRequests();
+
+      if (requestId === "new") {
+        if (this.props.currentUser.auto_fill) {
+          const { requests } = this.props.requests;
+          const lastRequest = requests[0];
+          this.setState({
+            data: {
+              passport_name: lastRequest.passport_name,
+              passport_number: lastRequest.passport_number
+            }
+          });
+        }
+        return;
+      }
 
       const { requests } = this.props.requests;
       const singleRequest = requests.filter(
@@ -126,7 +144,6 @@ export class RequestPage extends Form {
 
       // if you pass an invaid ID, you will be redirected to not found
       if (singleRequest.length === 0) this.props.history.replace("/not-found");
-
       // remove unwanted fields
       const {
         id,
@@ -141,7 +158,7 @@ export class RequestPage extends Form {
       request.check_in = request.destinations[0].check_in;
       request.check_out = request.destinations[0].check_out;
       request.destination_id = request.destinations[0].destination_id;
-      request.destinations[0].destination_id =        request.destinations[0].destination_id;
+      request.destinations[0].destination_id = request.destinations[0].destination_id;
       request.accomodation_id = request.destinations[0].accomodation_id;
       request.room_id = request.destinations[0].room_id;
       request.departure_date = request.departure_date;
@@ -154,7 +171,8 @@ export class RequestPage extends Form {
 
       // //. POPULATE ROOMS //
 
-      // initialize the current accomodation with the accomodations of the first location once the page is mounted
+      // initialize the current accomodation with the accomodations
+      // of the first location once the page is mounted
       const initialAccomodation = allAccomodations.filter(
         ac => ac.location === request.destination_id
       );
@@ -181,6 +199,13 @@ export class RequestPage extends Form {
 
   async componentDidMount() {
     this.populateRequestPage();
+  }
+
+  componentWillReceiveProps(props) {
+    const { currentUser } = props;
+    if (!_.isEmpty(currentUser)) {
+      this.setState({ autoFill: currentUser.auto_fill });
+    }
   }
 
   render() {
@@ -214,12 +239,12 @@ export class RequestPage extends Form {
             ) : null}
 
             {data.destinations !== undefined
-            && counter.count < data.destinations.length - 1 ? (
-              <button
-                onClick={() => this.handleSubmit("forward")}
-                className="button"
-              >
-                forward
+              && counter.count < data.destinations.length - 1 ? (
+                <button
+                  onClick={() => this.handleSubmit("forward")}
+                  className="button"
+                >
+                  forward
               </button>
               ) : null}
           </div>
@@ -249,24 +274,26 @@ export class RequestPage extends Form {
             <p className="reason">Reason</p>
             <p className="reason-label">
               {this.props.match.params.id !== "new"
-              && this.state.data.reason ? (
-                <p
-                  className="comment-content"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.data.reason.replace(
-                      /(<? *script)/gi,
-                      "illegalscript"
-                    )
-                  }}
-                />
+                && this.state.data.reason ? (
+                  <p
+                    className="comment-content"
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.data.reason.replace(
+                        /(<? *script)/gi,
+                        "illegalscript"
+                      )
+                    }}
+                  />
                 ) : (
                   "Fill your reason down there..."
                 )}
             </p>
             {this.renderEditor()}
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" />
-              Remember Personal details
+              <label htmlFor="autofill" className="pure-material-checkbox">
+                <input type="checkbox" name="autofill" onChange={this.handleAutoFill} checked={this.state.autoFill} />
+                <span>Remember Personal details</span>
+              </label>
             </div>
             {this.props.match.params.id === "new"
               ? this.renderButton("Request", "submit")
@@ -284,7 +311,8 @@ export class RequestPage extends Form {
 export const mapStateToProps = state => ({
   requests: state.Requests,
   accomodations: state.accomodations,
-  rooms: state.rooms
+  rooms: state.rooms,
+  currentUser: state.profile.user
 });
 
 export default compose(
@@ -294,6 +322,7 @@ export default compose(
     deleteRequest,
     editRequest,
     getUserRequests,
+    setAutoFill,
     getAccomodations,
     getRooms
   })

@@ -18,9 +18,9 @@ const SideBar = ({ userRole }) => (
               </a>
             </li>
             <li className="nav-item">
-              <a href="/allrequests">
+              <a href={userRole < 4 ? "/requests" : "/allrequests"}>
                 <FontAwesomeIcon className="sidebar-icons" icon={faList} />
-            View All Requests
+            View Requests
               </a>
             </li>
           </>

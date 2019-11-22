@@ -2,10 +2,6 @@
 /* eslint-disable no-case-declarations */
 import moment from "moment";
 import * as actions from "../actions/actionType";
-import {
-  GET_REQUESTS, GET_ALL_REQUESTS,
-  GET_ALL_ACCOMODATIONS, GET_ALL_ROOMS,
-} from "../actions/actionType";
 import IsEmpty from "../../validation/IsEmpty";
 
 const initialState = {
@@ -14,6 +10,7 @@ const initialState = {
   accomodations: [],
   rooms: [],
   searchRequests: [],
+  autoFill: {},
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -46,26 +43,32 @@ export default function (state = initialState, action) {
         requests: pastRequests,
       };
     case actions.REQUEST_ACTION:
-      const updatedRequests = state.requests.map((request) => (request.id === action.response.data.id
-        ? { ...request, status: action.response.status }
-        : request));
+      const updatedRequests = state.requests.map(
+        (request) => (request.id === action.response.data.id
+          ? { ...request, status: action.response.status }
+          : request),
+      );
 
       return {
         ...state,
         requests: updatedRequests,
       };
-    case GET_ALL_ACCOMODATIONS:
+    case actions.GET_ALL_ACCOMODATIONS:
       return {
         ...state,
         accomodationFound: !IsEmpty(action.payload),
         accomodations: action.payload,
       };
-    case GET_ALL_ROOMS:
+    case actions.GET_ALL_ROOMS:
       return {
         ...state,
         roomFound: !IsEmpty(action.payload),
         rooms: action.payload,
       };
+    case actions.CHANGE_AUTO_FILL_SUCCESS:
+      return { ...state, autoFill: action.payload };
+    case actions.CHANGE_AUTO_FILL_FAILED:
+      return { ...state, autoFill: action.payload };
     default:
       return state;
   }

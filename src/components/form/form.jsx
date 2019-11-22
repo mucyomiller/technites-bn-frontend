@@ -33,7 +33,8 @@ class Form extends Component {
     accomodations: [{ id: 0, name: "Choose an accomodation" }],
     currentAccomodations: [{ id: 0, name: "Choose an accomodation" }],
     rooms: [{ id: 0, name: "Choose a room" }],
-    currentRooms: [{ id: 0, name: "Choose a room" }]
+    currentRooms: [{ id: 0, name: "Choose a room" }],
+    autoFill: false
   };
 
   validate = () => {
@@ -208,6 +209,11 @@ class Form extends Component {
 
     this.setState({ data });
   };
+
+  handleAutoFill = (e) => {
+    this.setState({ autoFill: e.target.checked });
+    this.doSubmit("autoFill", e.target.checked);
+  }
 
   renderEditor = () => {
     return (

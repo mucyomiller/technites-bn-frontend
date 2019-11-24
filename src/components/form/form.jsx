@@ -131,6 +131,14 @@ class Form extends Component {
       this.setState({ data }, () => {
         this.doSubmit();
       });
+    } else if (e === "email_forgot") {
+      this.setState({ data }, () => {
+        this.doSubmit();
+      });
+    } else if (e === "reset") {
+      this.setState({ data }, () => {
+        this.doSubmit();
+      });
     }
   };
 

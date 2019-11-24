@@ -133,6 +133,17 @@ const props = {
 const store = mockedStore(props);
 
 describe("Admin Panel for viewing User Requests", () => {
+  const { location } = window;
+
+  beforeAll(() => {
+    delete window.location;
+    window.location = { assign: jest.fn(), replace: jest.fn(), reload: jest.fn() };
+  });
+
+  afterAll(() => {
+    window.location = location;
+  });
+
   const component = mount(
     <Provider store={store}>
       <Router>

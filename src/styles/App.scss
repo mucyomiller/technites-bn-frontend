@@ -18,6 +18,9 @@
 .clickable {
   cursor: pointer;
 }
+.clickable:focus {
+  outline: 0;
+}
 // spacer
 .spacer {
   flex-grow: 1;

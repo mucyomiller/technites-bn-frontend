@@ -19,6 +19,6 @@ test("it renders component successfully", () => {
 
 it("should check if data are valid when you send the data without typing", () => {
   const wrapper = setUp();
-  const button = wrapper.find("button");
-  button.simulate("submit");
+  const button = wrapper.find("button[className='button']");
+  button.simulate("click");
 });

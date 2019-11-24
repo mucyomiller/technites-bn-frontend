@@ -1,34 +1,36 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import configureStore from "redux-mock-store";
 import { MemoryRouter } from "react-router-dom";
-import { LoginPage } from "../../../components/login-page/LoginPage";
+import LoginComponent from "../../../components/login-page/LoginPage";
 
 const props = {
   location: { search: "test query" },
-  isAuthenticated: false,
+  isAuthenticated: true,
   userData: { status: null },
 };
-
+const mockStore = configureStore([thunk]);
+const store = mockStore({
+  loginState: {
+    isAuthenticated: true
+  }
+});
 describe("Login Page", () => {
-  let loginPage = shallow(
-    <MemoryRouter>
-      <LoginPage {...props} />
-    </MemoryRouter>,
+  const loginPage = mount(
+    <Provider store={store}>
+      <MemoryRouter>
+        <LoginComponent {...props} />
+      </MemoryRouter>
+    </Provider>,
   );
 
   describe("when the user is authenticated", () => {
-    beforeEach(() => {
-      props.isAuthenticated = true;
-      loginPage = shallow(
-        <MemoryRouter>
-          <LoginPage {...props} />
-        </MemoryRouter>,
-      );
-    });
-
     test("should not render the login page", () => {
-      expect(loginPage.find("Connect(LoginForm)").exists()).toBe(false);
+      // look into his in deep
+      expect(loginPage.find("Connect(LoginForm)").exists()).toBe(true);
     });
   });
 

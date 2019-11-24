@@ -636,32 +636,19 @@ describe("<request page />", () => {
     profile: { user: { id: 1, firstname: 'name', lastname: "name" } }
   });
 
-  // it('should test if the request page renders new', async () => {
-  //   wrapper = mount(
-  //     <Provider store={initialStore}>
-  //       <MemoryRouter>
-  //         <SingleRequest />
-  //       </MemoryRouter>
-  //     </Provider>
-  //   );
-  // });
-
   it('it should mount the request page', () => {
     const state = mapStateToProps({ profile: { user: {} } });
     wrapper = shallow(<RequestPage {...props} />);
-    // console.log('aaa', wrapper.debug());
   });
 
   it('it should test for the populate request page', () => {
     wrapper = shallow(<SingleRequestComponent {...props} />);
     wrapper.setProps({ user: {} });
-    // console.log('aaa', wrapper.debug());
   });
 
   it('should test for the new request', () => {
     props.match.params.id = "new";
     wrapper = shallow(<RequestPage {...props} />);
-    // console.log('aaa', wrapper.debug());
   });
 
   it('should test for the invalid id when populating the request', () => {

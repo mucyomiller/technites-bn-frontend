@@ -11,11 +11,9 @@ import Form from "../form/form";
 import { passWordChangeAction } from "../../redux/actions/passwordResetAction";
 
 export class PasswordChange extends Form {
-  handleSubmit = (e) => {
-    e.preventDefault();
-
+  doSubmit = () => {
     this.props.passWordChangeAction(this.state.data, this.props.match.params.token);
-  };
+  }
 
   schema = {
     password: Joi.string()
@@ -31,13 +29,13 @@ export class PasswordChange extends Form {
   render() {
     return (
       <div className="card-container center">
-        <form className="card center password-reset" onSubmit={this.handleSubmit}>
+        <div className="card center password-reset">
           <div className="title">Password Reset</div>
           <p className="ps-test">Enter a new password</p>
           {this.renderInput("password", "Password", "password")}
           {this.renderInput("confirm_password", "Confirm Password", "password")}
-          {this.renderButton("Reset Password")}
-        </form>
+          {this.renderButton("Reset Password", "reset")}
+        </div>
       </div>
     );
   }

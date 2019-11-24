@@ -14,7 +14,7 @@
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
         },
         "ecmaVersion": 2019,
         "sourceType": "module"
@@ -32,6 +32,7 @@
                 ]
             }
         ],
+        "react/jsx-fragments": ["enabled"],
         "react/prefer-stateless-function": 0,
         "quotes": [
             "error",

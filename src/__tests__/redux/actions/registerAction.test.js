@@ -22,6 +22,17 @@ const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
 
 
 describe("Register in actions", () => {
+  const { location } = window;
+
+  beforeAll(() => {
+    delete window.location;
+    window.location = { assign: jest.fn(), replace: jest.fn(), reload: jest.fn() };
+  });
+
+  afterAll(() => {
+    window.location = location;
+  });
+
   beforeEach(() => {
     store = mockedStore();
     moxios.install(http.dbCall);

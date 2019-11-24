@@ -126,9 +126,10 @@ export class RequestPage extends Form {
       if (requestId === "new") {
         if (this.props.currentUser.auto_fill) {
           const { requests } = this.props.requests;
-          const lastRequest = requests[0];
+          const lastRequest = requests.reverse()[0];
           this.setState({
             data: {
+              ...this.state.data,
               passport_name: lastRequest.passport_name,
               passport_number: lastRequest.passport_number
             }
@@ -292,7 +293,7 @@ export class RequestPage extends Form {
             <div>
               <label htmlFor="autofill" className="pure-material-checkbox">
                 <input type="checkbox" name="autofill" onChange={this.handleAutoFill} checked={this.state.autoFill} />
-                <span>Remember Personal details</span>
+                <span>&nbsp;Remember Personal details</span>
               </label>
             </div>
             {this.props.match.params.id === "new"

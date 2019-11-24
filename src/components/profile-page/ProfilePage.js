@@ -212,7 +212,6 @@ export class ProfilePage extends Component {
     formData.append("company", company);
     formData.append("department", department);
     formData.append("line_manager", line_manager);
-    // console.log('data', formData);
     updateprofileInfo(formData);
   }
 

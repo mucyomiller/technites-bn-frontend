@@ -11,6 +11,7 @@ import AdminReducer from "./AdminReducer";
 import HostReducer from "./HostReducer";
 import roleReducer from "./roleReducer";
 
+import commentReducer from "./commentReducer";
 
 const rootReducer = combineReducers({
   test: testReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   admin: AdminReducer,
   host: HostReducer,
   role: roleReducer,
+  comment: commentReducer,
 });
 
 export default rootReducer;

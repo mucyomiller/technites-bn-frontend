@@ -14,35 +14,10 @@ import UserRequests, {
   UserRequests as UserRequestsComponent,
 } from "../../../components/user-requests/UserRequests";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
+import { fromJS } from "immutable";
 
 Enzyme.configure({ adapter: new Adapter() });
-const store = configureStore([thunk])({
-  notifications: {
-    notifications: [
-      {
-        createdAt: "2019-11-13T10:07:21.401Z",
-        id: 8,
-        message: "visit nairobi",
-        request_id: 12,
-        seen: "false",
-        type: "ReturnTrip",
-        updatedAt: "2019-11-15T13:13:44.347Z",
-        user_id: 49,
-        notPaneDisplay: false,
-      },
-    ],
-    markThisRead: jest.fn(),
-    toggleNotDisplay: jest.fn(),
-    notPaneDisplay: false,
-    notificationCount: 1,
-  },
-  loginState: {
-    isAuthenticated: true,
-  },
-  profile: {
-    user: {},
-  },
-});
+const mockedStore = configureStore([thunk]);
 const props = {
   user: {
     firstname: "Rugumbira",
@@ -153,6 +128,38 @@ const props = {
     ],
   },
 };
+
+const store = mockedStore({
+  comment: {
+    comments: [],
+  },
+  notifications: {
+    notifications: [
+      {
+        createdAt: "2019-11-13T10:07:21.401Z",
+        id: 8,
+        message: "visit nairobi",
+        request_id: 12,
+        seen: "false",
+        type: "ReturnTrip",
+        updatedAt: "2019-11-15T13:13:44.347Z",
+        user_id: 49,
+        notPaneDisplay: false,
+      },
+    ],
+    markThisRead: jest.fn(),
+    toggleNotDisplay: jest.fn(),
+    notPaneDisplay: false,
+    notificationCount: 1,
+  },
+  loginState: {
+    isAuthenticated: true,
+  },
+  profile: {
+    user: {},
+  },
+});
+
 describe("User Requests View", () => {
   const component = mount(
     <Provider store={store}>
@@ -238,5 +245,18 @@ describe("User Requests View", () => {
     const select = component.find("select[className=\"select-search\"]");
 
     select.simulate("change", target);
+  });
+});
+describe("User Requests View mapStateToProps", () => {
+  it("should cover mapStateToProps errors case in User Requests view", () => {
+    const component = mount(
+      <Provider store={store}>
+        <Router>
+          <UserRequestsComponent {...props} history={{ push: jest.fn() }} />
+        </Router>
+      </Provider>
+    );
+    const nextPropsError = { successresponse };
+    component.setProps(nextPropsError);
   });
 });

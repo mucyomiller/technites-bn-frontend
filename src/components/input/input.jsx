@@ -10,7 +10,7 @@ const Input = ({ label, value, error, ...rest }) => {
   return (
     <div className="input-container">
       <div className="label">{label}</div>
-      <input {...rest} className="input-field" value={value} />
+      <input {...rest} className="input-field" value={value || ''} />
       {error && <div className="danger">{error}</div>}
     </div>
   );

@@ -42,7 +42,7 @@ export class AdminRequests extends Component {
 
   UNSAFE_componentWillReceiveProps({ requests, errors, user }) {
     if (user.role_value < 4) {
-      window.location.href = "/dashboard";
+      window.location.assign("/dashboard");
     }
     this.setState({ errors, requests, user });
     if (errors) {
@@ -147,6 +147,7 @@ export class AdminRequests extends Component {
                 action="reject"
                 status="Rejected"
               />
+              <a href={`allrequests/${request.id}`}>View more</a>
             </div>
           </div>
         </td>

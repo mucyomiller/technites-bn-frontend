@@ -29,6 +29,7 @@
 .content-container {
   @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
   display: flex;
+  flex-direction: column;
   padding: 0;
   padding-bottom: 2rem;
   margin: 0 auto;

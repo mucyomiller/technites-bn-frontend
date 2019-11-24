@@ -32,45 +32,21 @@
           color: $primaryColor;
         }
       }
-    .main-nav{
-        background-color: inherit;
-        width: 100%;
-        padding: 20px 10px 0px 20px;
-        height: 100%;
-        font-family: $font-family;
-        color: white;
-        .nav-header{
-            margin: 10px 0px 10px 0px;
-            font-weight: bold;
-            font-size: 1em;
-        }
-        .nav-item{
-            margin: 0px 0px -10px 0px;
-            font-size: 1em;
-            // padding-left: 20px;
-            &:hover{
-                color: $primaryColor;
-                .sidebar-icons{
-                    color: $primaryColor;
-                }
-            }
-            a{
-                color: #fff;
-                border: none;
-                text-align: unset;
-                width: auto;
-                margin: 10px 0px 10px 0px;
-                padding-left: 20px;
-                &:hover {
-                    color: $primaryColor;
-                    background: inherit;
-                    cursor: pointer;
-                    transform: none;
-                    border: none;
-                    transition: none;
-                    box-shadow: none;
-                  }
-            }
+      a {
+        color: #fff;
+        border: none;
+        text-align: unset;
+        width: auto;
+        margin: 10px 0px 10px 0px;
+        padding-left: 20px;
+        &:hover {
+          color: $primaryColor;
+          background: inherit;
+          cursor: pointer;
+          transform: none;
+          border: none;
+          transition: none;
+          box-shadow: none;
         }
       }
     }
@@ -80,9 +56,4 @@
   color: $background;
   margin-right: 10px;
   font-size: 1em;
-}
-.sidebar-icons{
-    color: $background;
-    margin-right: 10px;
-    font-size: 1em;
 }

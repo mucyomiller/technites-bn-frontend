@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .panel-header {
-    width: 85%;
+    width: 100%;
   .page-info {
     float: left;
     margin: 20px 0px 20px 50px;
@@ -18,7 +18,7 @@
     }
   }
   .panel-commands{
-      float: right;
+      float: left;
       margin: 20px 20px 20px 0px;
       @media screen and (max-width: 480px) {
       	float: left;
@@ -27,7 +27,7 @@
       .panel-page-number{
         height: 40px;
         background: inherit;
-        margin-right: 20px;
+        // margin-right: 20px;
         border: none;
         color: $primaryColor;
         font-size: 0.9em;

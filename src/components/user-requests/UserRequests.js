@@ -1,4 +1,6 @@
 /* eslint-disable react/no-danger */
+/* eslint-disable react/button-has-type */
+/* eslint-disable arrow-parens */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -19,6 +21,8 @@ import { Table } from "../table";
 import SideBar from "../side-bar";
 import Footer from "../footer";
 import PanelHeader from "../table/PanelHeader";
+import "../search-box/SearchBox.scss";
+
 
 export class UserRequests extends Component {
   constructor() {
@@ -30,6 +34,9 @@ export class UserRequests extends Component {
       postsPerPage: 4,
       currentPage: 1,
       user: {},
+      searchQuery: "",
+      filtered: [],
+      searchBy: "",
     };
   }
 
@@ -51,6 +58,14 @@ export class UserRequests extends Component {
     }
   }
 
+  handleSearch = query => {
+    this.setState({ searchQuery: query, currentPage: 1 });
+  };
+
+  handleSelect = (input) => {
+    this.setState({ searchBy: input.target.value });
+  }
+
   render() {
     const columns = [
       "Reason",
@@ -60,15 +75,28 @@ export class UserRequests extends Component {
       "Status",
       "Actions",
     ];
+
+    const { searchQuery } = this.state;
     const { requests } = this.props.requests;
+    const { searchBy } = this.state;
+
+    // search by status
+    let filtered = requests;
+    if (searchQuery && (searchBy !== "")) {
+      filtered = requests.filter(r => r[searchBy].toLowerCase().includes(searchQuery.toLowerCase()));
+    } else {
+      filtered = requests;
+    }
+
     const { user } = this.props;
     // Get current posts
     const indexOfLastElement = this.state.currentPage * this.state.postsPerPage;
     const indexOfFirstElement = indexOfLastElement - this.state.postsPerPage;
-    const currentElements = requests.slice(
+    const currentElements = filtered.slice(
       indexOfFirstElement,
       indexOfLastElement,
     );
+
     // Change page
     const paginate = (currentPage) => this.setState({ currentPage });
     const setPageNumbers = (postsPerPage) => this.setState({ postsPerPage });
@@ -127,7 +155,12 @@ export class UserRequests extends Component {
           pageTitle="My Requests"
           setPageNumbers={setPageNumbers}
           getRequests={this.props.getUserRequests}
+          handleSelect={this.handleSelect}
+          handleSearch={this.handleSearch}
+          searchQuery={searchQuery}
         />
+
+        <br />
         <Table
           columns={columns}
           elements={elements}
@@ -143,7 +176,9 @@ export class UserRequests extends Component {
 }
 const mapStateToProps = (state) => ({
   requests: state.Requests,
+  searchRequests: state.searchRequests,
   errors: state.errors,
   user: state.profile.user,
 });
+
 export default connect(mapStateToProps, { getUserRequests, retrieveProfile })(UserRequests);

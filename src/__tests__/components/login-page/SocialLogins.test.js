@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import { SocialLogin } from "../../../components/login-page/SocialLogins";
 
 const props = {
-  location
+  location,
 };
 describe("Social Logins", () => {
   const socialLogin = shallow(<SocialLogin {...props} />);
@@ -26,7 +26,7 @@ describe("Social Logins", () => {
     test("should redirect to facebook callback", () => {
       const spyFacebookCall = jest.spyOn(
         socialLogin.instance(),
-        "facebookLogin"
+        "facebookLogin",
       );
       socialLogin.instance().forceUpdate();
       socialLogin.find(".facebook").simulate("click", spyFacebookCall);

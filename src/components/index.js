@@ -1,4 +1,3 @@
-
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 import LandingPage from "./landing-page/LandingPage";
@@ -10,6 +9,9 @@ import UserRequests from "./user-requests/UserRequests";
 import Profile from "./profile-page/ProfilePage";
 import AdminRequests from "./admin-requests/AdminRequests";
 import NotificationPane from "./notification/notificationPane";
+import passwordReset from "./passwordReset/forgotEmailForm";
+import verifyPasswordReset from "./passwordReset/passwordResetConfirmation";
+import PasswordChange from "./passwordReset/resetPassword";
 
 export {
   LandingPage,
@@ -21,4 +23,7 @@ export {
   Profile,
   AdminRequests,
   NotificationPane,
+  passwordReset,
+  verifyPasswordReset,
+  PasswordChange,
 };

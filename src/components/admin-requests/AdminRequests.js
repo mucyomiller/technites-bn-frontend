@@ -11,6 +11,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import moment from "moment";
 import { getMyUsersRequests } from "../../redux/actions/RequestActions";
 import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
@@ -116,7 +117,7 @@ export class AdminRequests extends Component {
           {request.request_type}
         </td>
         <td className="table-element" id={request.id}>
-          {request.createdAt.substring(0, 10)}
+          {moment(request.createdAt).fromNow()}
         </td>
         <td className="table-element" id={request.id}>
           {request.status}
@@ -154,7 +155,7 @@ export class AdminRequests extends Component {
     return (
       <>
         <HomeNav user={user} />
-        <SideBar />
+        <SideBar userRole={user.role_value} />
         <PanelHeader
           pageTitle="All Requests"
           setPageNumbers={setPageNumbers}

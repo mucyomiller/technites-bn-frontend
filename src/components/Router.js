@@ -18,6 +18,8 @@ import {
   AdminRequests,
   verifyPasswordReset,
   PasswordChange,
+  AddHost,
+  HostReset,
 } from "./index";
 
 const Router = () => (
@@ -35,6 +37,8 @@ const Router = () => (
     <ProtectedRoute path="/allRequests" component={AdminRequests} />
     <Route exact path="/" component={LandingPage} />
     <ProtectedRoute exact path="/dashboard" component={Profile} />
+    <ProtectedRoute path="/addhost" component={AddHost} />
+    <Route path="/host/reset" component={HostReset} />
     <Route component={NotFound} />
   </Switch>
 );

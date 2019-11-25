@@ -10,13 +10,16 @@ import thunk from "redux-thunk";
 import Adapter from "enzyme-adapter-react-16/build";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import AdminRequests, {
-  AdminRequests as AdminRequestsComponent,
-} from "../../../components/admin-requests/AdminRequests";
+import AddHost, {
+  AddHost as AddHostComponent,
+} from "../../../components/admin/AddHost";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
+
+const validateHost = jest.fn();
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
+const addHost = jest.fn();
 const props = {
   notifications: {
     notifications: [
@@ -57,7 +60,7 @@ const props = {
   postsPerPage: 4,
   currentPage: 1,
   errors: {},
-  getMyUsersRequests: jest.fn(),
+  addHost,
   retrieveProfile: jest.fn(),
   requests: {
     requestFound: true,
@@ -132,72 +135,119 @@ const props = {
 
 const store = mockedStore(props);
 
-describe("Admin Panel for viewing User Requests", () => {
+describe("Admin Panel for Adding Hosts", () => {
   const component = mount(
     <Provider store={store}>
       <Router>
-        <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />
+        <AddHostComponent {...props} history={{ push: jest.fn() }} />
       </Router>
-      ,
+        ,
     </Provider>,
   );
   const component2 = shallow(
-    <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />,
+    <AddHostComponent {...props} history={{ push: jest.fn() }} />,
   );
-  it("should render Admin panel for Users Request View without crashing", () => {
-    const nextPropsSuccess = { ...props };
-    component.setProps(nextPropsSuccess);
-    expect(component.props()).toHaveProperty("requests", props.requests);
-  });
-  it(" should trigger componentWillReceiveProps in Admin Requests view", () => {
+  it("should render without crashing", () => {
     const nextPropsSuccess = { ...props };
     component.setProps(nextPropsSuccess);
     expect(component).toHaveLength(1);
   });
-  it("should trigger componentWillReceiveProps errors case in Admin Requests view", () => {
+  it("should trigger componentWillReceiveProps", () => {
     const nextPropsError = {
       errors: {
-        message: "This User has no request",
+        message: "Error message",
       },
       user: {
         role_value: 1,
       },
+      admin: {
+        hostAdded: true,
+      },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("admin", props.admin);
   });
-  it("should trigger componentWillReceiveProps errors case when error doesn't exist in Admin Requests view", () => {
-    const nextPropsSuccess = {
-      user: {
-        role_value: 4,
-      },
-      errors: {},
-    };
-    component2.setProps(nextPropsSuccess);
-    expect(component2).toHaveLength(1);
-  });
-  it("should trigger componentWillReceiveProps errors when the error is a message", () => {
+  it("should trigger componentWillReceiveProps when user is superAdmin", () => {
     const nextPropsError = {
       errors: {
-        message: "This User has no request",
+        message: "Error message",
+      },
+      user: {
+        role_value: 7,
+      },
+      admin: {
+        hostAdded: true,
       },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("user", props.user);
   });
-  it("should trigger componentWillReceiveProps when there are no errors branch testing", () => {
+  it("should trigger componentWillReceiveProps when host is not added", () => {
     const nextPropsError = {
-      errors: null,
+      errors: {
+        message: "Error message",
+      },
+      user: {
+        role_value: 7,
+      },
+      admin: {
+        hostAdded: false,
+      },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("admin", props.admin);
   });
-  it("should test pagination", () => {
-    component2.find("Table").props().paginate(2);
-    expect(component2.state().currentPage).toEqual(2);
+  it("should trigger componentWillReceiveProps when there is an array of errors", () => {
+    const nextPropsError = {
+      errors: {
+        errors: [
+          { message: "error message" },
+          { message: "error message" },
+        ],
+      },
+      user: {
+        role_value: 7,
+      },
+      admin: {
+        hostAdded: false,
+      },
+    };
+    component2.setProps(nextPropsError);
+    expect(component.props()).toHaveProperty("user", props.user);
   });
-  it("should set page Numbers", () => {
-    component2.find("PanelHeader").props().setPageNumbers(2);
-    expect(component2.state().postsPerPage).toEqual(2);
+  it("should trigger componentWillReceiveProps when there is an error instead of a message", () => {
+    const nextPropsError = {
+      errors: {
+        error: "Error message",
+      },
+      user: {
+        role_value: 7,
+      },
+      admin: {
+        hostAdded: true,
+      },
+    };
+    component2.setProps(nextPropsError);
+    expect(component.props()).toHaveProperty("errors", props.errors);
+  });
+  it("should simulate handleInputChange", () => {
+    component2.find("#firstname").props().handler({
+      target: { name: "firstname", value: "test" },
+    });
+    expect(component2.state().firstname).toBe(
+      "test",
+    );
+  });
+  it("should simulate handleInputChange catch an error", () => {
+    component2.find("#email").props().handler({
+      target: { name: "email", value: "test" },
+    });
+    expect(component2.state().email).toBe(
+      "test",
+    );
+  });
+  it("should simulate click", () => {
+    component.find("form").simulate("submit");
+    expect(addHost).toHaveBeenCalled();
   });
 });

@@ -1,23 +1,56 @@
 import React from "react";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faBus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faList, faBus, faUserPlus, faHotel,
+} from "@fortawesome/free-solid-svg-icons";
 
-const SideBar = () => (
+const SideBar = ({ userRole }) => (
   <>
     <div className="side-bar">
       <ul className="main-nav">
-        <li className="nav-header">Requests</li>
-        <li className="nav-item">
-          <a href="/requests/new">
-            <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
+        {userRole !== 0 ? (
+          <>
+            <li className="nav-header">REQUESTS</li>
+            <li className="nav-item">
+              <a href="/requests/new">
+                <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
             Make Request
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="/allrequests">
-            <FontAwesomeIcon className="sidebar-icons" icon={faList} />
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/allrequests">
+                <FontAwesomeIcon className="sidebar-icons" icon={faList} />
             View All Requests
+              </a>
+            </li>
+          </>
+        ) : null}
+        {userRole === 7 ? (
+          <>
+            <li className="nav-header">HOSTS</li>
+            <li className="nav-item">
+              <a href="/addhost">
+                <FontAwesomeIcon className="sidebar-icons" icon={faUserPlus} />
+            Add Host
+              </a>
+            </li>
+
+          </>
+        ) : null}
+        <li className="nav-header">ACCOMMODATIONS</li>
+        {userRole !== 1 ? (
+          <li className="nav-item">
+            <a href="/accommodations/new">
+              <FontAwesomeIcon className="sidebar-icons" icon={faHotel} />
+            Create
+            </a>
+          </li>
+        ) : null}
+        <li className="nav-item">
+          <a href="/accommodations">
+            <FontAwesomeIcon className="sidebar-icons" icon={faList} />
+            View All Accommodations
           </a>
         </li>
       </ul>

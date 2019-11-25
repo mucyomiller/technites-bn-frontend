@@ -10,6 +10,8 @@ const initialState = {
   notMessage: "",
   notPaneDisplay: false,
   notificationCount: 0,
+  passWordResetLink: "",
+  changePassMessage: "",
 };
 
 export default initialState;

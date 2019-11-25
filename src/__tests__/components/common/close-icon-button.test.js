@@ -11,10 +11,9 @@ const props = {
 const setUp = () => shallow(<CloseIconButton {...props} />);
 const findByAttr = (wrapper, dataTest) => wrapper.find(`[data-test="${dataTest}"]`);
 // tests
-test.only("It renders without error", () => {
+test("It renders without error", () => {
   const wrapper = setUp();
   const closeIcon = findByAttr(wrapper, "component-close-icon");
   expect(closeIcon.length).toBe(1);
-  expect(closeIcon.text()).toBeTruthy()
-  console.log(closeIcon.text());
+  expect(closeIcon.text()).toBeTruthy();
 });

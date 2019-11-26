@@ -9,7 +9,9 @@ import { passWordReset, passwordChange } from "../../services/authServices";
 
 export const passWordResetAction = data => async dispatch => {
   try {
-    const response = await passWordReset(data);
+    const { destinations, request_type, ...resetData } = data;
+
+    const response = await passWordReset(resetData);
     dispatch({
       type: PASSWORD_RESET,
       payload: response
@@ -33,7 +35,9 @@ export const passWordChangeAction = (data, token) => async dispatch => {
     if (data.password !== data.confirm_password) {
       throw Error("password and confirm passord do not match");
     }
-    const response = await passwordChange(data, token);
+    const { destinations, request_type, ...resetData } = data;
+
+    const response = await passwordChange(resetData, token);
     dispatch({
       type: PASSWORD_CHANGE,
       payload: response

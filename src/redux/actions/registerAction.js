@@ -14,7 +14,7 @@ export const register = data => async dispatch => {
       payload: response
     });
 
-    window.location.href = "/verify";
+    window.location.assign("/verify");
     // toast.success("Registered successfully");
   } catch (error) {
     if (error.response.data.error instanceof Array) {

@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import SideBar from "../side-bar/index";
 import Footer from "../footer/index";
 import HomeNav from "../home-nav/HomeNav";
+import Comment from '../comment/Comment';
 import { retrieveProfile } from "../../redux/actions/profileAction";
 import RequestPage from "../request-page/RequestPage";
 
@@ -35,6 +36,7 @@ export class SingleRequest extends Component {
   }
 
   render() {
+    const { id } = this.props.match.params;
     return (
       <div>
         <HomeNav user={this.state.user} />

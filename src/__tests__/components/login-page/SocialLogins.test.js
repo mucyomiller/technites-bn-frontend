@@ -6,6 +6,18 @@ const props = {
   location,
 };
 describe("Social Logins", () => {
+  const { location } = window;
+
+  beforeAll(() => {
+    delete window.location;
+    window.location = { assign: jest.fn(), replace: jest.fn(), reload: jest.fn() };
+  });
+
+  afterAll(() => {
+    window.location = location;
+  });
+
+
   const socialLogin = shallow(<SocialLogin {...props} />);
 
   test("should render the social login buttons", () => {

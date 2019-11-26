@@ -12,10 +12,9 @@ import "./passwordReset.scss";
 import { passWordResetAction } from "../../redux/actions/passwordResetAction";
 
 export class PassReset extends Form {
-  handleSubmit = (e) => {
-    e.preventDefault();
+  doSubmit = () => {    
     this.props.passWordResetAction(this.state.data);
-  };
+  }
 
   schema = {
     email: Joi.string()
@@ -27,10 +26,9 @@ export class PassReset extends Form {
   render() {
     return (
       <div className="card-container center ">
-        <form
+        <div
           data-test="pass-reset-form-email"
           className="card center password-reset"
-          onSubmit={this.handleSubmit}
         >
           <div className="title">Password Reset</div>
           <hr />
@@ -39,8 +37,8 @@ export class PassReset extends Form {
           </p>
           {this.renderInput("email", "Email")}
           <br />
-          {this.renderButton("Reset Password")}
-        </form>
+          {this.renderButton("Reset Password", "email_forgot")}
+        </div>
       </div>
     );
   }

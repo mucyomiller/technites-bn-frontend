@@ -8,7 +8,10 @@ import { Register, mapStateToProps as mapStateToPropsNew } from '../../../compon
 
 describe("<RegisterPage />", () => {
   const wrapper = mount(<Register />);
-  // console.log(wrapper.debug());
+  const props = {
+    register: jest.fn(),
+  }
+  wrapper.setProps(props);
 
   it("should taste the errors functionality", () => {
     const event = { target: { name: 'firstname', value: 'am' } };

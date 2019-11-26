@@ -1,0 +1,60 @@
+@import "../../styles/variables";
+@import "../../styles/cssgrid";
+
+.comment {
+  margin-top: 5px;
+  color: #707070;
+}
+
+.comment-card {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 10px;
+  padding: 30px;
+  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
+}
+
+.comment-content {
+  word-break: break-all;
+}
+.avatar {
+  -webkit-background-size: 32px 32px;
+  background-size: 32px 32px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  height: 42px;
+  width: 42px;
+  z-index: 0;
+  img {
+    width: 100%;
+    width: 100%;
+  }
+}
+
+.comment-editor {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  word-break: break-all;
+  min-height: 10rem;
+}
+.save-comment {
+  width: 10rem;
+}
+
+.comment-toolbar {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.comment-editor-wrapper {
+  border: 1px solid $primaryColor;
+  border-radius: 12px;
+  margin-bottom: 5px;
+}

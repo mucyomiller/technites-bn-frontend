@@ -87,6 +87,38 @@ const props = {
           department: "department",
         },
       },
+      {
+        id: 8,
+        user_id: 9,
+        request_type: "OneWay",
+        location_id: 3,
+        departure_date: "2019-11-16",
+        return_date: null,
+        destinations: [
+          {
+            room_id: 2,
+            check_in: "2019-11-18T15:16:38.447Z",
+            check_out: "2019-12-27T15:16:38.447Z",
+            destination_id: 4,
+            accomodation_id: 1,
+          },
+        ],
+        reason: "Visit Lagos",
+        status: "Accepted",
+        createdAt: "2019-11-11T06:53:54.602Z",
+        updatedAt: "2019-11-11T06:53:54.602Z",
+        User: {
+          image_url: "image",
+          email: "usertest@gmail.com",
+          phone: "123456",
+          gender: "male",
+          address: "address",
+          country: "country",
+          language: "language",
+          company: "company",
+          department: "department",
+        },
+      },
     ],
   },
 };
@@ -137,9 +169,28 @@ describe("Admin Panel for viewing User Requests", () => {
     component2.setProps(nextPropsSuccess);
     expect(component2).toHaveLength(1);
   });
+  it("should trigger componentWillReceiveProps errors when the error is a message", () => {
+    const nextPropsError = {
+      errors: {
+        message: "This User has no request",
+      },
+    };
+    component2.setProps(nextPropsError);
+    expect(component2).toHaveLength(1);
+  });
+  it("should trigger componentWillReceiveProps when there are no errors branch testing", () => {
+    const nextPropsError = {
+      errors: null,
+    };
+    component2.setProps(nextPropsError);
+    expect(component2).toHaveLength(1);
+  });
   it("should test pagination", () => {
-    // console.log('qwerty', component.debug());
     component2.find("Table").props().paginate(2);
     expect(component2.state().currentPage).toEqual(2);
+  });
+  it("should set page Numbers", () => {
+    component2.find("PanelHeader").props().setPageNumbers(2);
+    expect(component2.state().postsPerPage).toEqual(2);
   });
 });

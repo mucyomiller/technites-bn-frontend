@@ -16,6 +16,7 @@ import HomeNav from "../home-nav/HomeNav";
 import { Table } from "../table";
 import SideBar from "../side-bar";
 import Footer from "../footer";
+import PanelHeader from "../table/PanelHeader";
 
 export class UserRequests extends Component {
   constructor() {
@@ -31,15 +32,15 @@ export class UserRequests extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserRequests();
+    this.props.getUserRequests("All");
     this.props.retrieveProfile();
   }
 
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps({ requests, errors, user }) {
     this.setState({ errors, requests, user });
-    if (errors.error && typeof errors.error !== "object") {
-      toast.error(errors.error, {
+    if (errors) {
+      toast.error(errors.message ? errors.message : errors, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
@@ -65,6 +66,8 @@ export class UserRequests extends Component {
     );
     // Change page
     const paginate = (currentPage) => this.setState({ currentPage });
+    const setPageNumbers = postsPerPage => this.setState({ postsPerPage });
+
     const edit = (
       <a href="#">Edit</a>
     );
@@ -103,19 +106,11 @@ export class UserRequests extends Component {
       <>
         <HomeNav user={user} />
         <SideBar />
-        <div className="page-info">
-          <h1 className="page-title">My Requests</h1>
-          <h4 className="sub-title">
-            {" "}
-            <span className="sub-title-info">
-              <a href="#">Dashboard </a>
-            </span>
-            /
-            <span className="sub-title-info">
-              <a href="#"> My Requests</a>
-            </span>
-          </h4>
-        </div>
+        <PanelHeader
+          pageTitle="My Requests"
+          setPageNumbers={setPageNumbers}
+          getRequests={this.props.getUserRequests}
+        />
         <Table
           columns={columns}
           elements={elements}

@@ -12,6 +12,7 @@ const initialState = {
   notificationCount: 0,
   passWordResetLink: "",
   changePassMessage: "",
+  requests: [],
 };
 
 export default initialState;

@@ -9,7 +9,7 @@ const SideBar = () => (
       <ul className="main-nav">
         <li className="nav-header">Requests</li>
         <li className="nav-item">
-          <a href="/requests">
+          <a href="/requests/new">
             <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
             Make Request
           </a>

@@ -31,11 +31,11 @@ export class LoginForm extends Form {
   render() {
     return (
       <div className="card-container center">
-        <form className="card" onSubmit={this.handleSubmit}>
+        <div className="card">
           <div className="title">Login</div>
           {this.renderInput("email", "Email")}
           {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}
+          {this.renderButton("Login", 'login')}
           <p className="login-alt">
             <span>or</span>
           </p>
@@ -44,7 +44,7 @@ export class LoginForm extends Form {
             Forgot password?
             <Link to="/reset-password"> Reset </Link>
           </p>
-        </form>
+        </div>
       </div>
     );
   }

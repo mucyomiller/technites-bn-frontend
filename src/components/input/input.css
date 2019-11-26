@@ -1,0 +1,23 @@
+.input-container {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: left;
+  margin-left: 20px;
+  width: 200px;
+  height: 40px;
+}
+
+.input-container .label {
+  font-size: 13px;
+  font-family: sans-serif;
+}
+
+.input-container .input-field {
+  display: inline-block;
+  width: 200px;
+  outline: none;
+  border: 0px;
+  border-bottom: 1px solid black;
+}
+/*# sourceMappingURL=input.css.map */

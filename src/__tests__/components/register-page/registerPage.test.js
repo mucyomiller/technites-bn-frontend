@@ -4,10 +4,11 @@
 /* eslint-disable no-undef */
 import React from "react";
 import { mount } from "enzyme";
-import { Register } from '../../../components/register-page/RegisterPage';
+import { Register, mapStateToProps as mapStateToPropsNew } from '../../../components/register-page/RegisterPage';
 
 describe("<RegisterPage />", () => {
   const wrapper = mount(<Register />);
+  // console.log(wrapper.debug());
 
   it("should taste the errors functionality", () => {
     const event = { target: { name: 'firstname', value: 'am' } };
@@ -18,15 +19,14 @@ describe("<RegisterPage />", () => {
   });
 
   it("should check if data are valid when you send the data without typing", () => {
-    const form = wrapper.find('form[className="card"]');
-    form.simulate('submit');
+    wrapper.find('button[className="button"]');
   });
 
   it("should check if password and confirm password are the same", () => {
     const values = [
       { target: { name: 'firstname', value: 'test' } },
       { target: { name: 'lastname', value: 'test' } },
-      { target: { name: 'username', value: 'test' } },
+      { target: { name: 'username', value: 1 } },
       { target: { name: 'email', value: 'test@gmail.com' } },
       { target: { name: 'password', value: 'test1#' } },
       { target: { name: 'confirmPassword', value: 'test1@' } }];
@@ -36,11 +36,13 @@ describe("<RegisterPage />", () => {
       input.simulate('change', value);
     });
 
-    const form = wrapper.find('form[className="card"]');
-    form.simulate('submit');
+    // const form = wrapper.find('form[className="card"]');
+    const button = wrapper.find('button[className="button"]');
 
-    const { data } = wrapper.state();
-    expect(data[values[0].target.name]).toEqual(values[0].target.value);
+    button.simulate('click');
+
+    // const { data } = wrapper.state();
+    // expect(data[values[0].target.name]).toEqual(values[0].target.value);
   });
 
   it("should check if the input field are being rendered", () => {
@@ -62,8 +64,12 @@ describe("<RegisterPage />", () => {
     expect(data[values[0].target.name]).toEqual(values[0].target.value);
   });
 
-  it("should simulate the submit button", () => {
-    const form = wrapper.find('form[className="card"]');
-    form.simulate('submit');
+  it("should test for register a user", () => {
+    const button = wrapper.find('button[className="button"]');
+    button.simulate('click');
+  });
+
+  it("should test map state to props of register", () => {
+    mapStateToPropsNew({ register: {} });
   });
 });

@@ -1,26 +1,33 @@
-/* eslint-disable react/prop-types */
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import queryString from "query-string";
+import PropTypes from "prop-types";
+import { useHistory, useLocation } from "react-router-dom";
 // eslint-disable-next-line import/no-named-as-default
 import LoginForm from "./LoginForm";
 import NavBar from "../navbar/navbar";
 import { getJwt } from "../../services/authServices";
-import Profile from "../profile-page/ProfilePage";
 import { socialAuthAction } from "../../redux/actions/socialAuthAction";
 import "./login.scss";
 
-export const LoginPage = ({ location, isAuthenticated, socialAuthAction }) => {
+export const LoginPage = ({ isAuthenticated, socialAuthAction: socialAuth }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const isAuth = getJwt() || isAuthenticated;
   const url = location.search;
 
   const userData = queryString.parse(url);
   if (userData.status === "ok") {
-    socialAuthAction(userData);
+    socialAuth(userData);
   }
 
-  return getJwt() || isAuthenticated ? (
-    <Profile /> // do redirect instead of this.
-  ) : (
+  useLayoutEffect(() => {
+    if (isAuth) {
+      history.push("/dashboard");
+    }
+  }, [isAuth]);
+
+  return (
     <div className="container">
       <NavBar />
       <div>
@@ -30,7 +37,11 @@ export const LoginPage = ({ location, isAuthenticated, socialAuthAction }) => {
   );
 };
 
-LoginPage.protoType = {};
+LoginPage.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  socialAuthAction: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   isAuthenticated: state.loginState.isAuthenticated,
 });

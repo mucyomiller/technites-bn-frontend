@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable arrow-parens */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/no-unused-state */
@@ -37,7 +38,7 @@ export class SingleRequest extends Component {
     return (
       <div>
         <HomeNav user={this.state.user} />
-        <SideBar />
+        <SideBar userRole={this.state.user.role_value} />
         <div className="content-container">
           <RequestPage />
         </div>
@@ -52,7 +53,7 @@ export const mapStateToProps = state => ({
 });
 
 SingleRequest.defaultProps = {
-  retrieveProfile: () => {}
+  retrieveProfile: () => { }
 };
 
 export default compose(

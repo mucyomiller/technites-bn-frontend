@@ -603,8 +603,11 @@ describe("<request page />", () => {
           ]
         }
       },
+    },
+    currentUser: {
+      auto_fill: true
     }
-  };
+  }
 
   const state = {
     data: { destinations: [{}] },
@@ -621,7 +624,8 @@ describe("<request page />", () => {
     accomodations: [{ id: 0, name: "Choose an accomodation" }],
     currentAccomodations: [{ id: 0, name: "Choose an accomodation" }],
     rooms: [{ id: 0, name: "Choose a room" }],
-    currentRooms: [{ id: 0, name: "Choose a room" }]
+    currentRooms: [{ id: 0, name: "Choose a room" }],
+    profile: { user: { auto_fill: true } },
   };
 
   const initialStore = store({
@@ -672,6 +676,9 @@ describe("<request page />", () => {
     wrapper.setState(state);
     const button = wrapper.find('button[className="button"]').first();
     button.simulate('click');
+
+    const checkbox = wrapper.find('input[type="checkbox"]');
+    checkbox.simulate('change', { target: { checked: true } });
   });
 
   it('should test for submit a request', () => {
@@ -858,7 +865,8 @@ describe("<request page />", () => {
   });
 
   it('should test for setting state to props in request page', () => {
-    mapStateToPropsNew({ Requests: {}, accomodations: {}, rooms: {} });
+    // mapStateToPropsNew({ Requests: {}, accomodations: {}, rooms: {}, currentUser: { profile: { user: { auto_fill: true } } } });
+    mapStateToPropsNew(state);
   });
 
   it('should test select element', () => {

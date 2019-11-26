@@ -1,20 +1,30 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { shallow } from "enzyme";
+import { MemoryRouter } from "react-router-dom";
 import { LoginPage } from "../../../components/login-page/LoginPage";
 
 const props = {
   location: { search: "test query" },
   isAuthenticated: false,
-  userData: { status: null }
+  userData: { status: null },
 };
 
 describe("Login Page", () => {
-  let loginPage = shallow(<LoginPage {...props} />);
+  let loginPage = shallow(
+    <MemoryRouter>
+      <LoginPage {...props} />
+    </MemoryRouter>,
+  );
 
   describe("when the user is authenticated", () => {
     beforeEach(() => {
       props.isAuthenticated = true;
-      loginPage = shallow(<LoginPage {...props} />);
+      loginPage = shallow(
+        <MemoryRouter>
+          <LoginPage {...props} />
+        </MemoryRouter>,
+      );
     });
 
     test("should not render the login page", () => {

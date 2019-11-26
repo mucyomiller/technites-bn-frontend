@@ -2,9 +2,8 @@ import React from "react";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faList, faBus, faUserPlus, faHotel,
+  faList, faBus, faUserPlus, faHotel, faCog,
 } from "@fortawesome/free-solid-svg-icons";
-
 const SideBar = ({ userRole }) => (
   <>
     <div className="side-bar">
@@ -35,7 +34,13 @@ const SideBar = ({ userRole }) => (
             Add Host
               </a>
             </li>
-
+            <li className="nav-header">ROLES</li>
+            <li className="nav-item">
+              <a href="/role">
+                <FontAwesomeIcon className="sidebar-icons" icon={faCog} />
+                Assign Roles
+              </a>
+            </li>
           </>
         ) : null}
         <li className="nav-header">ACCOMMODATIONS</li>

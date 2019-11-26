@@ -20,6 +20,7 @@ import {
   PasswordChange,
   AddHost,
   HostReset,
+  RoleSettings
 } from "./index";
 
 const Router = () => (
@@ -39,6 +40,7 @@ const Router = () => (
     <ProtectedRoute exact path="/dashboard" component={Profile} />
     <ProtectedRoute path="/addhost" component={AddHost} />
     <Route path="/host/reset" component={HostReset} />
+    <ProtectedRoute path="/role" component={RoleSettings} />
     <Route component={NotFound} />
   </Switch>
 );

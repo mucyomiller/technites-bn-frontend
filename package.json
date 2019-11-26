@@ -56,7 +56,8 @@
       "!<rootDir>/node_modules/",
       "!src/**/*.stories.js",
       "!src/index.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/config/*.{js,jsx}"
     ],
     "coverageReporters": [
       "json-summary",
@@ -81,6 +82,7 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.17.0",
+    "@testing-library/react": "^9.3.2",
     "coveralls": "^3.0.7",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",

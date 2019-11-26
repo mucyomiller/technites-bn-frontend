@@ -9,6 +9,8 @@ import notificationReducer from "./notificationReducer";
 import passWordResetReducer from "./PasswordResetReducer";
 import AdminReducer from "./AdminReducer";
 import HostReducer from "./HostReducer";
+import roleReducer from "./roleReducer";
+
 
 const rootReducer = combineReducers({
   test: testReducer,
@@ -23,6 +25,7 @@ const rootReducer = combineReducers({
   rooms: RequestReducer,
   admin: AdminReducer,
   host: HostReducer,
+  role: roleReducer,
 });
 
 export default rootReducer;

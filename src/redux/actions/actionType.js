@@ -38,3 +38,11 @@ export const ADD_HOST = "ADD_HOST";
 
 // host
 export const RESET_HOST = "RESET_HOST";
+// roles
+export const ADD_ROLE_SUCCESS = "ADD_ROLE_SUCCESS";
+export const ADD_ROLE_FAIL = "ADD_ROLE_FAIL";
+export const ROMOVE_ROLE_SUCCESS = "ROMOVE_ROLE_SUCCESS";
+export const ROMOVE_ROLE_FAIL = "ROMOVE_ROLE_FAIL";
+export const RETRIEVE_USERS_SUCCESS = "RETRIEVE_USERS_SUCCESS";
+export const RETRIEVE_USERS_FAIL = "RETRIEVE_USERS_FAIL";
+export const CLEAR_STATE = "CLEAR_STATE";

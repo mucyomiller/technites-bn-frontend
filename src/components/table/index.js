@@ -15,7 +15,7 @@ export const Table = ({
   postsPerPage,
   totalPosts,
   paginate,
-  currentPageNumber
+  currentPageNumber,
 }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i += 1) {
@@ -28,7 +28,7 @@ export const Table = ({
           <table className="table">
             <thead className="table-head">
               <tr className="table-row">
-                {columns.map(column => (
+                {columns.map((column) => (
                   <td className="table-element" key={column}>
                     {column}
                   </td>
@@ -39,7 +39,7 @@ export const Table = ({
           </table>
           <div className="pagination-container flex-parent">
             <span className="pagination-box">{"<"}</span>
-            {pageNumbers.map(number => (
+            {pageNumbers.map((number) => (
               <span
                 key={number}
                 className={

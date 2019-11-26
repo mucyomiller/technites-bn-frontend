@@ -69,6 +69,10 @@ export default function (state = initialState, action) {
       return { ...state, autoFill: action.payload };
     case actions.CHANGE_AUTO_FILL_FAILED:
       return { ...state, autoFill: action.payload };
+    case actions.MOST_VISITED:
+      return { ...state, mostVisitedMsg: action.payload };
+    case actions.TRIPS_STATS:
+      return { ...state, trips: action.payload, totalTrips: action.totalTrips };
     default:
       return state;
   }

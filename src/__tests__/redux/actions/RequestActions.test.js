@@ -6,9 +6,23 @@ import moxios from "moxios";
 import configureStore from "redux-mock-store";
 import http from "../../../services/httpServices";
 import {
-  GET_REQUESTS, GET_ERRORS, GET_ALL_REQUESTS, REQUEST_ACTION, GET_PENDING_REQUESTS, GET_PAST_REQUESTS,
+
+  GET_REQUESTS,
+  GET_ERRORS,
+  GET_ALL_REQUESTS,
+  REQUEST_ACTION,
+  TRIPS_STATS,
+  GET_PENDING_REQUESTS,
+  GET_PAST_REQUESTS,
+  MOST_VISITED,
 } from "../../../redux/actions/actionType";
-import { getUserRequests, getMyUsersRequests, approveReject } from "../../../redux/actions/RequestActions";
+import {
+  getUserRequests,
+  getMyUsersRequests,
+  approveReject,
+  mostTravelled,
+  tripsStatsAction,
+} from "../../../redux/actions/RequestActions";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
 import { token, request as testRequest } from "../../../__mocks__/fixtures";
@@ -83,7 +97,6 @@ describe("Get User Requests actions", () => {
     expect(calledActions[0].type).toEqual(GET_ERRORS);
   });
 });
-
 
 describe("Get All Requests by Admin actions", () => {
   beforeEach(() => {
@@ -168,9 +181,135 @@ describe("Approve/Reject Action", () => {
         requestAction.respondWith({ status: 200 });
         await flushPromises();
       });
-      await store.dispatch(approveReject({ testRequest, action: "test_actio", status: "test_status" }));
+      await store.dispatch(
+        approveReject({
+          testRequest,
+          action: "test_actio",
+          status: "test_status",
+        }),
+      );
       const calledActions = store.getActions();
       expect(calledActions[0].type).toEqual(REQUEST_ACTION);
     });
+  });
+});
+
+describe("Most visited and trips stats Actions", () => {
+  beforeEach(() => {
+    store = mockedStore();
+    moxios.install(http.dbCall);
+  });
+  afterEach(() => {
+    moxios.uninstall(http.dbCall);
+  });
+  it("dispached MOST_VISITED action on success", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          status: 200,
+          message: "",
+        },
+      });
+      await flushPromises();
+    });
+    await store.dispatch(mostTravelled());
+    const calledActions = store.getActions();
+    expect(calledActions[0].type).toEqual(MOST_VISITED);
+  });
+
+  it("dispached MOST_VISITED action on failure", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 400,
+        response: {
+          data: {
+            error: "error",
+          },
+        },
+        message: "error",
+      });
+      await flushPromises();
+    });
+    await store.dispatch(mostTravelled());
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
+  });
+
+  it("dispached MOST_VISITED action on failure", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 400,
+        response: {
+          data: {
+            errors: [],
+          },
+        },
+        message: "error",
+      });
+      await flushPromises();
+    });
+    await store.dispatch(mostTravelled());
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
+  });
+
+  it("dispached TRIPS_STATS action on success", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          status: 200,
+          trips: [],
+          totalTrips: 0,
+        },
+      });
+      await flushPromises();
+    });
+    await store.dispatch(tripsStatsAction());
+    const calledActions = store.getActions();
+    expect(calledActions[0].type).toEqual(TRIPS_STATS);
+  });
+
+  it("dispached TRIPS_STATS action on failure", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 400,
+        response: {
+          data: {
+            error: "error",
+          },
+        },
+        message: "error",
+      });
+      await flushPromises();
+    });
+    await store.dispatch(tripsStatsAction());
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
+  });
+
+  it("dispached TRIPS_STATS action on failure errors", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 422,
+        response: {
+          data: {
+            error: "error",
+          },
+        },
+        message: "error",
+      });
+      await flushPromises();
+    });
+    await store.dispatch(tripsStatsAction(1, "e", 3, 4));
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
   });
 });

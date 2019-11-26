@@ -13,6 +13,9 @@ const initialState = {
   passWordResetLink: "",
   changePassMessage: "",
   requests: [],
+  mostVisitedMsg: "",
+  trips: [],
+  totalTrips: 0,
 };
 
 export default initialState;

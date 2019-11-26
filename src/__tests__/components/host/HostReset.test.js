@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-multi-assign */
@@ -10,13 +9,16 @@ import thunk from "redux-thunk";
 import Adapter from "enzyme-adapter-react-16/build";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import AdminRequests, {
-  AdminRequests as AdminRequestsComponent,
-} from "../../../components/admin-requests/AdminRequests";
+import HostReset, {
+  HostReset as HostResetComponent,
+} from "../../../components/host/HostReset";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
+
+const validateHost = jest.fn();
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
+const resetHostPassword = jest.fn();
 const props = {
   notifications: {
     notifications: [
@@ -57,7 +59,7 @@ const props = {
   postsPerPage: 4,
   currentPage: 1,
   errors: {},
-  getMyUsersRequests: jest.fn(),
+  resetHostPassword,
   retrieveProfile: jest.fn(),
   requests: {
     requestFound: true,
@@ -132,72 +134,93 @@ const props = {
 
 const store = mockedStore(props);
 
-describe("Admin Panel for viewing User Requests", () => {
+
+describe("Host Reset Password", () => {
   const component = mount(
     <Provider store={store}>
       <Router>
-        <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />
+        <HostResetComponent {...props} history={{ push: jest.fn() }} />
       </Router>
-      ,
+          ,
     </Provider>,
   );
   const component2 = shallow(
-    <AdminRequestsComponent {...props} history={{ push: jest.fn() }} />,
+    <HostResetComponent {...props} history={{ push: jest.fn() }} />,
   );
-  it("should render Admin panel for Users Request View without crashing", () => {
-    const nextPropsSuccess = { ...props };
-    component.setProps(nextPropsSuccess);
-    expect(component.props()).toHaveProperty("requests", props.requests);
-  });
-  it(" should trigger componentWillReceiveProps in Admin Requests view", () => {
+  it("should render without crashing", () => {
     const nextPropsSuccess = { ...props };
     component.setProps(nextPropsSuccess);
     expect(component).toHaveLength(1);
   });
-  it("should trigger componentWillReceiveProps errors case in Admin Requests view", () => {
+  it("should trigger componentWillReceiveProps", () => {
     const nextPropsError = {
       errors: {
-        message: "This User has no request",
+        message: "Error message",
       },
-      user: {
-        role_value: 1,
+      host: {
+        passwordReset: true,
       },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("host", props.host);
   });
-  it("should trigger componentWillReceiveProps errors case when error doesn't exist in Admin Requests view", () => {
-    const nextPropsSuccess = {
-      user: {
-        role_value: 4,
-      },
-      errors: {},
-    };
-    component2.setProps(nextPropsSuccess);
-    expect(component2).toHaveLength(1);
-  });
-  it("should trigger componentWillReceiveProps errors when the error is a message", () => {
+  it("should trigger componentWillReceiveProps when password reset is false", () => {
     const nextPropsError = {
       errors: {
-        message: "This User has no request",
+        message: "Error message",
+      },
+      host: {
+        passwordReset: false,
       },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("host", props.host);
   });
-  it("should trigger componentWillReceiveProps when there are no errors branch testing", () => {
+  it("should trigger componentWillReceiveProps when there is an array of errors", () => {
     const nextPropsError = {
-      errors: null,
+      errors: {
+        errors: [
+          { message: "error message" },
+          { message: "error message" },
+        ],
+      },
+      host: {
+        passwordReset: false,
+      },
     };
     component2.setProps(nextPropsError);
-    expect(component2).toHaveLength(1);
+    expect(component.props()).toHaveProperty("host", props.host);
   });
-  it("should test pagination", () => {
-    component2.find("Table").props().paginate(2);
-    expect(component2.state().currentPage).toEqual(2);
+  it("should trigger componentWillReceiveProps when there is an error instead of a message", () => {
+    const nextPropsError = {
+      errors: {
+        error: "Error message",
+      },
+      host: {
+        passwordReset: true,
+      },
+    };
+    component2.setProps(nextPropsError);
+    expect(component.props()).toHaveProperty("host", props.host);
   });
-  it("should set page Numbers", () => {
-    component2.find("PanelHeader").props().setPageNumbers(2);
-    expect(component2.state().postsPerPage).toEqual(2);
+  it("should simulate handleInputChange", () => {
+    component2.find("#old_password").props().handler({
+      target: { name: "old_password", value: "test123aA@" },
+    });
+    expect(component2.state().old_password).toBe(
+      "test123aA@",
+    );
+  });
+  it("should simulate handleInputChange catch an error", () => {
+    component2.find("#email").props().handler({
+      target: { name: "email", value: "test" },
+    });
+    expect(component2.state().email).toBe(
+      "test",
+    );
+  });
+  it("should simulate click", () => {
+    component.find("form").simulate("submit");
+    expect(resetHostPassword).toHaveBeenCalled();
   });
 });

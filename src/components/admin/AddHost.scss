@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+.wrapper {
+  background-color: #fff;
+  padding: 50px 20px 50px 20px;
+  height: auto;
+  width: 75%;
+  margin: 0px 20px 0px 10px;
+  float: right;
+}
+.page-info {
+    float: left;
+    margin: 20px 0px 20px 50px;
+    .page-title {
+      color: $textColor;
+    }
+    .sub-title {
+      .sub-title-info {
+        a {
+          text-decoration: none;
+          color: $primaryColor;
+        }
+      }
+    }
+  }

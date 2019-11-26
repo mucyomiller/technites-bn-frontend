@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.action-button{
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
+    color: $primaryColor;
+    background-color: #fff;
+    display: inline-block;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid $primaryColor;
+    font-family: inherit;
+    &:hover{
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: .3rem;
+        color: #fff;
+        background-color: $primaryColor;
+        display: inline-block;
+        font-weight: 400;
+        text-decoration: none;
+        border: 1px solid $primaryColor;
+        font-family: inherit;
+    }
+}

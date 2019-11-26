@@ -47,6 +47,7 @@ const props = {
   user: {
     firstname: "Rugumbira",
     image_url: "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+    role_value: 7,
   },
   postsPerPage: 4,
   currentPage: 1,
@@ -127,6 +128,15 @@ describe("User Requests View", () => {
       },
     };
     component2.setProps(nextPropsError);
+    expect(component2).toHaveLength(1);
+  });
+  it("should trigger componentWillReceiveProps when user is a host", () => {
+    const nextProps = {
+      user: {
+        role_value: 0,
+      },
+    };
+    component2.setProps(nextProps);
     expect(component2).toHaveLength(1);
   });
   it("should trigger componentWillReceiveProps when errors are empty case in User Requests view", () => {

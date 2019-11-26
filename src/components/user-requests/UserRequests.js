@@ -11,6 +11,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import moment from "moment";
 import { getUserRequests } from "../../redux/actions/RequestActions";
 import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
@@ -39,6 +40,9 @@ export class UserRequests extends Component {
 
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps({ requests, errors, user }) {
+    if (user.role_value === 0) {
+      window.location.href = "/dashboard";
+    }
     this.setState({ errors, requests, user });
     if (errors) {
       toast.error(errors.message ? errors.message : errors, {
@@ -67,7 +71,7 @@ export class UserRequests extends Component {
     );
     // Change page
     const paginate = (currentPage) => this.setState({ currentPage });
-    const setPageNumbers = postsPerPage => this.setState({ postsPerPage });
+    const setPageNumbers = (postsPerPage) => this.setState({ postsPerPage });
 
     const edit = (
       <a href="#">Edit</a>
@@ -86,17 +90,17 @@ export class UserRequests extends Component {
               }}
             />
           ) : (
-              "Fill your reason down there..."
-            )}
+            "Fill your reason down there..."
+          )}
         </td>
         <td className="table-element" id={request.id}>
-          {request.departure_date}
+          {request.departure_date.substring(0, 10)}
         </td>
         <td className="table-element" id={request.id}>
           {request.request_type}
         </td>
         <td className="table-element" id={request.id}>
-          {request.createdAt}
+          {moment(request.createdAt).fromNow()}
         </td>
         <td className="table-element" id={request.id}>
           {request.status}
@@ -118,7 +122,7 @@ export class UserRequests extends Component {
     return (
       <>
         <HomeNav user={user} />
-        <SideBar />
+        <SideBar userRole={user.role_value} />
         <PanelHeader
           pageTitle="My Requests"
           setPageNumbers={setPageNumbers}

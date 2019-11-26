@@ -32,3 +32,9 @@ export const GET_PAST_REQUESTS = "GET_PAST_REQUESTS";
 export const CREATE_REQUEST = "CREATE_REQUEST";
 export const GET_ALL_ACCOMODATIONS = "GET_ALL_ACCOMODATIONS";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
+
+// admin
+export const ADD_HOST = "ADD_HOST";
+
+// host
+export const RESET_HOST = "RESET_HOST";

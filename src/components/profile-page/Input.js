@@ -10,7 +10,7 @@ const Input = ({
         <label htmlFor={name} className="m-t-5 label">
           {label}
           {':'}
-          <input type={type} id={name} name={name} value={value} className={error ? 'input input-error' : 'input'} onChange={handler} />
+          <input type={type} id={name} name={name} value={value || null} className={error ? 'input input-error' : 'input'} onChange={handler} />
         </label>
         {error ? <span style={{ color: 'red', fontSize: '9px' }}>{error}</span> : null}
       </div>
@@ -39,5 +39,8 @@ Input.propTypes = {
   handler: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
+// Input.defaultProps = {
+//   handler: PropTypes.func,
+// };
 
 export default Input;

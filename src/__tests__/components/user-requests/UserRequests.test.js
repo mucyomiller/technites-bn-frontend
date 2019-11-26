@@ -54,8 +54,59 @@ const props = {
   errors: {},
   getUserRequests: jest.fn(),
   retrieveProfile: jest.fn(),
+  search: jest.fn(),
+  searchRequests: {
+    requestFound: true,
+    requests: [
+      {
+        id: 8,
+        user_id: 9,
+        request_type: "OneWay",
+        location_id: 3,
+        departure_date: "2019-11-16",
+        return_date: null,
+        destinations: [
+          {
+            room_id: 2,
+            check_in: "2019-11-18T15:16:38.447Z",
+            check_out: "2019-12-27T15:16:38.447Z",
+            destination_id: 4,
+            accomodation_id: 1,
+          },
+        ],
+        reason: "Visit Lagos",
+        status: "Pending",
+        createdAt: "2019-11-11T06:53:54.602Z",
+        updatedAt: "2019-11-11T06:53:54.602Z",
+      },
+    ],
+    searchRequests: [
+      {
+        id: 8,
+        user_id: 9,
+        request_type: "OneWay",
+        location_id: 3,
+        departure_date: "2019-11-16",
+        return_date: null,
+        destinations: [
+          {
+            room_id: 2,
+            check_in: "2019-11-18T15:16:38.447Z",
+            check_out: "2019-12-27T15:16:38.447Z",
+            destination_id: 4,
+            accomodation_id: 1,
+          },
+        ],
+        reason: "Visit Lagos",
+        status: "Pending",
+        createdAt: "2019-11-11T06:53:54.602Z",
+        updatedAt: "2019-11-11T06:53:54.602Z",
+      },
+    ],
+  },
   requests: {
     requestFound: true,
+    searchRequests: [],
     requests: [
       {
         id: 8,
@@ -169,5 +220,23 @@ describe("User Requests View", () => {
   it("should set page Numbers", () => {
     component2.find("PanelHeader").props().setPageNumbers(2);
     expect(component2.state().postsPerPage).toEqual(2);
+  });
+
+  it("should test the search functionality", () => {
+    const nextPropsError = {
+      errors: {},
+    };
+    component2.setProps(nextPropsError);
+    expect(component2).toHaveLength(1);
+  });
+  it("should test the search by options like status, request_type, etc..", () => {
+    const target = { target: { name: "status", value: "status" } };
+
+    const input = component.find("input[className=\"search\"]");
+    input.simulate("change", target);
+
+    const select = component.find("select[className=\"select-search\"]");
+
+    select.simulate("change", target);
   });
 });

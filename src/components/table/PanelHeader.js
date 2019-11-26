@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,9 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./PanelHeader.scss";
+import SearchBox from "../search-box/SearchBox";
 
 const PanelHeader = ({
-  pageTitle, setPageNumbers, getRequests,
+  pageTitle, setPageNumbers, getRequests, handleSelect, handleSearch, searchQuery,
 }) => {
   const handleChange = (e) => {
     setPageNumbers(e.target.value);
@@ -23,7 +25,7 @@ const PanelHeader = ({
           <span className="sub-title-info">
             <a href="#">Dashboard </a>
           </span>
-                /
+          /
           <span className="sub-title-info">
             <a href="#">
               {" "}
@@ -65,6 +67,15 @@ const PanelHeader = ({
             <option value="50">50</option>
           </select>
         </div>
+      </div>
+      <div className="search-container">
+        <select name="name" id="id" className="select-search" onChange={handleSelect}>
+          <option key="searchBy" value="">Search by</option>
+          <option key="status" value="status">Status</option>
+          <option key="request_type" value="request_type">Request type</option>
+          <option key="reason" value="reason">Reason</option>
+        </select>
+        <SearchBox className="search" value={searchQuery} onChange={handleSearch} />
       </div>
     </div>
   );

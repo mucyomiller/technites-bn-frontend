@@ -13,6 +13,7 @@ const initialState = {
   requests: [],
   accomodations: [],
   rooms: [],
+  searchRequests: [],
 };
 export default function (state = initialState, action) {
   switch (action.type) {

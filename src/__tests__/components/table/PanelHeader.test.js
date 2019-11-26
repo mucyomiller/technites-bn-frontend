@@ -3,15 +3,21 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16/build";
 import PanelHeader from "../../../components/table/PanelHeader";
+import SearchBox from "../../../components/search-box/SearchBox";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 const getRequests = jest.fn();
 const setPageNumbers = jest.fn();
+const handleSelect = jest.fn();
+const handleSearch = jest.fn();
 const props = {
   pageTitle: "test",
   setPageNumbers,
   getRequests,
+  handleSelect,
+  handleSearch,
+  searchQuery: "status",
 };
 describe("Panel Header Test", () => {
   const component = shallow(

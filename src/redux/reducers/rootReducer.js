@@ -15,6 +15,7 @@ import roleReducer from "./roleReducer";
 const rootReducer = combineReducers({
   test: testReducer,
   Requests: RequestReducer,
+  searchRequests: RequestReducer,
   errors: ErrorReducer,
   register: registerReducer,
   loginState: loginReducer,

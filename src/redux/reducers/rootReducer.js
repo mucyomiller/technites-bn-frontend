@@ -10,6 +10,7 @@ import passWordResetReducer from "./PasswordResetReducer";
 import AdminReducer from "./AdminReducer";
 import HostReducer from "./HostReducer";
 import roleReducer from "./roleReducer";
+import accommodationsReducer from "./accommodationsReducer";
 
 import commentReducer from "./commentReducer";
 
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   host: HostReducer,
   role: roleReducer,
   comment: commentReducer,
+  accommodations: accommodationsReducer,
 });
 
 export default rootReducer;

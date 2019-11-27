@@ -20,7 +20,9 @@ import {
   AddHost,
   HostReset,
   RoleSettings,
-  SingleRequest
+  SingleRequest,
+  AccommodationsPage,
+  AnAccommodationPage,
 } from "./index";
 
 const Router = () => (
@@ -41,6 +43,8 @@ const Router = () => (
     <ProtectedRoute path="/addhost" component={AddHost} />
     <Route path="/host/reset" component={HostReset} />
     <ProtectedRoute path="/role" component={RoleSettings} />
+    <ProtectedRoute path="/accommodations/:acc_id" component={AnAccommodationPage} />
+    <ProtectedRoute path="/accommodations" component={AccommodationsPage} />
     <Route component={NotFound} />
   </Switch>
 );

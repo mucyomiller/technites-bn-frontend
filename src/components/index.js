@@ -16,6 +16,9 @@ import AddHost from "./admin/AddHost";
 import HostReset from "./host/HostReset";
 import RoleSettings from "./role-settings/RoleSettings";
 import SingleRequest from "./single-request/SingleRequest";
+import AccommodationsPage from "./accommodation/AccommodationsPage";
+import AnAccommodationPage from "./accommodation/AnAccommodationPage";
+
 
 export {
   LandingPage,
@@ -34,4 +37,6 @@ export {
   HostReset,
   RoleSettings,
   SingleRequest,
+  AccommodationsPage,
+  AnAccommodationPage,
 };

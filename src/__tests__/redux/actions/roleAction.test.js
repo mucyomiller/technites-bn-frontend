@@ -112,6 +112,7 @@ describe("role actions", () => {
     const calledActions = store.getActions();
     expect(calledActions[0].type).toEqual(ADD_ROLE_SUCCESS);
   });
+
   it("it should fail to assign role if wrong data provided", async () => {
     const errorresponse = {
       status: 422,

@@ -33,6 +33,8 @@ export const addRole = (role, email) => async (dispatch) => {
       type: ADD_ROLE_SUCCESS,
       payload: res.data.data,
     });
+    console.log(retrieveUsers());
+    
     dispatch(retrieveUsers());
   } catch (error) {
     dispatch({

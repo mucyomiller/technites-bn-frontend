@@ -646,6 +646,11 @@ describe("<request page />", () => {
     wrapper.setProps({ user: {} });
   });
 
+  it('it should test for the populate request page with props new', () => {
+    wrapper = shallow(<SingleRequestComponent {...props} />);
+    wrapper.setProps({ user: {}, match: { params: { id: "new" } } });
+  });
+
   it('should test for the new request', () => {
     props.match.params.id = "new";
     wrapper = shallow(<RequestPage {...props} />);
@@ -697,8 +702,6 @@ describe("<request page />", () => {
   });
 
   it('should test for submit a multi city request', () => {
-    props.match.params.id = "new";
-
     const data = {
       request_type: 'OneWay',
       location_id: 1,

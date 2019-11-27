@@ -175,7 +175,8 @@ export class UserRequests extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+
+export const mapStateToProps = (state) => ({
   requests: state.Requests,
   searchRequests: state.searchRequests,
   errors: state.errors,

@@ -242,3 +242,33 @@ describe("Approve/Reject", () => {
     expect(newState.requests).toEqual(requests);
   });
 });
+
+describe("get most visited city and travel stats", () => {
+  const state = { ...initialState, mostVisitedMsg: "message" };
+  test("should update state on sucess of mostvisited", () => {
+    const action = {
+      type: types.MOST_VISITED,
+      payload: "",
+    };
+    const response = UserRequestsReducer(state, action);
+    expect(response.mostVisitedMsg).toEqual("");
+  });
+
+  test("should update state on sucess for trips stats", () => {
+    const action = {
+      type: types.TRIPS_STATS,
+      trips: [],
+      totalTrips: 0,
+    };
+    const response = UserRequestsReducer(state, action);
+    expect(response.totalTrips).toEqual(0);
+  });
+
+  test("should return default", () => {
+    const action = {
+      type: "types.TRIPS_STATS",
+    };
+    const response = UserRequestsReducer(state, action);
+    expect(response).toEqual(state);
+  });
+});

@@ -59,3 +59,6 @@ export const DELETE_COMMENT_FAIL = "DELETE_COMMENT_FAIL";
 // accommodation
 export const GET_ACCOMODATIONS = "GET_ACCOMODATIONS";
 export const GET_ACCOMODATION = "GET_ACCOMODATION";
+// trips stats
+export const MOST_VISITED = "MOST_VISITED";
+export const TRIPS_STATS = "TRIPS_STATS";

@@ -2,6 +2,7 @@
 import { toast } from "react-toastify";
 import * as actions from "./actionType";
 import httpservice from "../../services/httpServices";
+import { getMostTravelled, getTripStats } from "../../services/requestServices";
 
 export const getUserRequests = (requests) => async (dispatch) => {
   try {
@@ -82,5 +83,39 @@ export const setAutoFill = (value) => async (dispatch) => {
     toast.success(`Remember personal details ${value ? "turned on" : "turned off"}`);
   } catch (error) {
     toast.error("oops something unexpected happened!");
+  }
+}
+export const mostTravelled = () => async (dispatch) => {
+  try {
+    const res = await getMostTravelled();
+    dispatch({
+      type: actions.MOST_VISITED,
+      payload: res.message,
+    });
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      toast.error(error.response.data.error);
+    }
+    if (!error.response && error.message) {
+      toast.error(error.message);
+    }
+  }
+};
+
+export const tripsStatsAction = (id, years, months, days) => async (dispatch) => {
+  try {
+    const res = await getTripStats(id, years, months, days);
+    dispatch({
+      type: actions.TRIPS_STATS,
+      payload: res.data,
+      totalTrips: res.totalTrips,
+    });
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      toast.error(error.response.data.error);
+    }
+    if (!error.response && error.message) {
+      toast.error(error.message);
+    }
   }
 };

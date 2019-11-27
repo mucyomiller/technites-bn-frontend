@@ -1,32 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const Input = ({
   mode, label, type, name, value, handler, error,
 }) => {
   if (mode) {
     return (
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: "1rem" }}>
         <label htmlFor={name} className="m-t-5 label">
           {label}
-          {':'}
-          <input type={type} id={name} name={name} value={value || null} className={error ? 'input input-error' : 'input'} onChange={handler} />
+          {":"}
+          <input type={type} id={name} name={name} value={value || null} className={error ? "input input-error" : "input"} onChange={handler} />
         </label>
-        {error ? <span style={{ color: 'red', fontSize: '9px' }}>{error}</span> : null}
+        {error ? <span style={{ color: "red", fontSize: "9px" }}>{error}</span> : null}
       </div>
     );
   }
   return (
     <div className="flex flex-column">
       <label htmlFor={name} className="m-t-5 label">{`${label}: `}</label>
-      <span id={name} style={{ color: 'grey' }}>{value}</span>
+      <span id={name} style={{ color: "grey" }}>{value}</span>
     </div>
   );
 };
 
 Input.defaultProps = {
-  error: '',
-  value: '',
+  error: "",
+  value: "",
 };
 
 Input.propTypes = {

@@ -3,6 +3,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* esdivnt-disable react/destructuring-assignment */
 /* esdivnt-disable react/forbid-prop-types */
+import { toast } from "react-toastify";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -13,13 +14,23 @@ import HomeNav from "../home-nav/HomeNav";
 import Footer from "../footer";
 import "../../styles/accommodations.scss";
 import MapContainer from "../shared/map/MapContainer";
-import sprite from "../../assets/images/svg/sprite.svg";
+import yellowStar from "../../assets/star-yellow.png";
+import whiteStar from "../../assets/star-white.png";
+import Rating from "react-rating";
+import { rate } from '../../redux/actions/rateAction';
+import { getRate } from '../../redux/actions/getRateAction';
 
 export class AnAccommodationPage extends Component {
   async componentDidMount() {
     const { accId } = this.props;
     await this.props.retrieveProfile();
     await this.props.getAccommodation(accId);
+    await this.props.getRate(accId);
+  }
+
+  handleRate = (rate) => {
+    toast.success(`${rate} Star rating`);
+    this.props.rate({ rate, id: this.props.accId });
   }
 
   render() {
@@ -33,36 +44,36 @@ export class AnAccommodationPage extends Component {
             {!accommodation.images ? (
               <h2>Loading...</h2>
             ) : (
-              <div className="gallery__items">
-                <img
-                  src={accommodation.images[0]}
-                  className="gallery__photo--large"
-                  alt="accommodation"
-                />
-                <div className="gallery__sub">
+                <div className="gallery__items">
                   <img
-                    src={accommodation.images[1]}
-                    className="gallery__photo--small"
+                    src={accommodation.images[0]}
+                    className="gallery__photo--large"
                     alt="accommodation"
                   />
-                  <img
-                    src={accommodation.images[2]}
-                    className="gallery__photo--small"
-                    alt="accommodation"
-                  />
-                  <img
-                    src={accommodation.images[3]}
-                    className="gallery__photo--small"
-                    alt="accommodation"
-                  />
-                  <img
-                    src={accommodation.images[4]}
-                    className="gallery__photo--small"
-                    alt="accommodation"
-                  />
+                  <div className="gallery__sub">
+                    <img
+                      src={accommodation.images[1]}
+                      className="gallery__photo--small"
+                      alt="accommodation"
+                    />
+                    <img
+                      src={accommodation.images[2]}
+                      className="gallery__photo--small"
+                      alt="accommodation"
+                    />
+                    <img
+                      src={accommodation.images[3]}
+                      className="gallery__photo--small"
+                      alt="accommodation"
+                    />
+                    <img
+                      src={accommodation.images[4]}
+                      className="gallery__photo--small"
+                      alt="accommodation"
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
 
           <div className="overview">
@@ -70,27 +81,19 @@ export class AnAccommodationPage extends Component {
               {accommodation.accommodation_name}
             </h1>
             <div className="overview__stars">
-              <svg className="overview__icon-star">
-                <use xlinkHref="../../assets/images/svg/sprite.svg#icon-star" />
-              </svg>
-              <svg className="overview__icon-star">
-                <use xlinkHref={`${sprite}#icon-star`} />
-              </svg>
-              <svg className="overview__icon-star">
-                <use xlinkHref={`${sprite}#icon-star`} />
-              </svg>
-              <svg className="overview__icon-star">
-                <use xlinkHref={`${sprite}#icon-star`} />
-              </svg>
-              <svg className="overview__icon-star">
-                <use xlinkHref={`${sprite}#icon-star`} />
-              </svg>
+              <Rating
+                placeholderRating={this.props.averageRatings}
+                emptySymbol={<img src={whiteStar} className="icon" />}
+                placeholderSymbol={<img src={yellowStar} className="icon" />}
+                fullSymbol={<img src={yellowStar} className="icon" />}
+                onClick={rate => this.handleRate(rate)} />
             </div>
 
             <div className="overview__location">
-              <svg className="overview__icon-location">
-                <use xlinkHref={`${sprite}#icon-location-pin`} />
-              </svg>
+              <span>{`${(this.props.averageRatings) ? this.props.averageRatings : "No "} Average Rating`}</span>
+              {/* <div className="overview__icon-location"> */}
+              <img className='yellow-star-icon' src={yellowStar} alt="" />
+              {/* </div> */}
               <span className="btn-inline">Nairobi, Kenya</span>
             </div>
 
@@ -105,8 +108,8 @@ export class AnAccommodationPage extends Component {
               {!accommodation.Rooms ? (
                 <h2>Loading...</h2>
               ) : (
-                <RoomList rooms={accommodation.Rooms} />
-              )}
+                  <RoomList rooms={accommodation.Rooms} />
+                )}
             </div>
 
             <div className="acc__details__map">
@@ -131,9 +134,10 @@ const mapStateToProps = (state, ownProps) => ({
   accId: ownProps.match.params.acc_id,
   accommodation: state.accommodations.accommodation,
   user: state.profile.user,
+  averageRatings: state.accommodations.averageRatings
 });
 
-const mapDispatchToProps = { getAccommodation, retrieveProfile };
+const mapDispatchToProps = { getAccommodation, retrieveProfile, rate, getRate };
 
 export default connect(
   mapStateToProps,

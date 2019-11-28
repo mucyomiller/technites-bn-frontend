@@ -15,8 +15,9 @@ import notificationIcon from "../../assets/notification_icon.svg";
 import avatarImg from "../../assets/avatar_img.png";
 import { toggleNotPane } from "../../redux/actions/notificationActions";
 import NotificationPane from "../notification/notificationPane";
+import Chat from "../chat";
 
-const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
+export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
   const [isShown, setIsShown] = useState(false);
   const toggleMenu = () => {
     setIsShown(!isShown);
@@ -34,11 +35,16 @@ const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
           <img src={logo} alt="logo" />
         </Link>
         <div className="action-side">
-          <img
-            src={messageIcon}
-            className="icons clickable"
-            alt="messages icons"
-          />
+        <img
+          id="message-btn"
+          src={messageIcon}
+          className="icons clickable"
+          alt="messages icons"
+          onClick={() => {
+            localStorage.setItem("showState", true);
+            window.location.href = window.location.href;
+          }}
+        />
           <div className="notification">
             <img
               src={notificationIcon}
@@ -70,6 +76,7 @@ const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
         </div>
       </nav>
       <NotificationPane />
+      <Chat />
     </div>
   )
 };

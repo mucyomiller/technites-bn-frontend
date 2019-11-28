@@ -14,10 +14,12 @@ import AdminRequests, {
   AdminRequests as AdminRequestsComponent,
 } from "../../../components/admin-requests/AdminRequests";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
+import { messages } from "../../../__mocks__/fixtures";
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
 const props = {
+  messages,
   notifications: {
     notifications: [
       {

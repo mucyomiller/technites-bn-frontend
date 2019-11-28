@@ -19,7 +19,6 @@ import SingleRequest from "./single-request/SingleRequest";
 import AccommodationsPage from "./accommodation/AccommodationsPage";
 import AnAccommodationPage from "./accommodation/AnAccommodationPage";
 
-
 export {
   LandingPage,
   LoginPage,

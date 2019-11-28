@@ -7,7 +7,8 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import HomeNav from "../../../components/home-nav/HomeNav";
+import initialState from "../../../redux/reducers/initialState";
+import HomeNav, { HomeNav as HomeNavComponent } from "../../../components/home-nav/HomeNav";
 
 const mockStore = configureStore([thunk]);
 const state = {
@@ -69,18 +70,25 @@ const findByAttr = (wrapper, dataTest) => wrapper.find(`[data-test="${dataTest}"
 
 describe("Home Nav after login", () => {
   let wrapper;
+  let wrapper2;
   let store;
   store = mockStore(state);
   wrapper = shallow(<HomeNav store={store} {...props} />);
+  wrapper2 = shallow(<HomeNavComponent store={store} {...props} />);
   test("Should render the different component", () => {
   });
   // test("test logout", () => {
   //   wrapper = mount(<Provider store={store} >
-  //     <MemoryRouter>
+  //     <MemoryRouter
   //       <HomeNav {...props} />
   //     </MemoryRouter>
   //   </Provider>);
   //   wrapper.find('Link a').first().props();
   //   wrapper.find('a[href="#"]').props().onClick()
   // });
+  test("trigger message click", () => {
+    const messagebtn = wrapper2.find("#message-btn");
+    messagebtn.props().onClick();
+    expect(messagebtn.props().onClick());
+  });
 });

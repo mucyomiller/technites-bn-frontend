@@ -14,13 +14,14 @@ import AddHost, {
   AddHost as AddHostComponent,
 } from "../../../components/admin/AddHost";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
-
+import { messages } from "../../../__mocks__/fixtures";
 const validateHost = jest.fn();
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
 const addHost = jest.fn();
 const props = {
+  messages,
   notifications: {
     notifications: [
       {

@@ -24,7 +24,6 @@ import Footer from "../footer";
 import PanelHeader from "../table/PanelHeader";
 import "../search-box/SearchBox.scss";
 
-
 export class UserRequests extends Component {
   constructor() {
     super();

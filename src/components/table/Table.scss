@@ -114,7 +114,7 @@ a {
               @include dot();
             }
             .actions-dropdown-disabled {
-              position: relative;
+              // position: relative;
               display: inline-block;
               .drop-btn{
                 background-color: $textColor;
@@ -129,7 +129,7 @@ a {
               }
             }
             .actions-dropdown{
-              position: relative;
+              // position: relative;
               display: inline-block;
               &:hover{
                 .dropdown-content{

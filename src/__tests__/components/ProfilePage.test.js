@@ -13,6 +13,7 @@ import ProfileComponent, {
 } from "../../components/profile-page/ProfilePage";
 import Select from "../../components/profile-page/Select";
 import user from "../../__mocks__/__profile_data_success__.json";
+import { messages } from "../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 
@@ -116,6 +117,7 @@ describe("profile unit tests", () => {
 describe("profile integration tests", () => {
   beforeEach(() => {
     const store = mockedStore({
+      messages,
       profile: {
         status: {
           message: "updated profile successful!",

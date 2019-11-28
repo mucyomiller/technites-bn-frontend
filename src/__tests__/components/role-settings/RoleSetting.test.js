@@ -5,10 +5,11 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { MemoryRouter } from "react-router-dom";
 import RoleSettings from "../../../components/role-settings/RoleSettings";
-import { token } from "../../../__mocks__/fixtures";
+import { token, messages } from "../../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 const storeObj = {
+  messages,
   role: {
     users: [{
       id: 4,
@@ -61,6 +62,7 @@ describe("rolesetting components tests", () => {
   });
   it("it show nofitication of type error", () => {
     const store = mockedStore({
+      messages,
       role: {
         users: [{
           id: 4,
@@ -189,6 +191,7 @@ describe("rolesetting components tests", () => {
   });
   it("it show nofitication of type error", () => {
     const store = mockedStore({
+      messages,
       role: {
         users: [{
           id: 4,

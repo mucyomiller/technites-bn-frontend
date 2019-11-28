@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { mount, shallow } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import mockStore from "../../../__mocks__/mockStore";
-import { accommodation, accommodationNoImageAndRooms, user } from "../../../__mocks__/fixtures";
+import { accommodation, accommodationNoImageAndRooms, user, messages } from "../../../__mocks__/fixtures";
 import AccPage, {
   AnAccommodationPage,
 } from "../../../components/accommodation/AnAccommodationPage";
@@ -16,6 +16,7 @@ const props = {
   user,
   getAccommodation: jest.fn(),
   retrieveProfile: jest.fn(),
+  messages,
 };
 
 describe("An Accommodation page", () => {

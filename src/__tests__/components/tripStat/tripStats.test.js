@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import TripStatsComponent, {
   TripStats,
 } from "../../../components/tripStats/tripStats";
+
 const mockStore = configureStore([thunk]);
 const data = {
   createdAt: "2019-11-13T10:07:21.401Z",

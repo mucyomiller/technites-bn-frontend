@@ -8,8 +8,13 @@ import MostTravelled from "../tripStats/mostTravelled";
 import SideBar from "../side-bar";
 import SingleTrip from "../tripStats/singleTrip";
 import TripStats from "../tripStats/tripStats";
+import { retrieveProfile } from '../../redux/actions/profileAction';
 
 class Dashboard extends Component {
+  async componentDidMount() {
+    await retrieveProfile();
+  }
+
   render() {
     const { total, trips } = this.props;
     return (
@@ -59,6 +64,7 @@ Total trips:
 const mapStateToProps = (state) => ({
   trips: state.Requests.trips,
   total: state.Requests.totalTrips,
+  user: state.profile.user,
 });
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default connect(mapStateToProps, { retrieveProfile })(Dashboard);

@@ -3,16 +3,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { toggleNotPane, markOneRead } from "../../redux/actions/notificationActions";
+import { toggleNotPane, markOneRead, getNotifications } from "../../redux/actions/notificationActions";
 
 export const SingleNotification = ({
-  requestId, message, toggleNotDisplay, notId, markThisRead,
+  requestId, message, toggleNotDisplay, notId, markThisRead, loadNotifications
 }) => (
   <li>
     <Link
       data-test="single-notification"
       onClick={() => {
         markThisRead(notId);
+        loadNotifications();
         toggleNotDisplay();
       }}
       to={`/requests/${requestId}/`}
@@ -26,6 +27,7 @@ export const SingleNotification = ({
 const mapDispatchToProps = {
   toggleNotDisplay: toggleNotPane,
   markThisRead: markOneRead,
+  loadNotifications: getNotifications,
 };
 SingleNotification.propTypes = {
   message: PropTypes.string.isRequired,
@@ -33,6 +35,7 @@ SingleNotification.propTypes = {
   notId: PropTypes.number.isRequired,
   toggleNotDisplay: PropTypes.func.isRequired,
   markThisRead: PropTypes.func.isRequired,
+  loadNotifications: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(SingleNotification);

@@ -12,8 +12,8 @@ const notificationReducer = (state = initialState, action) => {
     case GET_ALL_NOTIFICATIONS:
       return {
         ...state,
-        notifications: [...state.notifications, ...action.notifications],
-        notificationCount: [...state.notifications, ...action.notifications].length
+        notifications: action.notifications,
+        notificationCount: action.notifications.length
       };
     case MARK_ALL_NOTIFICATIONS_SEEN:
       return {
@@ -25,8 +25,8 @@ const notificationReducer = (state = initialState, action) => {
     case MARK_ONE_NOTIFICATION_SEEN:
       return {
         ...state,
-        notifications: [...state.notifications].filter((not) => not.id !== action.payload.id),
-        notificationCount: state.notificationCount - 1
+        notifications: [...state.notifications].filter((not) => not.id !== action.payload.data.id),
+        notificationCount: state.notificationCount -= 1
       };
     case TOOGLE_NOTIFICATION_PANE:
       return {

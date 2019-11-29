@@ -2,7 +2,7 @@ import React from "react";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faList, faBus, faUserPlus, faHotel, faCog,
+  faList, faBus, faUserPlus, faHotel, faCog, faUser
 } from "@fortawesome/free-solid-svg-icons";
 const SideBar = ({ userRole }) => (
   <>
@@ -10,17 +10,24 @@ const SideBar = ({ userRole }) => (
       <ul className="main-nav">
         {userRole !== 0 ? (
           <>
+          <li className="nav-header">DASHBOARD</li>
+            <li className="nav-item">
+              <a href="/dashboard">
+                <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
+                My Dashboard
+              </a>
+            </li>
             <li className="nav-header">REQUESTS</li>
             <li className="nav-item">
               <a href="/requests/new">
                 <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
-            Make Request
+                Make Request
               </a>
             </li>
             <li className="nav-item">
               <a href={userRole < 4 ? "/requests" : "/allrequests"}>
                 <FontAwesomeIcon className="sidebar-icons" icon={faList} />
-            View Requests
+                View Requests
               </a>
             </li>
           </>
@@ -31,7 +38,7 @@ const SideBar = ({ userRole }) => (
             <li className="nav-item">
               <a href="/addhost">
                 <FontAwesomeIcon className="sidebar-icons" icon={faUserPlus} />
-            Add Host
+                Add Host
               </a>
             </li>
             <li className="nav-header">ROLES</li>
@@ -48,7 +55,7 @@ const SideBar = ({ userRole }) => (
           <li className="nav-item">
             <a href="/accommodations/new">
               <FontAwesomeIcon className="sidebar-icons" icon={faHotel} />
-            Create
+              Create
             </a>
           </li>
         ) : null}

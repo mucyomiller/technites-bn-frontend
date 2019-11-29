@@ -18,7 +18,7 @@ import Form from "../form/form";
 import Counter from "../counter/Counter";
 import { deleteRequest } from "../../redux/actions/deleteRequest";
 import { editRequest } from "../../redux/actions/editRequest";
-import { getUserRequests, setAutoFill } from "../../redux/actions/RequestActions";
+import { getUserRequests, setAutoFill, getMyUsersRequests } from "../../redux/actions/RequestActions";
 import { getAccomodations } from "../../redux/actions/getAccomodations";
 import { getRooms } from "../../redux/actions/getRooms";
 import ImageContainer from "../image-container/ImageContainer";
@@ -121,7 +121,10 @@ export class RequestPage extends Form {
       });
 
       const requestId = this.props.match.params.id;
-      await this.props.getUserRequests();
+      
+      if (this.props.currentUser.role_value >= 4)
+        await this.props.getMyUsersRequests("All");
+      else await this.props.getUserRequests();
 
       if (requestId === "new") {
         if (this.props.currentUser.auto_fill) {
@@ -323,6 +326,7 @@ export default compose(
     deleteRequest,
     editRequest,
     getUserRequests,
+    getMyUsersRequests,
     setAutoFill,
     getAccomodations,
     getRooms

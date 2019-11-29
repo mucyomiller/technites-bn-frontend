@@ -92,6 +92,5 @@ describe("Rate in actions", () => {
 
         await store.dispatch(getRate(1));
         const calledActions = store.getActions();
-        console.log("THE CALLED ACTIONS ARE : ", calledActions);
     });
 });

@@ -8,7 +8,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import RoomList from "./RoomList";
-import { getAccommodation } from "../../redux/actions/accommodatinsAction";
+import { getAccommodation, LikeUnLikeAccommodation } from "../../redux/actions/accommodatinsAction";
 import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
 import Footer from "../footer";
@@ -19,8 +19,17 @@ import whiteStar from "../../assets/star-white.png";
 import Rating from "react-rating";
 import { rate } from '../../redux/actions/rateAction';
 import { getRate } from '../../redux/actions/getRateAction';
+import sprite from "../../assets/images/svg/sprite.svg";
+import like from "../../assets/like.svg";
+import like_outline from "../../assets/like_outline.svg";
 
 export class AnAccommodationPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      likeAction: false
+    }
+  }
   async componentDidMount() {
     const { accId } = this.props;
     await this.props.retrieveProfile();
@@ -31,6 +40,20 @@ export class AnAccommodationPage extends Component {
   handleRate = (rate) => {
     toast.success(`${rate} Star rating`);
     this.props.rate({ rate, id: this.props.accId });
+  }
+
+  async componentWillReceiveProps() {
+    const { likeAction } = this.state;
+    if (likeAction) {
+      const { accId } = this.props;
+      await this.props.getAccommodation(accId);
+      this.setState({ likeAction: false });
+    }
+  }
+
+  likeAnAccommodation = async (id) => {
+    this.setState({ likeAction: true })
+    await this.props.LikeUnLikeAccommodation(id);
   }
 
   render() {
@@ -98,8 +121,8 @@ export class AnAccommodationPage extends Component {
             </div>
 
             <div className="overview__rating">
-              <div className="overview__rating-average">{`${accommodation.likes} likes`}</div>
-              <div className="overview__rating-count">like icon</div>
+              <div className="overview__rating-average">{`${accommodation.likes || 0} likes`}</div>
+              <div className="overview__rating-count clickable" onClick={() => this.likeAnAccommodation(accommodation.id)}><img src={accommodation.liked ? like : like_outline} width={24} height={24} /></div>
             </div>
           </div>
 
@@ -134,10 +157,11 @@ const mapStateToProps = (state, ownProps) => ({
   accId: ownProps.match.params.acc_id,
   accommodation: state.accommodations.accommodation,
   user: state.profile.user,
-  averageRatings: state.accommodations.averageRatings
+  averageRatings: state.accommodations.averageRatings,
+  likestate: state.accommodations.accommodationsLikes
 });
 
-const mapDispatchToProps = { getAccommodation, retrieveProfile, rate, getRate };
+const mapDispatchToProps = { getAccommodation, retrieveProfile, rate, getRate, LikeUnLikeAccommodation };
 
 export default connect(
   mapStateToProps,

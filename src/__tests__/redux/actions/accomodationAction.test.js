@@ -10,9 +10,10 @@ import Enzyme from "enzyme/build";
 import configureStore from "redux-mock-store";
 import Adapter from "enzyme-adapter-react-16/build";
 import http from "../../../services/httpServices";
-import { GET_ALL_ACCOMODATIONS, GET_ALL_ROOMS } from "../../../redux/actions/actionType";
+import { GET_ALL_ACCOMODATIONS, GET_ALL_ROOMS, LIKE_UNLIKE_ACCOMMODATION } from "../../../redux/actions/actionType";
 import { getAccomodations } from "../../../redux/actions/getAccomodations";
 import { getRooms } from "../../../redux/actions/getRooms";
+import { LikeUnLikeAccommodation } from "../../../redux/actions/accommodatinsAction";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
 import { createRequest } from '../../../redux/actions/createRequest';
@@ -304,4 +305,36 @@ describe("Register in actions", () => {
     await store.dispatch(getRooms());
     store.getActions();
   });
+  it("should test LikeUnLikeAccommodation like_success", async () => {
+    const resp = {
+      status: 200,
+      response: {
+        status: 200,
+        message: "Liked  Successfuly",
+      },
+    };
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith(resp);
+      await flushPromises();
+    });
+    await store.dispatch(LikeUnLikeAccommodation(1));
+    const calledActions = store.getActions();
+    expect(calledActions[0].type).toEqual(LIKE_UNLIKE_ACCOMMODATION);
+  });
+
+  it("should test LikeUnLikeAccommodation like_error", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 400,
+        message: "Network Error",
+      });
+      await flushPromises();
+    });
+    await store.dispatch(LikeUnLikeAccommodation(1));
+    const calledActions = store.getActions();
+    expect(calledActions[0].type).toEqual(LIKE_UNLIKE_ACCOMMODATION);
+  });
+
 });

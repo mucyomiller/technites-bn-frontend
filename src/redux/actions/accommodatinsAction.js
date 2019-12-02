@@ -2,7 +2,8 @@
 import * as types from '../actions/actionType';
 import {
   getAllAccommodations,
-  getAnAccommodation
+  getAnAccommodation,
+  setLikeUnLikeAccommodation
 } from '../../services/accommodationServices';
 
 export const getAccommodationsSuccess = accommodations => ({
@@ -31,4 +32,18 @@ export const getAccommodation = id => async dispatch => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const LikeUnLikeAccommodation = id => async dispatch => {
+  const accommodation = await setLikeUnLikeAccommodation(id);
+  if (accommodation.response) {
+    return dispatch({
+      type: types.LIKE_UNLIKE_ACCOMMODATION,
+      payload: { data: accommodation.response, status: "like_success" },
+    });
+  }
+  return dispatch({
+    type: types.LIKE_UNLIKE_ACCOMMODATION,
+    payload: { data: accommodation.error, status: "like_error" },
+  });
 };

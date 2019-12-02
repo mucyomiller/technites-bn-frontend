@@ -203,9 +203,11 @@
   }
 
   &__rating-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 0.8rem;
     text-transform: uppercase;
-
     // @media only screen and (max-width: $bp-small) {
     //     font-size: .5rem;
     // }

@@ -1,7 +1,6 @@
 @import "../styles/variables";
 
 
-
 .acc__resources {
   padding: 0px;
   margin: 10px;
@@ -49,6 +48,16 @@
 
   .acc-details {
     text-align: center;
+    &__map {
+      width: 20%;
+    }
+    &__feedback {
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: auto;
+    }
   }
 }
 

@@ -12,4 +12,7 @@ initialState.notifications = {
 initialState.profile = {
   user:{},
 }
+initialState.feedback = {
+  feedbacks: []
+};
 export default mockStore(initialState);

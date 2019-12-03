@@ -5,23 +5,20 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { MemoryRouter } from "react-router-dom";
 import { act } from "@testing-library/react";
-import Comment from "../../../components/comment/Comment";
+import Feedback from "../../../components/feedback/Feedback";
 
 const mockedStore = configureStore([thunk]);
 let wrapper;
-describe("comment components tests", () => {
+describe("feeedback components tests", () => {
   beforeEach(() => {
     const store = mockedStore({
-      comment: {
-        comments: [
+      feedback: {
+        feedbacks: [
           {
             "id": 56,
-            "request_id": 2,
             "user_id": 5,
-            "comment": "<p>some texts with emoji's 😂</p>",
-            "active": true,
+            "feedback": "<p>some texts with emoji's 😂</p>",
             "createdAt": "2019-11-19T09:45:28.767Z",
-            "updatedAt": "2019-11-19T09:45:28.767Z",
             "User": {
               "id": 5,
               "firstname": "Requester",
@@ -31,12 +28,9 @@ describe("comment components tests", () => {
           },
           {
             "id": 57,
-            "request_id": 2,
             "user_id": 6,
-            "comment": "<p>some other text with emoji's 👌</p>",
-            "active": true,
+            "feedback": "<p>some other text with emoji's 👌</p>",
             "createdAt": "2019-11-19T09:45:28.767Z",
-            "updatedAt": "2019-11-19T09:45:28.767Z",
             "User": {
               "id": 5,
               "firstname": "Requester2",
@@ -46,39 +40,37 @@ describe("comment components tests", () => {
         ],
       },
     });
-    
+
     wrapper = mount(
       <Provider store={store}>
-        <Comment requestId={2} owner={5} />
+        <Feedback accommodationId={2} />
       </Provider>,
     );
   });
 
-  it("it have to render commentItem components", () => {
-    expect(wrapper.find('CommentItem')).toHaveLength(2);
+  it("it have to render FeedbackItem components", () => {
+    expect(wrapper.find('FeedbackItem')).toHaveLength(2);
   });
-  it("it have to render commentEdior components", () => {
-    expect(wrapper.find('CommentEditor')).toHaveLength(1);
-  });
-  it("simulate remove comment", () => {
-    wrapper.find('CommentItem').first().props().removeComment();
+  it("it have to render FeedbackEditor components", () => {
+    expect(wrapper.find('FeedbackEditor')).toHaveLength(1);
   });
 
-  it("simulate save comment", () => {
+  it("simulate save feedback", () => {
     act(() => {
-      wrapper.find('CommentEditor').props().saveComment();
-      wrapper.find('.save-comment').props().onClick();
+      wrapper.find('FeedbackEditor').props().saveFeedback();
+      wrapper.find('.save-feedback').props().onClick();
     })
   });
-  
-  it("render with empty comments to simulate loading", () => {
+
+
+  it("render with empty feedbacks to simulate loading", () => {
     const store = mockedStore({
-      comment: {}
-    })
+      feedback: {}
+    });
 
     wrapper = mount(
       <Provider store={store}>
-        <Comment requestId={2} owner={5} />
+        <Feedback accommodationId={2} />
       </Provider>,
     );
   });

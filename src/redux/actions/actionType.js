@@ -73,7 +73,14 @@ export const GET_RATE = "GET_RATE";
 
 // like & unlike an accommodation
 export const LIKE_UNLIKE_ACCOMMODATION = "LIKE_UNLIKE_ACCOMMODATION";
+
 // chat
 export const GET_ALL_MESSAGES = "GET_ALL_MESSAGES"
 
 export const LOADING = "LOADING";
+
+// accommodation feedbacks
+export const RETRIEVE_FEEDBACK_SUCCESS = "RETRIEVE_FEEDBACK_SUCCESS";
+export const RETRIEVE_FEEDBACK_FAIL = "RETRIEVE_FEEDBACK_FAIL";
+export const SUBMIT_FEEDBACK_SUCCESS = "SUBMIT_FEEDBACK_SUCCESS";
+export const SUBMIT_FEEDBACK_FAIL = "SUBMIT_FEEDBACK_FAIL";

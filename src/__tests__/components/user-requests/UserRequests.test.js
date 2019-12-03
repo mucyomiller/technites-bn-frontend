@@ -15,6 +15,7 @@ import UserRequests, {
 } from "../../../components/user-requests/UserRequests";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import { fromJS } from "immutable";
+import { mapStateToProps } from '../../../components/user-requests/UserRequests';
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
@@ -245,6 +246,17 @@ describe("User Requests View", () => {
     const select = component.find("select[className=\"select-search\"]");
 
     select.simulate("change", target);
+  });
+
+  it('test mapstate to props ', () => {
+  const state = {
+    Requests: {},
+    searchRequests: {},
+    errors: {},
+    profile: { user: {}}
+  }
+
+    mapStateToProps(state);
   });
 });
 describe("User Requests View mapStateToProps", () => {

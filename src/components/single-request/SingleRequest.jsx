@@ -43,6 +43,7 @@ export class SingleRequest extends Component {
         <SideBar userRole={this.state.user.role_value} />
         <div className="content-container">
           <RequestPage />
+          {id === "new" ? null : (<Comment requestId={id} owner={this.state.user.id} />)}
         </div>
         <Footer />
       </div>

@@ -119,3 +119,34 @@
   color: white;
   background-color: orange;
 }
+
+.main-modal {
+  display: none;
+  width: 12%;
+  position: absolute;
+  top: 1;
+  right: 0;
+  padding: 10px;
+  margin-right: 2rem;
+  z-index: 1;
+  background-color: $primaryColor;
+}
+.block {
+  display: block;
+}
+.none {
+  display: none;
+}
+.main-modal:hover {
+  cursor: pointer;
+}
+
+.main-modal-content {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  a {
+    color: white;
+    margin: 5px 0;
+  }
+}

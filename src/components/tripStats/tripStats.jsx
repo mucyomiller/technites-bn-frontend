@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./tripStats.scss";
 import { tripsStatsAction } from "../../redux/actions/RequestActions";
+import { retrieveProfile } from '../../redux/actions/profileAction';
 
 export class TripStats extends Component {
   constructor(props) {
@@ -38,6 +39,10 @@ export class TripStats extends Component {
       days: event.target.value,
     });
   };
+
+  async componentDidMount() {
+    this.props.getUser()
+  }
 
   render() {
     const { years, months, days } = this.state;
@@ -92,10 +97,11 @@ export class TripStats extends Component {
 
 const mapDispatchToProps = {
   tripsStat: tripsStatsAction,
+  getUser: retrieveProfile,
 };
 
 const mapStateToProps = (state) => ({
-  userId: state.notifications.token.id,
+  userId: state.profile.user.id || 0
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripStats);

@@ -2,10 +2,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import initialState from "../../../redux/reducers/initialState";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import HomeNav from "../../../components/home-nav/HomeNav";
 
 const mockStore = configureStore([thunk]);
@@ -20,7 +21,9 @@ const state = {
   markThisRead: jest.fn(),
   toggleNotDisplay: jest.fn(),
   notPaneDisplay: false,
-  isAuthenticated: false,
+  loginState: {
+    isAuthenticated: false,
+  },
   notifications: [
     {
       createdAt: "2019-11-13T10:07:21.401Z",
@@ -45,6 +48,11 @@ const state = {
       notPaneDisplay: false,
     },
   ],
+  profile: {
+    user: {
+      id: 5
+    }
+  }
 };
 
 const props = {
@@ -62,8 +70,17 @@ const findByAttr = (wrapper, dataTest) => wrapper.find(`[data-test="${dataTest}"
 describe("Home Nav after login", () => {
   let wrapper;
   let store;
-  store = mockStore(initialState);
+  store = mockStore(state);
   wrapper = shallow(<HomeNav store={store} {...props} />);
   test("Should render the different component", () => {
   });
+  // test("test logout", () => {
+  //   wrapper = mount(<Provider store={store} >
+  //     <MemoryRouter>
+  //       <HomeNav {...props} />
+  //     </MemoryRouter>
+  //   </Provider>);
+  //   wrapper.find('Link a').first().props();
+  //   wrapper.find('a[href="#"]').props().onClick()
+  // });
 });

@@ -11,6 +11,7 @@ import {
 import { resetHostPassword } from "../../../redux/actions/HostActions";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import errorreponse from "../../../__mocks__/__get_user_request_failure__.json";
+import { token } from "../../../__mocks__/fixtures";
 
 const mockedStore = configureStore([thunk]);
 const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
@@ -20,7 +21,7 @@ describe("Admin actions", () => {
   beforeEach(() => {
     store = mockedStore();
     moxios.install(http.dbCall);
-    // Storage.prototype.getItem = jest.fn(() => token);
+    Storage.prototype.getItem = jest.fn(() => token);
   });
 
   afterEach(() => {

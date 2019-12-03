@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { retrieveProfile, updateProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
+import SideBar from "../side-bar";
 import Input from "./Input";
 import Select from "./Select";
 import countries from "./country_list";
@@ -76,6 +77,7 @@ export class ProfilePage extends Component {
       imagePreviewUrl: "",
       firstname: "",
       lastname: "",
+      role_value: 1,
       gender: "",
       dob: "",
       address: "",
@@ -220,6 +222,7 @@ export class ProfilePage extends Component {
       isEditMode,
       firstname,
       lastname,
+      role_value,
       gender,
       dob,
       address,
@@ -246,6 +249,7 @@ export class ProfilePage extends Component {
     return (
       <div>
         <HomeNav user={{ firstname, image_url }} />
+        <SideBar userRole={role_value} />
         <div className="e-profile-content">
           <div className="flex flex-row vertical-center space-between">
             <span className="title">Profile</span>

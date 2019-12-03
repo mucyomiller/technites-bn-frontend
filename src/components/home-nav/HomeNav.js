@@ -3,58 +3,76 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./HomeNav.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faLock, faUser, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/barefoot_white.svg";
 import messageIcon from "../../assets/message_icon.svg";
 import notificationIcon from "../../assets/notification_icon.svg";
-import arrowDown from "../../assets/arrow_down.svg";
 import avatarImg from "../../assets/avatar_img.png";
 import { toggleNotPane } from "../../redux/actions/notificationActions";
 import NotificationPane from "../notification/notificationPane";
 
-const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => (
-  <>
-    <nav className="home-wrapper">
-      <FontAwesomeIcon className="hamburger-menu" icon={faBars} />
-      <Link to="/" className="home-link">
-        <img src={logo} alt="logo" />
-      </Link>
-      <div className="action-side">
-        <img
-          src={messageIcon}
-          className="icons clickable"
-          alt="messages icons"
-        />
-        <div className="notification">
+const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
+  const [isShown, setIsShown] = useState(false);
+  const toggleMenu = () => {
+    setIsShown(!isShown);
+  }
+  const logout = async () => {
+    toggleMenu();
+    await localStorage.removeItem("token");
+    window.location.replace("/login");
+  }
+  return (
+    <div>
+      <nav className="home-wrapper">
+        <FontAwesomeIcon className="hamburger-menu" icon={faBars} />
+        <Link to="/" className="home-link">
+          <img src={logo} alt="logo" />
+        </Link>
+        <div className="action-side">
           <img
-            src={notificationIcon}
+            src={messageIcon}
             className="icons clickable"
-            alt="notification icon"
-            onClick={toggleNotPaneHandler}
+            alt="messages icons"
           />
-          <span id="badger" className="badge">{notificationCounter || ""}</span>
-        </div>
-        <div className="profile-action">
-          <div className="divider" />
-          <h5 className="profile-name clickable">{(user && user.firstname) || ""}</h5>
-          <img src={arrowDown} className="icons clickable" alt="arrowDown" />
-          <div className="avatar">
+          <div className="notification">
             <img
-              src={user && user.image_url ? user.image_url : avatarImg}
-              alt="profile"
+              src={notificationIcon}
+              className="icons clickable"
+              alt="notification icon"
+              onClick={toggleNotPaneHandler}
             />
+            <span id="badger" className="badge">{notificationCounter || ""}</span>
+          </div>
+          <div>
+            <div className="profile-action" onClick={toggleMenu}>
+              <div className="divider" />
+              <h5 className="profile-name clickable m-l-5">{(user && user.firstname) || ""}</h5>
+              <FontAwesomeIcon icon={faAngleDown} color="white" className="m-l-5 m-r-5" />
+              <div className="avatar">
+                <img
+                  src={user && user.image_url ? user.image_url : avatarImg}
+                  alt="profile"
+                />
+              </div>
+            </div>
+            <div id="main-pane" className={isShown ? 'main-modal block' : 'main-modal none'}>
+              <div className="main-modal-content">
+                <Link to="/profile"><FontAwesomeIcon icon={faUser} className="m-r-5" /> Profile</Link>
+                <a href="#" onClick={logout}><FontAwesomeIcon icon={faLock} className="m-r-5" /> Logout</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-    <NotificationPane />
-  </>
-);
+      </nav>
+      <NotificationPane />
+    </div>
+  )
+};
 const mapStateToProps = (state) => ({
   notifications: state.notifications.notifications,
   displayNotPane: state.notifications.notPaneDisplay,

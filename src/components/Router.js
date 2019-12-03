@@ -32,14 +32,13 @@ const Router = () => (
     <Route path="/verify-password-reset" component={verifyPasswordReset} />
     <Route path="/reset-password" component={passwordReset} />
     <Route path="/password-change/:token" component={PasswordChange} />
-    <Route path="/profile" component={Profile} />
+    <ProtectedRoute path="/profile" component={Profile} />
     <ProtectedRoute path="/requests/:id" component={SingleRequest} />
     <Route exact path="/" component={LandingPage} />
     <Route path="/requests/:id" component={SingleRequest} />
     <Route path="/host/reset" component={HostReset} />
-    <ProtectedRoute path="/requests/request_id" component={UserRequests} />
     <ProtectedRoute path="/requests" component={UserRequests} />
-    <ProtectedRoute path="/allRequests/:request_id" component={SingleRequest} />
+    <ProtectedRoute path="/allRequests/:id" component={SingleRequest} />
     <ProtectedRoute path="/allRequests" component={AdminRequests} />
     <ProtectedRoute exact path="/dashboard" component={Dashboard} />
     <ProtectedRoute path="/addhost" component={AddHost} />

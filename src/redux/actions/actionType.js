@@ -62,3 +62,7 @@ export const GET_ACCOMODATION = "GET_ACCOMODATION";
 // trips stats
 export const MOST_VISITED = "MOST_VISITED";
 export const TRIPS_STATS = "TRIPS_STATS";
+
+// rating
+export const RATE = "RATE";
+export const GET_RATE = "GET_RATE";

@@ -1,15 +1,14 @@
-@import '../styles/variables';
+@import "../styles/variables";
 
 html {
   // box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
-
 }
 
 .acc__resources {
   padding: 0px;
   margin: 10px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -56,6 +55,12 @@ html {
   .acc-details {
     text-align: center;
   }
+}
+
+.yellow-star-icon {
+  margin: 0rem 1rem 1rem 1rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 @media screen and (max-width: 625px) {
@@ -149,7 +154,7 @@ html {
     letter-spacing: 1px;
 
     @media only screen and (max-width: 600px) {
-        font-size: 1.8rem;
+      font-size: 1.8rem;
     }
   }
 

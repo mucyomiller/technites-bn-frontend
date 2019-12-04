@@ -26,7 +26,7 @@ export class AccommodationsPage extends Component {
     return (
       <>
         <HomeNav user={user} />
-        <SideBar />
+        <SideBar userRole={user.role_value} />
         {!accommodations ? (
           <h2>Loading...</h2>
         ) : (
@@ -45,10 +45,13 @@ AccommodationsPage.propTypes = {
   retrieveProfile: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => { 
+  console.log(state);
+  
+  return {
   accommodations: state.accommodations.accommodations,
   user: state.profile.user,
-});
+}};
 
 const mapDispatchToProps = {
   getAccommodations,

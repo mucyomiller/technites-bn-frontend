@@ -1,18 +1,35 @@
+// COLOR
 $primaryColor: #2a89f5 !default;
+$primaryColorLight: #9cc8fa;
+$primaryColorDark: #095fc1;
+$dangerColor: red;
+
 $primaryLight: lighten($primaryColor, 50%);
 $primaryDark: darken($primaryColor, 50%);
 $secondaryColor: #F5F6FA;
 $secondaryLight: lighten($secondaryColor, 50%);
 $secondaryDark: darken($secondaryColor, 50%);
+$black: #000;
+$color-grey-dark: #777;
+
+// TEXT
+$default-font-size: 1.6rem;
 $textColor: #4d4f5c;
 $textDark: darken($textColor, 50%);
-$black: #000;
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+
+
 $background: #fff;
+$white: #fff;
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
 $font-family: "Roboto", sans-serif;
 $border-color: rgb(124, 124, 124);
-$dangerColor: tomato;
 
 $card-shadow: 0 10px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 $card-shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 $transition: all 0.5s ease-in-out;
+

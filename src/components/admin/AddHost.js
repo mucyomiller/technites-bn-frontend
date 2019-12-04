@@ -7,7 +7,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import Joi from "joi-browser";
-import _ from "lodash";
 import { retrieveProfile } from "../../redux/actions/profileAction";
 import { addHost } from "../../redux/actions/AdminActions";
 import HomeNav from "../home-nav/HomeNav";

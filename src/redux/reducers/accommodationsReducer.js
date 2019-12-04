@@ -1,17 +1,43 @@
 /* eslint-disable no-fallthrough */
-import { GET_ACCOMODATIONS, GET_ACCOMODATION, GET_RATE, LIKE_UNLIKE_ACCOMMODATION } from '../actions/actionType';
+import * as types from '../actions/actionType';
 import initialState from '../store/initialState';
 
 const accommodationsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ACCOMODATIONS:
-      return { ...state, accommodations: action.accommodations };
-    case GET_ACCOMODATION:
-      return { ...state, accommodation: action.accommodation };
-    case GET_RATE:
+    case types.LOADING:
+      return { ...state, isLoading: action.payload}
+  
+    case types.GET_LOCATIONS:
+      return { ...state, locations: action.payload.locations}
+
+    case types.GET_ACCOMODATIONS:
+      return { ...state, accommodations: action.payload };
+
+      case types.GET_HOST_ACCOMODATIONS:
+      return { ...state, hostAccommodations: action.payload };
+
+    case types.GET_ACCOMODATION:
+      return { ...state, accommodation: action.payload };
+
+    case types.GET_RATE:
       return { ...state, averageRatings: action.payload };
-    case LIKE_UNLIKE_ACCOMMODATION:
+
+    case types.LIKE_UNLIKE_ACCOMMODATION:
       return { ...state, accommodationsLikes: action.payload };
+
+    case types.CREATE_ACCOMMODATION:
+      return {
+        ...state,
+        accommodations: [...state.accommodations, action.payload],
+        isLoading: false,
+      };
+
+      case types.CREATE_ROOM:
+      return {
+        ...state,
+        newRoom: action.payload,
+        isLoading: false,
+      };
     default:
       return state;
   }

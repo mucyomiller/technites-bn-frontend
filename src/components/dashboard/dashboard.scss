@@ -1,21 +1,31 @@
-.right-dash {
+.dashboard {
+  position: relative;
+  width: 80vw;
+  height: 100vh;
   float: right;
-  height: 100%;
-  width: 22%;
-  margin-top: 5px;
-  margin-right: 20px;
+  top: 6rem;
+  overflow: hidden;
+
+  &__left-dash {
+    float: left;
+    height: 200px;
+  }
+  &__right-dash {
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  &__title {
+    background-color: yellowgreen;
+    color: white;
+    padding: 10px 10px 10px 20px;
+    margin: 0px 46px 0px 46px;
+    border-radius: 0 0 8px 8px;
+  }
 }
-.left-dash {
-  float: left;
-  height: 200px;
-}
-.dash-title {
-  background-color: yellowgreen;
-  color: white;
-  padding: 10px 10px 10px 20px;
-  margin: 0px 46px 0px 46px;
-  border-radius: 0 0 8px 8px;
-}
+
 .total-trips-title {
   background-color: #2a89f5;
   padding: 10px 10px 10px 20px;

@@ -153,6 +153,7 @@ export class Chat extends Component {
                                   : "https://res.cloudinary.com/technites/image/upload/v1575018314/zdwsxd8b7tsruzdetcqw.png"
                               }
                               className="user-avatar"
+                              alt="user avatar"
                             />
                           </>
                         ) : (
@@ -164,6 +165,7 @@ export class Chat extends Component {
                                   : "https://res.cloudinary.com/technites/image/upload/v1575018314/zdwsxd8b7tsruzdetcqw.png"
                               }
                               className="user-avatar"
+                              alt="user avatar"
                             />
                             <h4 className="chat-user-info">
                               {message.User.firstname} {message.User.lastname}{" "}

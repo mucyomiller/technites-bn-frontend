@@ -10,8 +10,10 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: auto;
+  width: 80vw;
+  position: absolute;
+  right: 0;
+  top: 6rem;
 }
 
 .acc__resources__item {

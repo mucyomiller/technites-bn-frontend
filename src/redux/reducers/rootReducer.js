@@ -11,7 +11,7 @@ import AdminReducer from "./AdminReducer";
 import HostReducer from "./HostReducer";
 import roleReducer from "./roleReducer";
 import accommodationsReducer from "./accommodationsReducer";
-
+import ChatReducer from "./ChatReducer";
 import commentReducer from "./commentReducer";
 
 const rootReducer = combineReducers({
@@ -31,6 +31,7 @@ const rootReducer = combineReducers({
   role: roleReducer,
   comment: commentReducer,
   accommodations: accommodationsReducer,
+  messages: ChatReducer,
 });
 
 export default rootReducer;

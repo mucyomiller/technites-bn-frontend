@@ -29,6 +29,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",
     "react": "^16.11.0",
+    "react-content-loader": "^4.3.2",
     "react-dom": "^16.11.0",
     "react-draft-wysiwyg": "^1.13.2",
     "react-rating": "^2.0.3",
@@ -85,8 +86,8 @@
     ]
   },
   "devDependencies": {
-    "axios-mock-adapter": "^1.17.0",
     "@testing-library/react": "^9.3.2",
+    "axios-mock-adapter": "^1.17.0",
     "coveralls": "^3.0.7",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -99,6 +100,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "jest-enzyme": "^7.1.2",
+    "jsdom": "^15.2.1",
     "moxios": "^0.4.0",
     "react-test-renderer": "^16.11.0",
     "redux-mock-store": "^1.5.3",

@@ -16,10 +16,12 @@ import UserRequests, {
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import { fromJS } from "immutable";
 import { mapStateToProps } from '../../../components/user-requests/UserRequests';
+import { messages } from "../../../__mocks__/fixtures";
 
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
 const props = {
+  messages,
   user: {
     firstname: "Rugumbira",
     image_url: "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
@@ -131,6 +133,7 @@ const props = {
 };
 
 const store = mockedStore({
+  messages,
   comment: {
     comments: [],
   },

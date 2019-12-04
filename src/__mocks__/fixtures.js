@@ -1,3 +1,4 @@
+
 export const loginPayload = {
   token: "test token",
   user: { email: "test user" },
@@ -129,4 +130,174 @@ export const notifications = {
   toggleNotDisplay: jest.fn(),
   notPaneDisplay: false,
   notificationCount: 1,
+};
+
+export const messages = {
+    messages: [
+      {
+        id: 1,
+        message: "test",
+        User: {
+          firstname: "user",
+          lastname: "test",
+          image_url: "image",
+          id: 1
+        },
+        createdAt: "Tes"
+      },
+      {
+        id: 2,
+        message: "test",
+        User: {
+          firstname: "user",
+          lastname: "test",
+          image_url: "image",
+          id: 10
+        },
+        createdAt: "Tes"
+      },
+      {
+        id: 3,
+        message: "test",
+        User: {
+          firstname: "user",
+          lastname: "test",
+          image_url: "",
+          id: 10
+        },
+        createdAt: "Tes"
+      },
+      {
+        id: 1,
+        message: "test",
+        User: {
+          firstname: "user",
+          lastname: "test",
+          image_url: "",
+          id: 1
+        },
+        createdAt: "Tes"
+      }
+    ]
+}
+export const propsTemplate = {
+  loading: false, 
+  showState: true, 
+  newMessage: true,
+  scrollToBottom: jest.fn(),
+  fetchAllMessages: jest.fn(),
+  messages,
+  sendMessage: jest.fn(),
+  sendMessageOnKeyPress: jest.fn(),
+  notifications: {
+    notifications: [
+      {
+        createdAt: "2019-11-13T10:07:21.401Z",
+        id: 8,
+        message: "visit nairobi",
+        request_id: 12,
+        seen: "false",
+        type: "ReturnTrip",
+        updatedAt: "2019-11-15T13:13:44.347Z",
+        user_id: 49,
+        notPaneDisplay: false,
+      },
+    ],
+    markThisRead: jest.fn(),
+    toggleNotDisplay: jest.fn(),
+    notPaneDisplay: false,
+    notificationCount: 1,
+  },
+  loginState: {
+    isAuthenticated: true,
+  },
+  profile: {
+    user: {
+      firstname: "Rugumbira",
+      image_url:
+      "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+      role_value: 7,
+    },
+  },
+  user: {
+    firstname: "Rugumbira",
+    image_url:
+    "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+    role_value: 7,
+    id:10,
+  },
+  postsPerPage: 4,
+  currentPage: 1,
+  errors: {},
+  addHost:jest.fn(),
+  retrieveProfile: jest.fn(),
+  requests: {
+    requestFound: true,
+    requests: [
+      {
+        id: 8,
+        user_id: 9,
+        request_type: "OneWay",
+        location_id: 3,
+        departure_date: "2019-11-16",
+        return_date: null,
+        destinations: [
+          {
+            room_id: 2,
+            check_in: "2019-11-18T15:16:38.447Z",
+            check_out: "2019-12-27T15:16:38.447Z",
+            destination_id: 4,
+            accomodation_id: 1,
+          },
+        ],
+        reason: "Visit Lagos",
+        status: "Pending",
+        createdAt: "2019-11-11T06:53:54.602Z",
+        updatedAt: "2019-11-11T06:53:54.602Z",
+        User: {
+          image_url: "image",
+          email: "usertest@gmail.com",
+          phone: "123456",
+          gender: "male",
+          address: "address",
+          country: "country",
+          language: "language",
+          company: "company",
+          department: "department",
+        },
+      },
+      {
+        id: 8,
+        user_id: 9,
+        request_type: "OneWay",
+        location_id: 3,
+        departure_date: "2019-11-16",
+        return_date: null,
+        destinations: [
+          {
+            room_id: 2,
+            check_in: "2019-11-18T15:16:38.447Z",
+            check_out: "2019-12-27T15:16:38.447Z",
+            destination_id: 4,
+            accomodation_id: 1,
+          },
+        ],
+        reason: "Visit Lagos",
+        status: "Accepted",
+        createdAt: "2019-11-11T06:53:54.602Z",
+        updatedAt: "2019-11-11T06:53:54.602Z",
+        User: {
+          image_url: "image",
+          email: "usertest@gmail.com",
+          phone: "123456",
+          gender: "male",
+          address: "address",
+          country: "country",
+          language: "language",
+          company: "company",
+          department: "department",
+        },
+      },
+    ],
+  },
 };

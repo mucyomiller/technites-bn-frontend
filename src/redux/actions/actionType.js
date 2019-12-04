@@ -69,3 +69,5 @@ export const GET_RATE = "GET_RATE";
 
 // like & unlike an accommodation
 export const LIKE_UNLIKE_ACCOMMODATION = "LIKE_UNLIKE_ACCOMMODATION";
+// chat
+export const GET_ALL_MESSAGES = "GET_ALL_MESSAGES"

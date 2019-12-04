@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import Dashboard from "../../../components/dashboard/Dashboard";
-
+import { messages } from "../../../__mocks__/fixtures";
 const mockStore = configureStore([thunk]);
 
 const state = {
@@ -34,6 +34,7 @@ const state = {
     ],
     totalTrips: 1,
   },
+  messages,
   notifications: {
     notPaneDisplay: true,
     notifications: [],

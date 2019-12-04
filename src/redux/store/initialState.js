@@ -9,4 +9,5 @@ module.exports = {
   profile: {},
   averageRatings: 0,
   accommodationsLikes: {},
+  messages:{},
 };

@@ -7,8 +7,9 @@ import { Provider } from "react-redux";
 import mockStore from "../../../__mocks__/mockStore";
 import AccommodationsComponent, { AccommodationsPage } from "../../../components/accommodation/AccommodationsPage";
 import { accommodations, user } from "../../../__mocks__/fixtures";
-
+import { messages } from "../../../__mocks__/fixtures";
 const props = {
+  messages,
   user,
   accommodations,
   getAccommodations: jest.fn(),

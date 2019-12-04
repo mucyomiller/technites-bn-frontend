@@ -18,6 +18,9 @@ import RoleSettings from "./role-settings/RoleSettings";
 import SingleRequest from "./single-request/SingleRequest";
 import AccommodationsPage from "./accommodation/AccommodationsPage";
 import AnAccommodationPage from "./accommodation/AnAccommodationPage";
+import AddAccommodation from "./host/AddAccommodation";
+import AddRoom from "./host/AddRoom";
+
 
 export {
   LandingPage,
@@ -38,4 +41,6 @@ export {
   SingleRequest,
   AccommodationsPage,
   AnAccommodationPage,
+  AddAccommodation,
+  AddRoom,
 };

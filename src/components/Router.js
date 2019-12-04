@@ -21,7 +21,9 @@ import {
   SingleRequest,
   AccommodationsPage,
   AnAccommodationPage,
-  Dashboard
+  AddAccommodation,
+  AddRoom,
+  Dashboard,
 } from "./index";
 
 const Router = () => (
@@ -37,12 +39,16 @@ const Router = () => (
     <Route exact path="/" component={LandingPage} />
     <Route path="/requests/:id" component={SingleRequest} />
     <Route path="/host/reset" component={HostReset} />
+    <ProtectedRoute path="/accommodations/new" component={AddAccommodation} />
+    <ProtectedRoute path="/rooms/new" component={AddRoom} />
+    <ProtectedRoute path="/requests/request_id" component={UserRequests} />
     <ProtectedRoute path="/requests" component={UserRequests} />
     <ProtectedRoute path="/allRequests/:id" component={SingleRequest} />
     <ProtectedRoute path="/allRequests" component={AdminRequests} />
     <ProtectedRoute exact path="/dashboard" component={Dashboard} />
     <ProtectedRoute path="/addhost" component={AddHost} />
     <ProtectedRoute path="/role" component={RoleSettings} />
+    <ProtectedRoute exact path="/accommodations/new" component={NotFound} />
     <ProtectedRoute path="/accommodations/:acc_id" component={AnAccommodationPage} />
     <ProtectedRoute path="/accommodations" component={AccommodationsPage} />
     <Route component={NotFound} />

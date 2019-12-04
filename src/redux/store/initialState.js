@@ -10,4 +10,7 @@ module.exports = {
   averageRatings: 0,
   accommodationsLikes: {},
   messages:{},
+  locations: [],
+  hostAccommodations: [],
+  isLoading: false,
 };

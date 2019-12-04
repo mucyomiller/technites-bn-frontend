@@ -8,9 +8,7 @@ const dbCall = axios.create({
   baseURL: heroku,
 });
 
-const setJwt = (jwt) => {
-  dbCall.defaults.headers.common.Authorization = `Bearer ${jwt}`;
-};
+const setJwt = (jwt) => dbCall.defaults.headers.common.Authorization = `Bearer ${jwt}`;
 
 export default {
   get: dbCall.get,

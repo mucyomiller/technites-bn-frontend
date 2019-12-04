@@ -4,22 +4,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HomeNav from "../home-nav/HomeNav";
 import "./dashboard.scss";
+import { retrieveProfile } from "../../redux/actions/profileAction";
 import MostTravelled from "../tripStats/mostTravelled";
 import SideBar from "../side-bar";
 import SingleTrip from "../tripStats/singleTrip";
 import TripStats from "../tripStats/tripStats";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.retrieveProfile();
+  }
   render() {
-    const { total, trips } = this.props;
+    const { total, trips, user } = this.props;
     return (
       <div>
-        <HomeNav />
-        <SideBar />
+        <HomeNav user={user} />
+        <SideBar userRole={user.role_value} />
         <div className="dashboard">
-          <div className="left-dash">
+          <div className="dashboard__left-dash">
             <div className="trips-stats dash-div">
-              <div className="title dash-title">Trips Statistics</div>
+              <div className="title dashboard__title">Trips Statistics</div>
               <div className="trip-stat-content">
                 <h3 className="total-trips-title">
 Total trips:
@@ -43,7 +47,7 @@ Total trips:
               </div>
             </div>
           </div>
-          <div className="right-dash">
+          <div className="dashboard__right-dash">
             <div className="space-between">
               <hr />
             </div>
@@ -59,6 +63,7 @@ Total trips:
 const mapStateToProps = (state) => ({
   trips: state.Requests.trips,
   total: state.Requests.totalTrips,
+  user: state.profile.user,
 });
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default connect(mapStateToProps, {retrieveProfile})(Dashboard);

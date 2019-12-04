@@ -1,6 +1,21 @@
-@import "../../styles/App.scss";
+@import '../../styles/App.scss';
 
 /*home-nav styling*/
+.home-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: $primaryColor;
+  align-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
 
 #logo {
   width: 80px;
@@ -30,17 +45,7 @@
   height: 2rem;
   background-color: #fff;
 }
-.home-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 5px;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  background-color: $primaryColor;
-  align-content: center;
-}
+
 .avatar {
   -webkit-background-size: 32px 32px;
   background-size: 32px 32px;

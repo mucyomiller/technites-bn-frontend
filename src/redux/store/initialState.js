@@ -7,5 +7,6 @@ module.exports = {
   notifications: {},
   loginState: {},
   profile: {},
-  averageRatings: 0
+  averageRatings: 0,
+  accommodationsLikes: {},
 };

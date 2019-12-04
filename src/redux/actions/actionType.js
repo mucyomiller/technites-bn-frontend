@@ -66,3 +66,6 @@ export const TRIPS_STATS = "TRIPS_STATS";
 // rating
 export const RATE = "RATE";
 export const GET_RATE = "GET_RATE";
+
+// like & unlike an accommodation
+export const LIKE_UNLIKE_ACCOMMODATION = "LIKE_UNLIKE_ACCOMMODATION";

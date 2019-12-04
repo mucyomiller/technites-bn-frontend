@@ -73,6 +73,23 @@ export const accommodation = {
   likes: 0,
 };
 
+export const accommodationNoImageAndRooms = {
+  id: 1,
+  accommodation_name: "Villa Rosa Kempiskey",
+  room_type: null,
+  description: "Luxury holiday resorts, busin…he world.",
+  location: "4",
+  quantity: null,
+  services: null,
+  amenities: null,
+  available_space: 8,
+  owner: null,
+  createdAt: "2019-10-11T10:50:28.266Z",
+  updatedAt: "2019-10-11T11:17:52.215Z",
+  Feedbacks: [],
+  likes: 0,
+};
+
 export const accommodationNoDesc = {
   id: 1,
   accommodation_name: "Villa Rosa Kempiskey",

@@ -2,6 +2,7 @@
 /* eslint-disable import/named */
 /* eslint-disable no-undef */
 import initialState from "../../../redux/store/initialState";
+import reducers from "../../../redux/reducers/rootReducer";
 import { getRate } from '../../../redux/actions/getRateAction';
 import * as actions from "../../../redux/actions/actionType";
 import accommodationsReducer from '../../../redux/reducers/accommodationsReducer';
@@ -34,4 +35,13 @@ describe("Reducers", () => {
   //     payload: 1,
   //   });
   // });
+
+  test("LIKE_UNLIKE_ACCOMMODATION", () => {
+    const payload = { data: { status: 200, message: 'Liked Successfuly' }, status: "like_success" };
+    const state = reducers({ accommodations: { accommodationsLikes: {} } }, {
+      type: "LIKE_UNLIKE_ACCOMMODATION",
+      payload
+    });
+    expect(state.accommodations).toEqual({ accommodationsLikes: payload });
+  });
 });

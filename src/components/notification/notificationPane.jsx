@@ -15,24 +15,77 @@ import { toast } from "react-toastify";
 import SingleNotification from "./singleNotification";
 import CloseIconButton from "../common/close-icon-button";
 import { socket } from "../../config/sockets";
+import { retrieveProfile } from "../../redux/actions/profileAction";
 import {
   getNotifications,
   markAllRead,
-  toggleNotPane,
+  toggleNotPane
 } from "../../redux/actions/notificationActions";
 
 export class NotificationPane extends Component {
-  componentDidMount() {
-    const { loadNotifications } = this.props;
-    loadNotifications();
+  async componentDidMount() {
+    const { loadNotifications, getUser } = this.props;
+    await getUser();
+    await loadNotifications();
+
     if (socket) {
-      socket.on("request_update", (data) => {
-        const { id } = this.props.user;
-        if (id === data.user_id) {
-          loadNotifications();
-          toast.success(data.message, {
-            position: toast.POSITION.TOP_RIGHT,
+      const { user } = this.props;
+      socket.on("new_user", data => {
+        toast.success(`${data.from} is now online`, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        loadNotifications();
+      });
+
+      socket.on("travel_request_response", data => {
+        const { id } = user;
+        if (id === data.request_owner) {
+          toast.success(`Trip request ${data.status}`, {
+            position: toast.POSITION.TOP_RIGHT
           });
+          loadNotifications();
+        }
+      });
+
+      socket.on("request_update", data => {
+        const { id } = user;
+        if (id === data.user_id){
+          toast.success(data.message, {
+            position: toast.POSITION.TOP_RIGHT
+          });
+          loadNotifications();
+        } 
+      });
+
+      socket.on("new_travel_request", data => {
+        const { id } = user;
+        if (id !== data.request_owner) {
+          if (data.status === undefined && id === data.user_id) {
+            toast.success(data.message, {
+              position: toast.POSITION.TOP_RIGHT
+            });
+            loadNotifications();
+          }
+        }
+      });
+
+      socket.on("new_comment", data => {
+        const { id } = user;
+        if (id !== data.from && ( id === data.reqOwner || id === data.manager)) {
+          toast.success(data.message, {
+            position: toast.POSITION.TOP_RIGHT
+          });
+          loadNotifications();
+        }
+      });
+
+      socket.on("send_message", data => {
+        const { id } = user;
+        if (id === data.user_id) {
+          toast.success(data.notMessage, {
+            position: toast.POSITION.TOP_RIGHT
+          });
+          loadNotifications();
         }
       });
     }
@@ -43,7 +96,7 @@ export class NotificationPane extends Component {
       notifications,
       displayNots,
       toggleNotDisplay,
-      markRead,
+      markRead
     } = this.props;
     return (
       <div>
@@ -63,8 +116,8 @@ export class NotificationPane extends Component {
           <div className="modal-body">
             <div className="notificationsList">
               <ul>
-                {notifications
-                  && notifications.map((not) => (
+                {notifications &&
+                  notifications.map(not => (
                     <SingleNotification
                       type={not.type}
                       message={not.message}
@@ -107,17 +160,18 @@ export class NotificationPane extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   notifications: state.notifications.notifications,
   displayNots: state.notifications.notPaneDisplay,
   isAuthenticated: state.loginState.isAuthenticated,
-  user: state.profile.user,
+  user: state.profile.user
 });
 
 const mapDispatchToProps = {
   loadNotifications: getNotifications,
   markRead: markAllRead,
   toggleNotDisplay: toggleNotPane,
+  getUser: retrieveProfile
 };
 
 NotificationPane.propTypes = {
@@ -126,7 +180,7 @@ NotificationPane.propTypes = {
   loadNotifications: PropTypes.func.isRequired,
   markRead: PropTypes.func.isRequired,
   displayNots: PropTypes.bool.isRequired,
-  toggleNotDisplay: PropTypes.func.isRequired,
+  toggleNotDisplay: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationPane);

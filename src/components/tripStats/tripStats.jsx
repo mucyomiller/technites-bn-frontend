@@ -39,6 +39,10 @@ export class TripStats extends Component {
       days: event.target.value,
     });
   };
+  
+  async componentDidMount() {
+    this.props.getUser()
+  }
 
   async componentDidMount() {
     this.props.getUser()

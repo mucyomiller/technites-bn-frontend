@@ -19,6 +19,7 @@ const state = {
   notId: 3,
   markThisRead: jest.fn(),
   toggleNotDisplay: jest.fn(),
+  getUser: jest.fn(),
   notPaneDisplay: false,
   isAuthenticated: false,
   notifications: [
@@ -55,6 +56,8 @@ const props = {
   notifications: state.notifications,
   markRead: jest.fn(),
   displayNots: false,
+  getUser: jest.fn(),
+  setAutoFill: jest.fn(),
 };
 
 const findByAttr = (wrapper, dataTest) => wrapper.find(`[data-test="${dataTest}"]`);

@@ -25,6 +25,7 @@ const Initialprops = {
   markThisRead: jest.fn(),
   toggleNotDisplay: jest.fn(),
   notPaneDisplay: false,
+  loadNotifications: jest.fn(),
 };
 
 const store = mockStore(Initialprops);

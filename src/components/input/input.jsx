@@ -6,11 +6,16 @@
 import React from "react";
 import "./input.scss";
 
-const Input = ({ label, value, error, ...rest }) => {
+const Input = ({ label, value, error, myRequest, ...rest }) => {
   return (
     <div className="input-container">
       <div className="label">{label}</div>
-      <input {...rest} className="input-field" value={value || ''} />
+      <input
+        {...rest}
+        disabled={myRequest ? false : true}
+        className="input-field"
+        value={value || ""}
+      />
       {error && <div className="danger">{error}</div>}
     </div>
   );

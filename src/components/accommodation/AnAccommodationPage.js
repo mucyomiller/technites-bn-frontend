@@ -152,7 +152,7 @@ AnAccommodationPage.propTypes = {
   getAccommodation: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+export const mapStateToProps = (state, ownProps) => ({
   accId: ownProps.match.params.acc_id,
   accommodation: state.accommodations.accommodation,
   user: state.profile.user,

@@ -22,7 +22,7 @@ export class MapContainer extends Component {
     selectedPlace: props,
     activeMarker: marker,
     showingInfoWindow: true,
-  });
+  });;
 
   onClose = (props) => {
     if (this.state.showingInfoWindow) {

@@ -18,7 +18,11 @@ import Form from "../form/form";
 import Counter from "../counter/Counter";
 import { deleteRequest } from "../../redux/actions/deleteRequest";
 import { editRequest } from "../../redux/actions/editRequest";
-import { getUserRequests, setAutoFill, getMyUsersRequests } from "../../redux/actions/RequestActions";
+import {
+  getUserRequests,
+  setAutoFill,
+  getMyUsersRequests
+} from "../../redux/actions/RequestActions";
 import { getAccomodations } from "../../redux/actions/getAccomodations";
 import { getRooms } from "../../redux/actions/getRooms";
 import ImageContainer from "../image-container/ImageContainer";
@@ -77,6 +81,7 @@ export class RequestPage extends Form {
 
   populateRequestPage = async () => {
     let requestCopy = {};
+
     try {
       // SET THE ACCOMODATIONS IN THE STATE
       await this.props.getAccomodations();
@@ -96,20 +101,21 @@ export class RequestPage extends Form {
         });
       }
 
-      // SET THE ROOMS TO THE STATE
-      for (let i = 0; i < allAccomodations.length; i++) {
-        await this.props.getRooms(allAccomodations[i].id);
+      console.log("THE DATA IS : ", results.data.data);
 
-        const { rooms } = this.props.rooms;
-        for (let j = 0; j < rooms.data.data.length; j++) {
+      // SET THE ROOMS TO THE STATE
+      for (let i = 0; i < results.data.data.length; i++) {
+        for (let j = 0; j < results.data.data[i].Rooms.length; j++) {
           allRooms.push({
-            id: rooms.data.data[j].id,
-            name: rooms.data.data[j].name,
-            accomodation_id: Number(rooms.data.data[j].accommodation_id),
-            cost: rooms.data.data[j].cost,
+            id: results.data.data[i].Rooms[j].id,
+            name: results.data.data[i].Rooms[j].name,
+            accomodation_id: Number(
+              results.data.data[i].Rooms[j].accommodation_id
+            ),
+            cost: results.data.data[i].Rooms[j].cost,
             images: {
-              image1: rooms.data.data[j].images[0].image_url,
-              image2: rooms.data.data[j].images[1].image_url
+              image1: results.data.data[i].Rooms[j].images[0].image_url,
+              image2: results.data.data[i].Rooms[j].images[1].image_url
             }
           });
         }
@@ -121,7 +127,7 @@ export class RequestPage extends Form {
       });
 
       const requestId = this.props.match.params.id;
-      
+
       if (this.props.currentUser.role_value >= 4)
         await this.props.getMyUsersRequests("All");
       else await this.props.getUserRequests();
@@ -162,7 +168,8 @@ export class RequestPage extends Form {
       request.check_in = request.destinations[0].check_in;
       request.check_out = request.destinations[0].check_out;
       request.destination_id = request.destinations[0].destination_id;
-      request.destinations[0].destination_id = request.destinations[0].destination_id;
+      request.destinations[0].destination_id =
+        request.destinations[0].destination_id;
       request.accomodation_id = request.destinations[0].accomodation_id;
       request.room_id = request.destinations[0].room_id;
       request.departure_date = request.departure_date;
@@ -193,6 +200,8 @@ export class RequestPage extends Form {
 
       this.setState({ data: request });
     } catch (ex) {
+      console.log("the exception is : ", ex);
+
       // by default it takes a request type of OneWay when you don't supply any
       if (ex.response) {
         this.props.history.replace("/not-found");
@@ -242,15 +251,15 @@ export class RequestPage extends Form {
               </button>
             ) : null}
 
-            {data.destinations !== undefined
-              && counter.count < data.destinations.length - 1 ? (
-                <button
-                  onClick={() => this.handleSubmit("forward")}
-                  className="button"
-                >
-                  forward
+            {data.destinations !== undefined &&
+            counter.count < data.destinations.length - 1 ? (
+              <button
+                onClick={() => this.handleSubmit("forward")}
+                className="button"
+              >
+                forward
               </button>
-              ) : null}
+            ) : null}
           </div>
           {counter.count > 0 ? <div className="box stack-top" /> : null}
           <div>
@@ -277,25 +286,30 @@ export class RequestPage extends Form {
             {/* <div>{this.renderInput("reason", "Reason")}</div> */}
             <p className="reason">Reason</p>
             <p className="reason-label">
-              {this.props.match.params.id !== "new"
-                && this.state.data.reason ? (
-                  <p
-                    className="comment-content"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.data.reason.replace(
-                        /(<? *script)/gi,
-                        "illegalscript"
-                      )
-                    }}
-                  />
-                ) : (
-                  "Fill your reason down there..."
-                )}
+              {this.props.match.params.id !== "new" &&
+              this.state.data.reason ? (
+                <p
+                  className="comment-content"
+                  dangerouslySetInnerHTML={{
+                    __html: this.state.data.reason.replace(
+                      /(<? *script)/gi,
+                      "illegalscript"
+                    )
+                  }}
+                />
+              ) : (
+                "Fill your reason down there..."
+              )}
             </p>
             {this.renderEditor()}
             <div>
               <label htmlFor="autofill" className="pure-material-checkbox">
-                <input type="checkbox" name="autofill" onChange={this.handleAutoFill} checked={this.state.autoFill} />
+                <input
+                  type="checkbox"
+                  name="autofill"
+                  onChange={this.handleAutoFill}
+                  checked={this.state.autoFill}
+                />
                 <span>&nbsp;Remember Personal details</span>
               </label>
             </div>

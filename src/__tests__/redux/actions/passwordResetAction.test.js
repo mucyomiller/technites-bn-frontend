@@ -59,6 +59,28 @@ describe("Password Reset Actions", () => {
     expect(calledActions.length).toEqual(0);
   });
 
+  it("dispached PASSWORD_RESET to send email on success", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        message: "error",
+        response: {
+          data: {
+            errors: ["errors"]
+          }
+        }
+      });
+      await flushPromises();
+    });
+    const data = {
+      email: "user@email.com",
+    };
+    await store.dispatch(passWordResetAction(data));
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
+  });
+
   it("dispached PASSWORD_RESET on failure", async () => {
     moxios.wait(async () => {
       const request = moxios.requests.mostRecent();
@@ -67,10 +89,27 @@ describe("Password Reset Actions", () => {
         response: {
           data: {
             error: "error",
-            errors: ["error"],
+            
           },
         },
         message: "error",
+      });
+      await flushPromises();
+    });
+    const data = {
+      email: "user@email.com",
+    };
+    await store.dispatch(passWordResetAction(data));
+    const calledActions = store.getActions();
+    expect(calledActions.length).toEqual(0);
+  });
+
+  it("dispached PASSWORD_RESET on failure", async () => {
+    moxios.wait(async () => {
+      const request = moxios.requests.mostRecent();
+      request.reject({
+        status: 400,
+        message:"error"
       });
       await flushPromises();
     });

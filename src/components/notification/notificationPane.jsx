@@ -160,7 +160,7 @@ export class NotificationPane extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   notifications: state.notifications.notifications,
   displayNots: state.notifications.notPaneDisplay,
   isAuthenticated: state.loginState.isAuthenticated,

@@ -151,7 +151,7 @@ const RoleSettings = () => {
   return (
     <div className="">
       <HomeNav />
-      <SideBar userRole={7} />
+      <SideBar />
       <div className="role-card">
         <span className="title m-b-10">
           ROLE SETTING
@@ -159,7 +159,7 @@ const RoleSettings = () => {
         <div className="role-setting">
           <div className="flex flex-column">
             <span className="title">User</span>
-            <select name="email" className="input select" onChange={handleChange}>
+            <select name="email" className="input r-select" onChange={handleChange}>
               {
                 users.map((item) => <option value={item.email} key={item.id}>{item.email}</option>)
               }

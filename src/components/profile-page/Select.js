@@ -12,7 +12,8 @@ const Select = ({
       <div>
         <label htmlFor={name} className="m-t-5 label">
           {`${label}:`}
-          <select className={error ? 'input error select' : 'input select'} value={value} name={name} onChange={handler}>
+          <select className={error ? 'input error p-select' : 'input p-select'} value={value} name={name} onChange={handler}>
+            <option>Please select {label}</option>
             {contents}
           </select>
         </label>

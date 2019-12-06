@@ -15,7 +15,6 @@ import SideBar from "../side-bar/index";
 import Footer from "../footer/index";
 import HomeNav from "../home-nav/HomeNav";
 import Comment from '../comment/Comment';
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import RequestPage from "../request-page/RequestPage";
 
 export class SingleRequest extends Component {
@@ -24,10 +23,6 @@ export class SingleRequest extends Component {
     this.state = {
       user: {}
     };
-  }
-
-  componentDidMount() {
-    this.props.retrieveProfile();
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -39,8 +34,8 @@ export class SingleRequest extends Component {
     const { id } = this.props.match.params;
     return (
       <div>
-        <HomeNav user={this.state.user} />
-        <SideBar userRole={this.state.user.role_value} />
+        <HomeNav />
+        <SideBar />
         <div className="content-container">
           <RequestPage />
           {id === "new" ? null : (<Comment requestId={id} owner={this.state.user.id} />)}
@@ -55,11 +50,4 @@ export const mapStateToProps = state => ({
   user: state.profile.user
 });
 
-SingleRequest.defaultProps = {
-  retrieveProfile: () => { }
-};
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { retrieveProfile })
-)(SingleRequest);
+export default compose(withRouter, connect(mapStateToProps, null))(SingleRequest);

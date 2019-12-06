@@ -46,17 +46,10 @@ describe("comment components tests", () => {
         ],
       },
     });
-
-    const owner = {
-      id: 5,
-      firstname: "first",
-      lastname: "first2",
-      image_url: "http://res.cloudinary.com/technites/image/upload/v1573805027/q1pbnyjibyo5t2qwit6b.png"
-    }
-
+    
     wrapper = mount(
       <Provider store={store}>
-        <Comment requestId={2} owner={owner} />
+        <Comment requestId={2} owner={5} />
       </Provider>,
     );
   });

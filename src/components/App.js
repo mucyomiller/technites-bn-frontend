@@ -4,13 +4,21 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import configureStore from "../redux/store/configureStore";
 import { setToken } from "../redux/actions/loginAction";
+import { getCurrentUser } from "../services/authServices";
 import "../styles/App.scss";
 import "react-toastify/dist/ReactToastify.css";
 import Router from "./Router";
 
 const store = configureStore();
+const token = localStorage.getItem("token");
 
-if (localStorage.token) {
+if (token && token !== "null") {
+  const { exp } = getCurrentUser();
+  const currentTime = Date.now() / 1000;
+  if (exp < currentTime) {
+    localStorage.removeItem("token");
+    window.location.replace("/login");
+  }
   store.dispatch(setToken(localStorage.token));
 }
 

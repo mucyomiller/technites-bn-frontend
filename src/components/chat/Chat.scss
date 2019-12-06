@@ -29,9 +29,10 @@
   .chat-body {
     height: 70%;
     overflow: scroll;
+    padding: 0px 10px 0px 10px;
     .other-users-chat {
       width: 100%;
-      margin-bottom: 50px;
+      display: grid;
       .time-stamp {
         width: 100%;
         margin: 10px 0px 10px 0px;
@@ -71,9 +72,10 @@
     }
     .my-chat {
       width: 100%;
+      display: grid;
       .time-stamp {
         width: 100%;
-        margin: 20px 0px 10px 0px;
+        margin: 10px 0px 10px 0px;
         padding-top: 20px;
         .time-stamp-label {
           text-align: center;

@@ -1,9 +1,14 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .panel-header {
-    width: 100%;
+  position: absolute;
+  background-color: hotpink;
+  width: 80vw;
+  top: 6rem;
+  right: 0;
   .page-info {
-    float: left;
+    position: absolute;
+    left: 0;
     margin: 20px 0px 20px 50px;
     .page-title {
       color: $textColor;
@@ -17,81 +22,82 @@
       }
     }
   }
-  .panel-commands{
+  .panel-commands {
+    position: absolute;
+    right: 20%;
+    margin: 20px 20px 20px 0px;
+    @media screen and (max-width: 480px) {
       float: left;
-      margin: 20px 20px 20px 0px;
-      @media screen and (max-width: 480px) {
-      	float: left;
-	      margin: 20px 0px 20px 60px;
-      }
-      .panel-page-number{
-        height: 40px;
-        background: inherit;
-        // margin-right: 20px;
-        border: none;
-        color: $primaryColor;
-        font-size: 0.9em;
-      }
-      .transparent-button {
-        background-color: inherit;
-        height: 40px;
-        margin-bottom: 10px;
-        border: 1px solid $primaryColor;
-        font-size: 0.9em;
-        color: $primaryColor;
-        float: left;
-        &:hover{
-            background-color: $primaryColor;
-            color: $background;
-            .panel-icons{
-                color: $background;
-            }
+      margin: 20px 0px 20px 60px;
+    }
+    .panel-page-number {
+      height: 40px;
+      background: inherit;
+      // margin-right: 20px;
+      border: none;
+      color: $primaryColor;
+      font-size: 0.9em;
+    }
+    .transparent-button {
+      background-color: inherit;
+      height: 40px;
+      margin-bottom: 10px;
+      border: 1px solid $primaryColor;
+      font-size: 0.9em;
+      color: $primaryColor;
+      float: left;
+      &:hover {
+        background-color: $primaryColor;
+        color: $background;
+        .panel-icons {
+          color: $background;
         }
       }
-      .search-div{
-        background-color: #fff;
-        height: 50px;
-        width: 300px;
-        float: right;
-        position: absolute;
-        border: 1px solid #2a89f51f;
-        margin-left: 300px;
-        display: none;
-          input[type=text]{
-              width: 90%;
-              height: 100%;
-              font-size:1.3em;
-              border: none;
-          }
+    }
+    .search-div {
+      background-color: #fff;
+      height: 50px;
+      width: 300px;
+      float: right;
+      position: absolute;
+      border: 1px solid #2a89f51f;
+      margin-left: 300px;
+      display: none;
+      input[type='text'] {
+        width: 90%;
+        height: 100%;
+        font-size: 1.3em;
+        border: none;
       }
+    }
   }
 }
-.panel-icons{
-    color: $primaryColor;
-    margin-right: 5px;
+.panel-icons {
+  color: $primaryColor;
+  margin-right: 5px;
 }
-.first-button{
-    border-radius: 20px 0px 0px 20px;
+.first-button {
+  border-radius: 20px 0px 0px 20px;
 }
-.last-button{
-    border-radius: 0px 20px 20px 0px;
+.last-button {
+  border-radius: 0px 20px 20px 0px;
 }
-.button-label{
-    @media screen and (max-width: 480px) {
-        display: none;
-    }
+.button-label {
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 }
-.search-button{
-    background-color: black;
+.search-button {
+  background-color: black;
 }
-.search-button:hover .search-div{
-    display: block;
+.search-button:hover .search-div {
+  display: block;
 }
-.page-number-div{
+.page-number-div {
   padding: 0px 0px 0px 5px;
-  &:hover{
-    .panel-page-number{
-      color:$background;
+  &:hover {
+    .panel-page-number {
+      color: $background;
     }
   }
 }

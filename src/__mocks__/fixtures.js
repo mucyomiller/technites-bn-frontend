@@ -340,3 +340,5 @@ export const propsTemplate = {
     ]
   }
 };
+
+export const locations = [ {id: 1, name: "kanya"}, {id: 2, name: "kigali"}]

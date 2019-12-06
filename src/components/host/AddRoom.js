@@ -87,7 +87,7 @@ export class AddRoom extends Component {
           <div className="row">
             <div className="book">
               <div className="book__form">
-                <form onSubmit={this.handleSubmit} className="form">
+                <form id="room_form" onSubmit={this.handleSubmit} className="form">
                   <div className="form__group">
                     <div className="form__select-group">
                       <select
@@ -166,7 +166,7 @@ export class AddRoom extends Component {
                     />
                   </div>
                   <div className="form__group">
-                    <button className="btn btn--primary">
+                    <button id="save" className="btn btn--primary">
                     {isLoading ? ("Saving...") : (<>Save</> )}
                     </button>
                   </div>

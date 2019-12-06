@@ -82,7 +82,7 @@ export class AddAccommodation extends Component {
           <div className="row">
             <div className="book">
               <div className="book__form">
-                <form onSubmit={this.handleSubmit} className="form">
+                <form id="acc_form" onSubmit={this.handleSubmit} className="form">
                   <div className="form__group">
                     <input
                       id="accommodation_name"
@@ -102,6 +102,7 @@ export class AddAccommodation extends Component {
                     <div className="form__select-group">
                       <select
                         id="location"
+                        name="location"
                         onChange={this.handleInputChange}
                         className="dropbtn"
                         required
@@ -291,7 +292,7 @@ export class AddAccommodation extends Component {
                   </div>
 
                   <div className="form__group">
-                    <button className="btn btn--primary">
+                    <button id="save" className="btn btn--primary">
                       {isLoading ? ("Saving...") : (<>Save</> )}
                     </button>
                   </div>

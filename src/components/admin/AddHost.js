@@ -112,6 +112,7 @@ export class AddHost extends Component {
         <>
           <HomeNav user={user} />
           <SideBar userRole={user.role_value} />
+          <div className="main-page">
           <div className="page-info">
             <h1 className="page-title">Add Host</h1>
             <h4 className="sub-title">
@@ -125,7 +126,7 @@ export class AddHost extends Component {
               </span>
             </h4>
           </div>
-          <div className="wrapper">
+          <div className="wrapper wrapper--addhost">
             <form noValidate onSubmit={this.onSubmit}>
               <Input
                 id="email"
@@ -156,6 +157,7 @@ export class AddHost extends Component {
               />
               <Button type="submit" label="Add Host" id="add-host" />
             </form>
+          </div>
           </div>
           <Footer />
         </>

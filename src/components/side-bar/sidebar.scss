@@ -4,9 +4,12 @@
   display: flex;
   float: left;
   margin-right: 10px;
-  width: 20%;
+  width: 20vw;
+  height: 100vh;
   background: #404e67;
   color: $black;
+  position: fixed;
+  margin-top: 7rem;
   @media screen and (max-width: 480px) {
     display: none;
   }
@@ -57,4 +60,11 @@
   color: $background;
   margin-right: 10px;
   font-size: 1em;
+}
+
+@media screen and (max-width: 625px) {
+  .side-bar {
+    display: none;
+    width: 100%;
+  }
 }

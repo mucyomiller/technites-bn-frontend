@@ -39,6 +39,9 @@ input#profileselector {
   display: grid;
   margin-left: 12px;
   grid-template-columns: 1;
+  width: 90vw;
+  position: absolute;
+  right: -18rem;
   //edit mode profile divided
   .profile-divider {
     height: 1px;

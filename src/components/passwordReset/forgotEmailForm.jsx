@@ -9,12 +9,14 @@ import Joi from "joi-browser";
 import "../form/form.scss";
 import Form from "../form/form";
 import "./passwordReset.scss";
+import image from "../../assets/verify.png";
 import { passWordResetAction } from "../../redux/actions/passwordResetAction";
+import NavBar from "../navbar/navbar";
 
 export class PassReset extends Form {
-  doSubmit = () => {    
+  doSubmit = () => {
     this.props.passWordResetAction(this.state.data);
-  }
+  };
 
   schema = {
     email: Joi.string()
@@ -24,24 +26,45 @@ export class PassReset extends Form {
   };
 
   render() {
+    if (this.props.displayVerifyConfirmation === false)
+      return (
+        <React.Fragment>
+          <div className="card-container center ">
+            <div
+              data-test="pass-reset-form-email"
+              className="card center password-reset"
+            >
+              <div className="title">Password Reset</div>
+              <hr />
+              <p className="text ps-test">
+                Please enter your email to search for your account.
+              </p>
+              {this.renderInput("email", "Email")}
+              <br />
+              {this.renderButton("Reset Password", "email_forgot")}
+              <p><a href="/login">Back to Sign In?</a></p><br /><br />
+            </div>
+          </div>
+        </React.Fragment>
+      );
     return (
-      <div className="card-container center ">
-        <div
-          data-test="pass-reset-form-email"
-          className="card center password-reset"
-        >
-          <div className="title">Password Reset</div>
-          <hr />
-          <p className="text ps-test">
-            Please enter your email to search for your account.
+      <div className="card-container" data-test="success-component">
+        <form className="card" onSubmit={this.handleSubmit}>
+          <div className="title">Verify Email</div>
+          <img className="margin" src={image} alt="" />
+          <p className="text center">
+            Password reset request successful. Close this tab and click the Link
+            on your email to reset your password.
           </p>
-          {this.renderInput("email", "Email")}
-          <br />
-          {this.renderButton("Reset Password", "email_forgot")}
-        </div>
+          <hr />
+        </form>
       </div>
     );
   }
 }
 
-export default connect(null, { passWordResetAction })(PassReset);
+export const mapStateToProps = state => ({
+  displayVerifyConfirmation: state.passwordReset.displayVerify
+});
+
+export default connect(mapStateToProps, { passWordResetAction })(PassReset);

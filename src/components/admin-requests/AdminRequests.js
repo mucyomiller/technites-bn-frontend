@@ -8,19 +8,19 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { toast } from "react-toastify";
-import moment from "moment";
-import { getMyUsersRequests } from "../../redux/actions/RequestActions";
-import { retrieveProfile } from "../../redux/actions/profileAction";
-import HomeNav from "../home-nav/HomeNav";
-import { Table } from "../table";
-import SideBar from "../side-bar";
-import Footer from "../footer";
-import Modal from "../shared/modal/Modal";
-import "../../styles/modal.scss";
-import PanelHeader from "../table/PanelHeader";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
+import moment from 'moment';
+import { getMyUsersRequests } from '../../redux/actions/RequestActions';
+import { retrieveProfile } from '../../redux/actions/profileAction';
+import HomeNav from '../home-nav/HomeNav';
+import { Table } from '../table';
+import SideBar from '../side-bar';
+import Footer from '../footer';
+import Modal from '../shared/modal/Modal';
+import '../../styles/modal.scss';
+import PanelHeader from '../table/PanelHeader';
 
 export class AdminRequests extends Component {
   constructor() {
@@ -31,18 +31,18 @@ export class AdminRequests extends Component {
       errors: {},
       postsPerPage: 4,
       currentPage: 1,
-      user: {},
+      user: {}
     };
   }
 
   componentDidMount() {
-    this.props.getMyUsersRequests("All");
+    this.props.getMyUsersRequests('All');
     this.props.retrieveProfile();
   }
 
   UNSAFE_componentWillReceiveProps({ requests, errors, user }) {
     if (user.role_value < 4) {
-      window.location.assign("/dashboard");
+      window.location.assign('/dashboard');
     }
     this.setState({ errors, requests, user });
     if (errors) {
@@ -54,14 +54,14 @@ export class AdminRequests extends Component {
 
   render() {
     const columns = [
-      "Avatar",
-      "Requester",
-      "Reason",
-      "Departure Date",
-      "Request Type",
-      "Requested on",
-      "Status",
-      "Actions",
+      'Avatar',
+      'Requester',
+      'Reason',
+      'Departure Date',
+      'Request Type',
+      'Requested on',
+      'Status',
+      'Actions'
     ];
 
     const { requests } = this.props.requests;
@@ -126,9 +126,9 @@ export class AdminRequests extends Component {
         <td className="table-element">
           <div
             className={
-              request.status === "Pending"
-                ? "actions-dropdown"
-                : "actions-dropdown-disabled"
+              request.status === 'Pending'
+                ? 'actions-dropdown'
+                : 'actions-dropdown-disabled'
             }
           >
             <button type="button" className="drop-btn">
@@ -157,19 +157,19 @@ export class AdminRequests extends Component {
       <>
         <HomeNav user={user} />
         <SideBar userRole={user.role_value} />
-        <PanelHeader
-          pageTitle="All Requests"
-          setPageNumbers={setPageNumbers}
-          getRequests={this.props.getMyUsersRequests}
-        />
-        <Table
-          columns={columns}
-          elements={elements}
-          postsPerPage={this.state.postsPerPage.toString()}
-          totalPosts={requests.length}
-          paginate={paginate}
-          currentPageNumber={this.state.currentPage}
-        />
+          <PanelHeader
+            pageTitle="All Requests"
+            setPageNumbers={setPageNumbers}
+            getRequests={this.props.getMyUsersRequests}
+          />
+          <Table
+            columns={columns}
+            elements={elements}
+            postsPerPage={this.state.postsPerPage.toString()}
+            totalPosts={requests.length}
+            paginate={paginate}
+            currentPageNumber={this.state.currentPage}
+          />
         <Footer />
       </>
     );
@@ -178,9 +178,9 @@ export class AdminRequests extends Component {
 const mapStateToProps = state => ({
   requests: state.Requests,
   errors: state.errors,
-  user: state.profile.user,
+  user: state.profile.user
 });
 export default connect(mapStateToProps, {
   getMyUsersRequests,
-  retrieveProfile,
+  retrieveProfile
 })(AdminRequests);

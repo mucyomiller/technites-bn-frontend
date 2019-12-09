@@ -16,8 +16,8 @@ export const passWordResetAction = data => async dispatch => {
       type: PASSWORD_RESET,
       payload: response
     });
-
-    window.location.assign("/verify-password-reset");
+    toast.success('Reset link sent successfully')
+    
   } catch (error) {
     if (error.response && error.response.data.errors) {
       toast.error(error.response.data.errors[0]);

@@ -13,9 +13,8 @@ export const register = data => async dispatch => {
       type: REGISTER,
       payload: response
     });
+    toast.success('Link sent successfully')
 
-    window.location.assign("/verify");
-    // toast.success("Registered successfully");
   } catch (error) {
     if (error.response.data.error instanceof Array) {
       toast.error(`${error.response.data.error[0].msg}`);

@@ -66,7 +66,7 @@ Comment.propTypes = {
 // CommentItem Item
 const CommentItem = ({ owner, comment, removeComment }) => {
   let deketeBtn;
-  if (comment.user_id == owner.id) {
+  if (comment.user_id == owner) {
     deketeBtn = <span id="btn_delete" onClick={e => removeComment(comment.id, comment.request_id)} className="title m-l-15 clickable" role="button" tabIndex={0}>
       <img src={ic_delete} width={24} height={24} alt="delete icon" />
     </span>

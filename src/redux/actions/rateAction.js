@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 export const rate = data => async dispatch => {
   try {
     await httpservice.dbCall.patch(`/accommodations/${data.id}/rating`, { rating: data.rate });
+    toast.success(`${data.rate} Star rating`);
   } catch (error) {
     toast.error(error.response.data.message);
   }

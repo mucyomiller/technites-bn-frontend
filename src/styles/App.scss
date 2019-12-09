@@ -5,6 +5,12 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
 }
 body {
   font-size: 1.6rem;
@@ -15,6 +21,17 @@ body {
 @import './helpers';
 @import './flexbox';
 @import './cssgrid';
+@import "./variables";
+@import "./mixins/mixins";
+
+@import "./base/typography";
+@import "./base/utilities";
+
+@import "./layout/grid";
+@import "./layout/layout";
+
+@import "./components/button";
+@import "./components/composition";
 
 // common classes
 // clickable

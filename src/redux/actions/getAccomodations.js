@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 // import { GET_REQUESTS, GET_ERRORS } from "./actionType";
-import { toast } from "react-toastify";
 import httpservice from "../../services/httpServices";
 import { GET_ALL_ACCOMODATIONS } from "./actionType";
 

@@ -26,6 +26,7 @@ const data = {
 const onSubmit = sinon.spy();
 const props = {
   tripsStat: jest.fn(),
+  getUser: jest.fn(),
 };
 const state = {
   profile: {

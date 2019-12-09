@@ -8,10 +8,15 @@ import { Register, mapStateToProps as mapStateToPropsNew } from '../../../compon
 
 describe("<RegisterPage />", () => {
   const wrapper = mount(<Register />);
+  const wrapper2 = mount(<Register />);
   const props = {
     register: jest.fn(),
+    displayVerifyConfirmation: false,
+    auth: false
   }
   wrapper.setProps(props);
+  props.displayVerifyConfirmation = true;
+  wrapper2.setProps(props);
 
   it("should taste the errors functionality", () => {
     const event = { target: { name: 'firstname', value: 'am' } };
@@ -71,8 +76,12 @@ describe("<RegisterPage />", () => {
     const button = wrapper.find('button[className="button"]');
     button.simulate('click');
   });
+  it("should test view after successful submit", () => {
+    const componentSuccess = wrapper2.find('[data-test="success-view"]');
+    expect(componentSuccess.length).toBe(1);
+  });
 
   it("should test map state to props of register", () => {
-    mapStateToPropsNew({ register: {} });
+    mapStateToPropsNew({ register: {}, loginState: {} });
   });
 });

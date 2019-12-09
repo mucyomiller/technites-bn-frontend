@@ -16,6 +16,8 @@ const initialState = {
   mostVisitedMsg: "",
   trips: [],
   totalTrips: 0,
+  displayVerify: false,
+  registerVerify: false
 };
 
 export default initialState;

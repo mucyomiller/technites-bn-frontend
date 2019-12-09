@@ -2,8 +2,10 @@ import React from "react";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faList, faBus, faUserPlus, faHotel, faCog, faUser
+  faList, faBus, faUserPlus, faHotel, faCog,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom"
+
 const SideBar = ({ userRole }) => (
   <>
     <div className="side-bar">
@@ -51,19 +53,27 @@ const SideBar = ({ userRole }) => (
           </>
         ) : null}
         <li className="nav-header">ACCOMMODATIONS</li>
-        {userRole !== 1 ? (
+        {userRole === 0 ? (
+          <>
           <li className="nav-item">
-            <a href="/accommodations/new">
+            <Link to="/accommodations/new" >
               <FontAwesomeIcon className="sidebar-icons" icon={faHotel} />
-              Create
+              Add Accommodation
+            </Link>
+          </li>
+          <li className="nav-item">
+            <a href="/rooms/new">
+              <FontAwesomeIcon className="sidebar-icons" icon={faHotel} />
+              Add Room
             </a>
           </li>
+          </>
         ) : null}
         <li className="nav-item">
-          <a href="/accommodations">
+          <Link to="/accommodations">
             <FontAwesomeIcon className="sidebar-icons" icon={faList} />
-            View All Accommodations
-          </a>
+            View Accommodations
+          </Link>
         </li>
       </ul>
     </div>

@@ -30,11 +30,11 @@ a {
 	align-content: center;
 }
 .wrapper {
+  position: absolute;
+  width: 78vw !important;
+  right: 0;
+  top: 15rem;
   background-color: $background;
-  padding: 50px 20px 50px 20px;
-  height: auto;
-  margin: 0px 20px 0px 10px;
-  float: right;
   @media screen and (max-width: 480px) {
     width: -webkit-fill-available;
     height: 700px;

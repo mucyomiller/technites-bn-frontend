@@ -77,9 +77,6 @@ describe("comment components tests", () => {
       wrapper.find('.save-comment').props().onClick();
     })
   });
-  it("simulate delete btn click", () => {
-    wrapper.find('#btn_delete').first().props().onClick();
-  });
 
   it("render with empty comments to simulate loading", () => {
     const store = mockedStore({

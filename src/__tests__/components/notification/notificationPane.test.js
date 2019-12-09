@@ -5,11 +5,19 @@ import React from "react";
 import { shallow } from "enzyme";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import notificationPane, { NotificationPane } from "../../../components/notification/notificationPane";
+import notificationPane, {
+  NotificationPane,
+  mapStateToProps
+} from "../../../components/notification/notificationPane";
 import initialState from "../../../redux/reducers/initialState";
 
 const mockStore = configureStore([thunk]);
 const state = {
+  profile: {
+    user: {
+      id: 10
+    }
+  },
   type: "type",
   message: "messge",
   seen: false,
@@ -32,7 +40,7 @@ const state = {
       type: "ReturnTrip",
       updatedAt: "2019-11-15T13:13:44.347Z",
       user_id: 49,
-      notPaneDisplay: false,
+      notPaneDisplay: false
     },
     {
       createdAt: "2019-11-13T10:07:21.401Z",
@@ -43,9 +51,9 @@ const state = {
       type: "ReturnTrip",
       updatedAt: "2019-11-15T13:13:44.347Z",
       user_id: 49,
-      notPaneDisplay: false,
-    },
-  ],
+      notPaneDisplay: false
+    }
+  ]
 };
 
 const props = {
@@ -57,10 +65,11 @@ const props = {
   markRead: jest.fn(),
   displayNots: false,
   getUser: jest.fn(),
-  setAutoFill: jest.fn(),
+  setAutoFill: jest.fn()
 };
 
-const findByAttr = (wrapper, dataTest) => wrapper.find(`[data-test="${dataTest}"]`);
+const findByAttr = (wrapper, dataTest) =>
+  wrapper.find(`[data-test="${dataTest}"]`);
 
 describe("Notification pane", () => {
   let wrapper;
@@ -87,5 +96,24 @@ describe("Notification pane", () => {
     const newProps = { ...props, notification: [] };
     wrapper = shallow(<NotificationPane store={store} {...newProps} />);
     const noNotifText = findByAttr(wrapper, "text-no-notifs");
+  });
+
+  test("Tests map state to props", () => {
+    const initialState = {
+      notifications: {
+        notifications: [],
+        notPaneDisplay: false
+      },
+      loginState: {
+        isAuthenticated: true
+      },
+      profile: {
+        user: {
+          id: 10
+        },
+      }
+    };
+
+    expect(mapStateToProps(initialState).user.id).toEqual(10);
   });
 });

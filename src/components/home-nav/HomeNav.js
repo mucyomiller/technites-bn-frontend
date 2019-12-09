@@ -5,7 +5,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./HomeNav.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faLock, faUser, faAngleDown } from "@fortawesome/free-solid-svg-icons";

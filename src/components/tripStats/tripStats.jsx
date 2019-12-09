@@ -44,10 +44,6 @@ export class TripStats extends Component {
     this.props.getUser()
   }
 
-  async componentDidMount() {
-    this.props.getUser()
-  }
-
   render() {
     const { years, months, days } = this.state;
     return (

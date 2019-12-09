@@ -10,7 +10,6 @@ import Profile from "./profile-page/ProfilePage";
 import AdminRequests from "./admin-requests/AdminRequests";
 import NotificationPane from "./notification/notificationPane";
 import passwordReset from "./passwordReset/forgotEmailForm";
-import verifyPasswordReset from "./passwordReset/passwordResetConfirmation";
 import PasswordChange from "./passwordReset/resetPassword";
 import AddHost from "./admin/AddHost";
 import HostReset from "./host/HostReset";
@@ -18,6 +17,9 @@ import RoleSettings from "./role-settings/RoleSettings";
 import SingleRequest from "./single-request/SingleRequest";
 import AccommodationsPage from "./accommodation/AccommodationsPage";
 import AnAccommodationPage from "./accommodation/AnAccommodationPage";
+import AddAccommodation from "./host/AddAccommodation";
+import AddRoom from "./host/AddRoom";
+
 
 export {
   LandingPage,
@@ -30,7 +32,6 @@ export {
   AdminRequests,
   NotificationPane,
   passwordReset,
-  verifyPasswordReset,
   PasswordChange,
   AddHost,
   HostReset,
@@ -38,4 +39,6 @@ export {
   SingleRequest,
   AccommodationsPage,
   AnAccommodationPage,
+  AddAccommodation,
+  AddRoom,
 };

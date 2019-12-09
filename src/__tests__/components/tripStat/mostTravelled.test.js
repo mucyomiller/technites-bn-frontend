@@ -30,6 +30,7 @@ const state = {
 
 const props = {
   mostTravelledDest: jest.fn(),
+  getUser: jest.fn(),
   mostTravelledMsg: "Message",
   mostVisitedMsg: "Message",
 };

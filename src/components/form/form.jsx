@@ -11,7 +11,6 @@
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from "react";
 import Joi from "joi-browser";
-import { toast } from "react-toastify";
 import Input from "../input/input";
 import Select from "../select/Select";
 import "./form.scss";

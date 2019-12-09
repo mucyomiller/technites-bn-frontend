@@ -7,8 +7,10 @@
   left: 70%;
   margin-right: 10%;
   border: 2px solid $primaryColor;
-  border-radius: 5%;
+  border-radius: 2%;
   height: fit-content;
+  max-height: 60%;
+  overflow: scroll;
   text-align: center;
   z-index: 20;
   background-color: $secondaryColor;

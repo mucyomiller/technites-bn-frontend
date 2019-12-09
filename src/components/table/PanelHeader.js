@@ -4,7 +4,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import {
-  faPlusCircle, faLayerGroup, faLockOpen, faFolderOpen, faSearch, faFile,
+  faPlusCircle, faLayerGroup, faLockOpen, faFolderOpen, faFile,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./PanelHeader.scss";

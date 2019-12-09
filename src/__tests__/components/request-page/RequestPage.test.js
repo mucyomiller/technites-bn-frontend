@@ -231,6 +231,7 @@ describe("<request page />", () => {
     history: {
       replace: jest.fn()
     },
+
     accomodations: {
       accomodations: {
         data: {
@@ -247,6 +248,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -262,6 +309,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -277,6 +370,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -292,6 +431,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -307,6 +492,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -322,6 +553,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -337,6 +614,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -352,6 +675,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -367,6 +736,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             },
@@ -382,6 +797,52 @@ describe("<request page />", () => {
               amenities: null,
               available_space: 10,
               owner: null,
+              Rooms: [
+                {
+                  id: 18,
+                  accommodation_id: 9,
+                  name: "Room18",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                },
+                {
+                  id: 17,
+                  accommodation_id: 9,
+                  name: "Room17",
+                  room_type: "Random",
+                  description: "This is a very good room",
+                  cost: 500,
+                  images: [
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628696/luxvju7a9rxarnsyrhwo.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628699/gqfczqwgjj33sdv2bmq0.jpg"
+                    },
+                    {
+                      image_url: "http://res.cloudinary.com/technites/image/upload/v1570628701/krlafnosukdnrp3ic8nb.jpg"
+                    }
+                  ],
+                  status: true,
+                  createdAt: "2019-10-11T10:50:28.272Z",
+                  updatedAt: "2019-10-11T10:50:28.272Z"
+                }
+              ],
               createdAt: "2019 - 11 - 19T21: 53: 27.050Z",
               updatedAt: "2019 - 11 - 19T21: 53: 27.050Z"
             }

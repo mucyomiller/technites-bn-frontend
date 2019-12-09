@@ -38,7 +38,6 @@ export class AnAccommodationPage extends Component {
   }
 
   handleRate = (rate) => {
-    toast.success(`${rate} Star rating`);
     this.props.rate({ rate, id: this.props.accId });
   }
 

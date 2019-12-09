@@ -39,7 +39,7 @@ class Form extends Component {
   };
 
   componentDidUpdate() {
-    console.log("the DATA IS : ", this.state);
+    // console.log("the DATA IS : ", this.state);
   }
 
   validate = () => {

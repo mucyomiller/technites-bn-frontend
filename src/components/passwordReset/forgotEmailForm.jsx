@@ -11,7 +11,6 @@ import Form from "../form/form";
 import "./passwordReset.scss";
 import image from "../../assets/verify.png";
 import { passWordResetAction } from "../../redux/actions/passwordResetAction";
-import NavBar from "../navbar/navbar";
 
 export class PassReset extends Form {
   doSubmit = () => {
@@ -42,7 +41,7 @@ export class PassReset extends Form {
               {this.renderInput("email", "Email")}
               <br />
               {this.renderButton("Reset Password", "email_forgot")}
-              <p><a href="/login">Back to Sign In?</a></p><br /><br />
+              <p><a href="/">Back to Sign In?</a></p><br /><br />
             </div>
           </div>
         </React.Fragment>

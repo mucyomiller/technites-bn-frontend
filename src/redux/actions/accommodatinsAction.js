@@ -27,14 +27,11 @@ export const getAllLocations = () => async dispatch => {
 export const getAccommodations = () => async dispatch => {
   try {
     const accommodations = await getAllAccommodations();
-    console.log(accommodations);
-    
     dispatch({
       type: types.GET_ACCOMODATIONS,
       payload: accommodations.data
     });
   } catch (error) {
-    console.log(error);
   }
 };
 
@@ -46,7 +43,6 @@ export const getMyAccommodations = () => async dispatch => {
       payload: accommodations.data
     });
   } catch (error) {
-    console.log(error.response);
   }
 };
 
@@ -58,7 +54,6 @@ export const getAccommodation = id => async dispatch => {
       payload: accommodation.data
     });
   } catch (error) {
-    console.log(error);
   }
 };
 
@@ -76,7 +71,6 @@ export const LikeUnLikeAccommodation = id => async dispatch => {
   });
 };
 export const createAccommodation = data => async dispatch => {
-  console.log({data})
   await dispatch({
     type: types.LOADING,
     payload: true

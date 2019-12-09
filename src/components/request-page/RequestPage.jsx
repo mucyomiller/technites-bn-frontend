@@ -164,10 +164,6 @@ export class RequestPage extends Form {
         this.setState({ isMyRequests: false, request: singleRequest[0] });
       }
 
-      // console.log(">>>>> ALL OF THE REQUEST ARE : ", sum);
-      // console.log(">>>> THE USER ID IS : ", this.props.currentUser);
-      // console.log(">>>> THE REQUEST MATCH WITH USER ID IS : ", singleRequest);
-
       // if you pass an invaid ID, you will be redirected to not found
       if (singleRequest.length === 0) this.props.history.replace("/not-found");
       // remove unwanted fields
@@ -216,8 +212,6 @@ export class RequestPage extends Form {
 
       this.setState({ data: request });
     } catch (ex) {
-      console.log("the exception is : ", ex);
-
       // by default it takes a request type of OneWay when you don't supply any
       if (ex.response) {
         this.props.history.replace("/not-found");
@@ -295,7 +289,6 @@ export class RequestPage extends Form {
           </div>
           {/* {counter.count > 0 ? <div className="box stack-top" /> : null} */}
           <div>
-            {console.log(">>>>> the counter is : ")}
             <Counter animation={counter.animation} count={counter.count + 1} />
             {counter.count < 1 ? (
               <div>

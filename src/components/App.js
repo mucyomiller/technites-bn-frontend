@@ -17,7 +17,7 @@ if (token && token !== "null") {
   const currentTime = Date.now() / 1000;
   if (exp < currentTime) {
     localStorage.removeItem("token");
-    window.location.replace("/login");
+    window.location.replace("/");
   }
   store.dispatch(setToken(localStorage.token));
 }

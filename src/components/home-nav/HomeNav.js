@@ -27,7 +27,7 @@ export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => 
     toggleMenu();
     await authLogout();
     localStorage.removeItem("token");
-    window.location.replace("/login");
+    window.location.replace("/");
   }
   const showHideSideBar = () => {
     document.querySelector('.side-bar');

@@ -24,14 +24,18 @@ body {
 @import "./variables";
 @import "./mixins/mixins";
 
+@import "./base/animations";
+
 @import "./base/typography";
 @import "./base/utilities";
 
 @import "./layout/grid";
 @import "./layout/layout";
+@import "./layout/landingpage";
 
 @import "./components/button";
 @import "./components/composition";
+@import "./components/bg-video";
 
 // common classes
 // clickable

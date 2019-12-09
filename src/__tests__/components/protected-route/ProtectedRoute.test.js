@@ -20,6 +20,6 @@ describe('Protected Route', () => {
   );
 
   test('should redirect to login when user is not authenticated', () => {
-    expect(protectedRoute.instance().history.location.pathname).toEqual('/login');
+    expect(protectedRoute.instance().history.location.pathname).toEqual('/');
   });
 });

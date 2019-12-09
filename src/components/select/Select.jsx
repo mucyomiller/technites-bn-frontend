@@ -12,7 +12,6 @@ const Select = ({
   myRequest,
   ...rest
 }) => {
-  console.log("><>>> MY REQUEST IS : ", myRequest);
   return (
     <div className="selector">
       <label htmlFor={name}>{label}</label>

@@ -2,7 +2,7 @@ import React from "react";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faList, faBus, faUserPlus, faHotel, faCog, faUser
+  faList, faBus, faUserPlus, faHotel, faCog,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom"
 

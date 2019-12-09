@@ -19,7 +19,7 @@ describe("Login Form", () => {
   test("should render the title as `Login`", () => {
     expect(loginForm.find(".title").text()).toEqual("Login");
   });
-
+  
   it("should test for login a user", () => {
     const button = loginForm.find("button[className=\"button\"]");
     button.simulate("click");
@@ -33,9 +33,6 @@ describe("Login Form", () => {
     expect(loginForm.find("SocialLogin").exists()).toBe(true);
   });
 
-  test("should render forgot password Link", () => {
-    expect(loginForm.find("Link").text()).toEqual(" Reset ");
-  });
 
   describe("and input in forms change", () => {
     beforeEach(() => {

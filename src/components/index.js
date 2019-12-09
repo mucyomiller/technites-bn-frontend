@@ -10,7 +10,6 @@ import Profile from "./profile-page/ProfilePage";
 import AdminRequests from "./admin-requests/AdminRequests";
 import NotificationPane from "./notification/notificationPane";
 import passwordReset from "./passwordReset/forgotEmailForm";
-import verifyPasswordReset from "./passwordReset/passwordResetConfirmation";
 import PasswordChange from "./passwordReset/resetPassword";
 import AddHost from "./admin/AddHost";
 import HostReset from "./host/HostReset";
@@ -33,7 +32,6 @@ export {
   AdminRequests,
   NotificationPane,
   passwordReset,
-  verifyPasswordReset,
   PasswordChange,
   AddHost,
   HostReset,

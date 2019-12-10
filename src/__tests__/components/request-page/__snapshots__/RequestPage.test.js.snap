@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<request page /> it should mount the request page 1`] = `ShallowWrapper {}`;
+
+exports[`<request page /> it should mount the request page as a travel admin logged in 1`] = `ShallowWrapper {}`;
+
+exports[`<request page /> it should test for the populate request page 1`] = `ShallowWrapper {}`;
+
+exports[`<request page /> it should test for the populate request page with props new 1`] = `ShallowWrapper {}`;
+
+exports[`<request page /> should test for the new request 1`] = `ShallowWrapper {}`;

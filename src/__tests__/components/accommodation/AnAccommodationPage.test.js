@@ -5,9 +5,10 @@ import { Provider } from "react-redux";
 import { mount, shallow } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import mockStore from "../../../__mocks__/mockStore";
+import { MapContainer } from '../../../components/shared/map/MapContainer';
 import { accommodation, accommodationNoImageAndRooms, user, messages } from "../../../__mocks__/fixtures";
 import AccPage, {
-  AnAccommodationPage,
+  AnAccommodationPage, mapStateToProps
 } from "../../../components/accommodation/AnAccommodationPage";
 
 const props = {
@@ -82,7 +83,35 @@ describe("An Accommodation page", () => {
       accPage.setState(state);
       accPage.setProps({ accId: 1 });
     });
-    
+
+    test("should test map state to props", () => {
+      const state = { accommodations: { accommodation: [{}], averageRatings: 1, accommodationsLikes: 1 }, profile: { user: {} } }
+      const ownProps = { match: { params: { acc_id: 1 } } }
+      mapStateToProps(state, ownProps);
+    });
+
+    test("should test the map container", () => {
+      const props = {
+        lat: -1.2884,
+        lng: 36.8233,
+        name: 'Hotel Name'
+      };
+
+      const state = {
+        showingInfoWindow: true, // Hides or the shows the infoWindow
+        activeMarker: {}, // Shows the active marker upon click
+        selectedPlace: { name: "" }, // Shows the infoWindow to the selected place upon a marker
+      };
+
+      const mapContainer = shallow(<MapContainer {...props} />);
+      mapContainer.setState(state);
+      const marker = mapContainer.find('Marker');
+      const infoWindow = mapContainer.find('InfoWindow');
+      console.log('the info window is : ', infoWindow.debug());
+      // marker.simulate('click');
+      infoWindow.simulate('close');
+    });
+
   });
 
 });

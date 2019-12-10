@@ -23,6 +23,7 @@ import SideBar from "../side-bar";
 import Footer from "../footer";
 import PanelHeader from "../table/PanelHeader";
 import "../search-box/SearchBox.scss";
+import { Link } from 'react-router-dom';
 
 export class UserRequests extends Component {
   constructor() {
@@ -107,7 +108,7 @@ export class UserRequests extends Component {
     const elements = currentElements.map((request) => (
       <tr className="table-row" key={request.id}>
         <td className="table-element" id={request.id}>
-          {request.reason ? (
+          {(
             <p
               className="comment-content"
               dangerouslySetInnerHTML={{
@@ -117,8 +118,6 @@ export class UserRequests extends Component {
                 ),
               }}
             />
-          ) : (
-            "Fill your reason down there..."
           )}
         </td>
         <td className="table-element" id={request.id}>
@@ -141,7 +140,7 @@ export class UserRequests extends Component {
             </button>
             <div className="dropdown-content">
               {request.status === "Pending" ? edit : null}
-              <a href={`/requests/${request.id}`}>View more</a>
+              <Link to={`/requests/${request.id}`}>View more</Link>
             </div>
           </div>
         </td>

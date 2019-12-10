@@ -25,6 +25,7 @@ const mocks = {
   getAccomodations: () => jest.fn(),
   getRooms: () => jest.fn(),
   getUserRequests: () => jest.fn(),
+  getMyUsersRequests: () => jest.fn(),
 };
 const store = (state) => ({
   getState: () => state,
@@ -223,6 +224,7 @@ describe("<request page />", () => {
     deleteRequest: jest.fn(),
     editRequest: jest.fn(),
     getUserRequests: jest.fn(),
+    getMyUsersRequests: jest.fn(),
     getAccomodations: jest.fn(),
     getRooms: jest.fn(),
     match: {
@@ -1066,7 +1068,9 @@ describe("<request page />", () => {
       },
     },
     currentUser: {
-      auto_fill: true
+      auto_fill: true,
+      id: 1,
+      role_value: 1
     }
   }
 
@@ -1087,6 +1091,7 @@ describe("<request page />", () => {
     rooms: [{ id: 0, name: "Choose a room" }],
     currentRooms: [{ id: 0, name: "Choose a room" }],
     profile: { user: { auto_fill: true } },
+    isMyRequests: true
   };
 
   const initialStore = store({
@@ -1100,21 +1105,33 @@ describe("<request page />", () => {
   it('it should mount the request page', () => {
     const state = mapStateToProps({ profile: { user: {} } });
     wrapper = shallow(<RequestPage {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('it should mount the request page as a travel admin logged in', () => {
+    const state = mapStateToProps({ profile: { user: {} } });
+    const propsAsAdmin = { ...props };
+    propsAsAdmin.currentUser.role_value = 4;
+    wrapper = shallow(<RequestPage {...propsAsAdmin} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('it should test for the populate request page', () => {
     wrapper = shallow(<SingleRequestComponent {...props} />);
     wrapper.setProps({ user: {} });
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('it should test for the populate request page with props new', () => {
     wrapper = shallow(<SingleRequestComponent {...props} />);
     wrapper.setProps({ user: {}, match: { params: { id: "new" } } });
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should test for the new request', () => {
     props.match.params.id = "new";
     wrapper = shallow(<RequestPage {...props} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should test for the invalid id when populating the request', () => {

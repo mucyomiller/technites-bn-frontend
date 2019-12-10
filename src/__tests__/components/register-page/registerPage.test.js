@@ -5,6 +5,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { Register, mapStateToProps as mapStateToPropsNew } from '../../../components/register-page/RegisterPage';
+import { shallow } from 'enzyme';
 
 describe("<RegisterPage />", () => {
   const wrapper = mount(<Register />);
@@ -17,6 +18,11 @@ describe("<RegisterPage />", () => {
   wrapper.setProps(props);
   props.displayVerifyConfirmation = true;
   wrapper2.setProps(props);
+
+  it('should render the register component', () => {
+    const localWrapper = shallow(<Register />);
+    expect(localWrapper).toMatchSnapshot();
+  });
 
   it("should taste the errors functionality", () => {
     const event = { target: { name: 'firstname', value: 'am' } };

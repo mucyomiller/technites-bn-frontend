@@ -26,8 +26,8 @@ import {
 import { getAccomodations } from "../../redux/actions/getAccomodations";
 import { getRooms } from "../../redux/actions/getRooms";
 import ImageContainer from "../image-container/ImageContainer";
-
 import "./RequestPage.scss";
+import Modal from "../shared/modal/Modal";
 
 export class RequestPage extends Form {
   doSubmit = async (type, value = "") => {
@@ -101,8 +101,6 @@ export class RequestPage extends Form {
         });
       }
 
-      console.log("THE DATA IS : ", results.data.data);
-
       // SET THE ROOMS TO THE STATE
       for (let i = 0; i < results.data.data.length; i++) {
         for (let j = 0; j < results.data.data[i].Rooms.length; j++) {
@@ -126,16 +124,26 @@ export class RequestPage extends Form {
         rooms: allRooms
       });
 
+      // get the request id in the param
       const requestId = this.props.match.params.id;
 
-      if (this.props.currentUser.role_value >= 4)
+      let sum = [];
+      if (this.props.currentUser.role_value >= 4) {
+        await this.props.getUserRequests();
+        sum.push(this.props.requests.requests);
         await this.props.getMyUsersRequests("All");
-      else await this.props.getUserRequests();
+        sum.push(this.props.requests.requests);
+        sum = sum.flat();
+      } else {
+        await this.props.getUserRequests();
+        sum.push(this.props.requests.requests);
+        sum = sum.flat();
+      }
 
       if (requestId === "new") {
         if (this.props.currentUser.auto_fill) {
-          const { requests } = this.props.requests;
-          const lastRequest = requests.reverse()[0];
+          // const { requests } = this.props.requests;
+          const lastRequest = sum.reverse()[0];
           this.setState({
             data: {
               ...this.state.data,
@@ -147,10 +155,18 @@ export class RequestPage extends Form {
         return;
       }
 
-      const { requests } = this.props.requests;
-      const singleRequest = requests.filter(
+      // const { requests } = this.props.requests;
+      const singleRequest = sum.filter(
         request => request.id == this.props.match.params.id
       );
+
+      if (singleRequest[0].user_id !== this.props.currentUser.id) {
+        this.setState({ isMyRequests: false, request: singleRequest[0] });
+      }
+
+      // console.log(">>>>> ALL OF THE REQUEST ARE : ", sum);
+      // console.log(">>>> THE USER ID IS : ", this.props.currentUser);
+      // console.log(">>>> THE REQUEST MATCH WITH USER ID IS : ", singleRequest);
 
       // if you pass an invaid ID, you will be redirected to not found
       if (singleRequest.length === 0) this.props.history.replace("/not-found");
@@ -231,9 +247,25 @@ export class RequestPage extends Form {
     } = this.state;
 
     return (
-      <div>
-        <ImageContainer images={currentRooms} />
+      <div style={{ width: "100%" }}>
+        {/* <ImageContainer images={currentRooms} /> */}
         <div className="request-card">
+          {this.state.isMyRequests ? null : (
+            <div>
+              <Modal
+                triggerText="Approve"
+                data={this.state.request}
+                action="approve"
+                status="Approved"
+              />
+              <Modal
+                triggerText="Reject"
+                data={this.state.request}
+                action="reject"
+                status="Rejected"
+              />
+            </div>
+          )}
           {this.state.rooms.length > 1 ? null : (
             <div className="spinner-container">
               <span className="loader">
@@ -261,17 +293,27 @@ export class RequestPage extends Form {
               </button>
             ) : null}
           </div>
-          {counter.count > 0 ? <div className="box stack-top" /> : null}
+          {/* {counter.count > 0 ? <div className="box stack-top" /> : null} */}
           <div>
+            {console.log(">>>>> the counter is : ")}
             <Counter animation={counter.animation} count={counter.count + 1} />
-            {this.renderSelect("location_id", "From", cities)}
-            {this.renderSelect(
-              "departure_date",
-              "Departure Date",
-              cities,
-              "date"
-            )}
-            {this.renderSelect("return_date", "Return Date", cities, "date")}
+            {counter.count < 1 ? (
+              <div>
+                {this.renderSelect("location_id", "From", cities)}
+                {this.renderSelect(
+                  "departure_date",
+                  "Departure Date",
+                  cities,
+                  "date"
+                )}
+                {this.renderSelect(
+                  "return_date",
+                  "Return Date",
+                  cities,
+                  "date"
+                )}
+              </div>
+            ) : null}
             {this.renderSelect("destination_id", "Destination", cities)}
             {this.renderSelect("check_in", "Check In", cities, "date")}
             {this.renderSelect("check_out", "Check Out", cities, "date")}
@@ -283,7 +325,6 @@ export class RequestPage extends Form {
             {this.renderSelect("room_id", "Room", currentRooms)}
             <div>{this.renderInput("passport_name", "Passport Name")}</div>
             <div>{this.renderInput("passport_number", "Passport Number")}</div>
-            {/* <div>{this.renderInput("reason", "Reason")}</div> */}
             <p className="reason">Reason</p>
             <p className="reason-label">
               {this.props.match.params.id !== "new" &&
@@ -301,24 +342,30 @@ export class RequestPage extends Form {
                 "Fill your reason down there..."
               )}
             </p>
-            {this.renderEditor()}
-            <div>
-              <label htmlFor="autofill" className="pure-material-checkbox">
-                <input
-                  type="checkbox"
-                  name="autofill"
-                  onChange={this.handleAutoFill}
-                  checked={this.state.autoFill}
-                />
-                <span>&nbsp;Remember Personal details</span>
-              </label>
-            </div>
+            {this.state.isMyRequests ? this.renderEditor() : null}
+            {this.state.isMyRequests ? (
+              <div>
+                <label htmlFor="autofill" className="pure-material-checkbox">
+                  <input
+                    type="checkbox"
+                    name="autofill"
+                    onChange={this.handleAutoFill}
+                    checked={this.state.autoFill}
+                  />
+                  <span>&nbsp;Remember Personal details</span>
+                </label>
+              </div>
+            ) : null}
             {this.props.match.params.id === "new"
               ? this.renderButton("Request", "submit")
-              : this.renderButton("Save", "edit")}
+              : this.state.isMyRequests
+              ? this.renderButton("Save", "edit")
+              : null}
             {this.props.match.params.id === "new"
               ? this.renderButton("Add city", "animation", "addCity")
-              : this.renderButton("Delete", "delete")}
+              : this.state.isMyRequests
+              ? this.renderButton("Delete", "delete")
+              : null}
           </div>
         </div>
       </div>

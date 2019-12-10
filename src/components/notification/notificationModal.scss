@@ -8,10 +8,8 @@
   margin-right: 10%;
   border: 2px solid $primaryColor;
   border-radius: 2%;
-  height: fit-content;
-  max-height: 60%;
-  overflow: scroll;
   text-align: center;
+  height: 60%;
   z-index: 20;
   background-color: $secondaryColor;
   width: 25%;
@@ -44,6 +42,9 @@
 }
 .modal-body {
   padding: 10px 15px;
+  height: fit-content;
+  max-height: 90%;
+  overflow: scroll;
 }
 .modal-over-lay {
   position: fixed;
@@ -64,9 +65,10 @@
 /*Media Queries*/
 @media (max-width: 768px) {
   .modal-notif {
-    top: 20%;
+    margin-top: 15%;
     left: 10%;
     width: 80%;
     min-width: 60%;
+    position: fixed;
   }
 }

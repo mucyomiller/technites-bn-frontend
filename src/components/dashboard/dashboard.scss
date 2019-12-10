@@ -4,11 +4,11 @@
   height: 100vh;
   float: right;
   top: 6rem;
-  overflow: hidden;
+  overflow: scroll;
 
   &__left-dash {
     float: left;
-    height: 200px;
+    height: fit-content;
   }
   &__right-dash {
     position: absolute;
@@ -43,7 +43,7 @@
 
 .trip-stat-content ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
 .trip-stat-content ul li {
@@ -78,34 +78,49 @@
   color: green;
 }
 .trip-stat-content {
-  padding: 10px 0px 0px 50px;
+  padding: 10px 30px 0px 50px;
 }
 
 /*Media Queries*/
 @media (max-width: 1028px) {
   .dash-div {
-    width: 140%;
+    width: 130%;
+    margin: unset;
+  }
+  .dashboard__right-dash {
+    width: 40%;
+    margin-right: 0px;
+  }
+  .trip-stat-content {
+    padding: 10px 0px 0px 50px;
   }
 }
 @media (max-width: 765px) {
   .dashboard {
-    display: inline;
-  }
-  .left-dash {
-    height: 100%;
-    width: fit-content;
-  }
-  .dash-div {
-    width: 320px;
-    margin-bottom: 20px;
-  }
-  .right-dash {
-    float: left;
-    width: 85%;
-    margin-right: 20px;
-  }
-  .space-between {
-    height: 1%;
-    display: none;
+    padding-top: 50px;
+    overflow: scroll;
+    position: absolute;
+    width: 100%;
+
+    .dash-div {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    &__left-dash {
+      height: fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      float: unset;
+      margin-left: 10%;
+    }
+    &__right-dash {
+      width: 85%;
+      margin-right: 20px;
+    }
+    .trip-stat-content ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 2fr));
+    }
   }
 }

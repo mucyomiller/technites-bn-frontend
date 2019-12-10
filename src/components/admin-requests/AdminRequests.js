@@ -8,19 +8,20 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import moment from 'moment';
-import { getMyUsersRequests } from '../../redux/actions/RequestActions';
-import { retrieveProfile } from '../../redux/actions/profileAction';
-import HomeNav from '../home-nav/HomeNav';
-import { Table } from '../table';
-import SideBar from '../side-bar';
-import Footer from '../footer';
-import Modal from '../shared/modal/Modal';
-import '../../styles/modal.scss';
-import PanelHeader from '../table/PanelHeader';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import moment from "moment";
+import { getMyUsersRequests } from "../../redux/actions/RequestActions";
+import { retrieveProfile } from "../../redux/actions/profileAction";
+import HomeNav from "../home-nav/HomeNav";
+import { Table } from "../table";
+import SideBar from "../side-bar";
+import Footer from "../footer";
+import Modal from "../shared/modal/Modal";
+import "../../styles/modal.scss";
+import PanelHeader from "../table/PanelHeader";
+import { Link } from 'react-router-dom';
 
 export class AdminRequests extends Component {
   constructor() {
@@ -31,7 +32,10 @@ export class AdminRequests extends Component {
       errors: {},
       postsPerPage: 4,
       currentPage: 1,
-      user: {}
+      user: {},
+      searchQuery: "",
+      filtered: [],
+      searchBy: "",
     };
   }
 
@@ -52,6 +56,14 @@ export class AdminRequests extends Component {
     }
   }
 
+  handleSearch = query => {
+    this.setState({ searchQuery: query, currentPage: 1 });
+  };
+
+  handleSelect = (input) => {
+    this.setState({ searchBy: input.target.value });
+  }
+
   render() {
     const columns = [
       'Avatar',
@@ -64,12 +76,23 @@ export class AdminRequests extends Component {
       'Actions'
     ];
 
+    const { searchQuery } = this.state;
     const { requests } = this.props.requests;
+    const { searchBy } = this.state;
+
+    // search by status, etc...
+    let filtered = requests;
+    if (searchQuery && (searchBy !== "")) {
+      filtered = requests.filter(r => r[searchBy].toLowerCase().includes(searchQuery.toLowerCase()));
+    } else {
+      filtered = requests;
+    }
+
     const { user } = this.props;
     // Get current posts
     const indexOfLastElement = this.state.currentPage * this.state.postsPerPage;
     const indexOfFirstElement = indexOfLastElement - this.state.postsPerPage;
-    const currentElements = requests.slice(
+    const currentElements = filtered.slice(
       indexOfFirstElement,
       indexOfLastElement
     );
@@ -108,7 +131,18 @@ export class AdminRequests extends Component {
           {`${request.User.firstname} ${request.User.lastname}`}
         </td>
         <td className="table-element" id={request.id}>
-          {request.reason.substring(0, 12)}
+          {/* {request.reason.substring(0, 12)} */}
+          {(
+            <p
+              className="comment-content"
+              dangerouslySetInnerHTML={{
+                __html: request.reason.substring(0, 12).replace(
+                  /(<? *script)/gi,
+                  "illegalscript",
+                ),
+              }}
+            />
+          )}
         </td>
         <td className="table-element" id={request.id}>
           {request.departure_date.substring(0, 10)}
@@ -147,7 +181,7 @@ export class AdminRequests extends Component {
                 action="reject"
                 status="Rejected"
               />
-              <a href={`allrequests/${request.id}`}>View more</a>
+              <Link to={`allrequests/${request.id}`}>View more</Link>
             </div>
           </div>
         </td>
@@ -157,19 +191,22 @@ export class AdminRequests extends Component {
       <>
         <HomeNav user={user} />
         <SideBar userRole={user.role_value} />
-          <PanelHeader
-            pageTitle="All Requests"
-            setPageNumbers={setPageNumbers}
-            getRequests={this.props.getMyUsersRequests}
-          />
-          <Table
-            columns={columns}
-            elements={elements}
-            postsPerPage={this.state.postsPerPage.toString()}
-            totalPosts={requests.length}
-            paginate={paginate}
-            currentPageNumber={this.state.currentPage}
-          />
+        <PanelHeader
+          pageTitle="All Requests"
+          setPageNumbers={setPageNumbers}
+          getRequests={this.props.getMyUsersRequests}
+          handleSelect={this.handleSelect}
+          handleSearch={this.handleSearch}
+          searchQuery={searchQuery}
+        />
+        <Table
+          columns={columns}
+          elements={elements}
+          postsPerPage={this.state.postsPerPage.toString()}
+          totalPosts={requests.length}
+          paginate={paginate}
+          currentPageNumber={this.state.currentPage}
+        />
         <Footer />
       </>
     );

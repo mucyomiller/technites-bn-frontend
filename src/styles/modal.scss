@@ -12,11 +12,11 @@
 }
 
 .approve{
-  background-color: $primaryColor;
+  background-color: $primaryColor !important;
 }
 
 .reject{
-  background-color: $dangerColor;
+  background-color: $dangerColor !important;
 }
 
 .modal-cover {

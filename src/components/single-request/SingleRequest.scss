@@ -49,6 +49,19 @@
   margin-top: 10px;
   padding: 30px;
   box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
+
+  &--modal {
+    width: 120px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-top: 20px;
+    outline: none;
+    background: none;
+    transition: 0.4s;
+    color: white;
+  }
 }
 
 .selector {
@@ -80,6 +93,30 @@
   border-radius: 0;
   appearance: none;
   background: url("../../assets/arrow_down.svg") no-repeat right;
+  &:focus {
+    outline-style: inherit;
+  }
+}
+
+.select-remove-arrow {
+  border: none;
+  border-bottom: 1px solid black;
+  display: block;
+  font-size: 16px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0px 20px 25px 20px;
+  // padding: 4px 0;
+  width: 100%;
+  background: 0 0;
+  text-align: left;
+  color: grey;
+  width: 62%;
+  height: 2rem !important;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  appearance: none;
   &:focus {
     outline-style: inherit;
   }
@@ -291,7 +328,7 @@
     }
     to {
       margin-right: 20%;
-      transform: translateY(220px);
+      transform: translateY(10px);
     }
   }
 }

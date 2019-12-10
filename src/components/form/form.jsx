@@ -33,8 +33,14 @@ class Form extends Component {
     currentAccomodations: [{ id: 0, name: "Choose an accomodation" }],
     rooms: [{ id: 0, name: "Choose a room" }],
     currentRooms: [{ id: 0, name: "Choose a room" }],
-    autoFill: false
+    autoFill: false,
+    isMyRequests: true,
+    request: {} // used for approve or reject
   };
+
+  componentDidUpdate() {
+    console.log("the DATA IS : ", this.state);
+  }
 
   validate = () => {
     const options = { abortEarly: false };
@@ -43,12 +49,6 @@ class Form extends Component {
     const { error } = Joi.validate(data, this.schema, options);
 
     if (!error) {
-      // if (this.state.data.confirmPassword) {
-      //   if (this.state.data.password !== this.state.data.confirmPassword) {
-      //     toast.error("Password and Confirm password should be the same");
-      //     return {};
-      //   }
-      // }
       return null;
     }
 
@@ -217,10 +217,10 @@ class Form extends Component {
     this.setState({ data });
   };
 
-  handleAutoFill = (e) => {
+  handleAutoFill = e => {
     this.setState({ autoFill: e.target.checked });
     this.doSubmit("autoFill", e.target.checked);
-  }
+  };
 
   renderEditor = () => {
     return (
@@ -246,6 +246,7 @@ class Form extends Component {
 
     return (
       <Input
+        myRequest={this.state.isMyRequests}
         type={type}
         name={name}
         value={data[name]}
@@ -261,6 +262,7 @@ class Form extends Component {
 
     return (
       <Select
+        myRequest={this.state.isMyRequests}
         name={name}
         value={data[name]}
         label={label}

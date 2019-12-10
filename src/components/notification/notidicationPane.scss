@@ -20,11 +20,11 @@
 
 .mark-read{
   background-color: $primaryColor;
-  width:fit-content;
   text-align: center;
-  display: block;
-  margin: auto;
-  padding: 5px 5px;
+  display: inline;
+  padding: 10px 10px;
+  position: relative;
+  top: -20px;
   color: $secondaryColor;
 }
 .mark-read-button{

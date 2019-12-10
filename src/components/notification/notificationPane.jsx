@@ -49,12 +49,12 @@ export class NotificationPane extends Component {
 
       socket.on("request_update", data => {
         const { id } = user;
-        if (id === data.user_id){
+        if (id === data.user_id) {
           toast.success(data.message, {
             position: toast.POSITION.TOP_RIGHT
           });
           loadNotifications();
-        } 
+        }
       });
 
       socket.on("new_travel_request", data => {
@@ -71,7 +71,7 @@ export class NotificationPane extends Component {
 
       socket.on("new_comment", data => {
         const { id } = user;
-        if (id !== data.from && ( id === data.reqOwner || id === data.manager)) {
+        if (id !== data.from && (id === data.reqOwner || id === data.manager)) {
           toast.success(data.message, {
             position: toast.POSITION.TOP_RIGHT
           });
@@ -129,24 +129,24 @@ export class NotificationPane extends Component {
                   ))}
               </ul>
             </div>
-            {notifications && notifications.length > 0 ? (
-              <div className="mark-read">
-                <button
-                  data-test="mark-read-button"
-                  type="submit"
-                  href="#"
-                  onClick={markRead}
-                  className="mark-read-button"
-                >
-                  Mark all as read
-                </button>
-              </div>
-            ) : (
-              <p data-test="text-no-notifs" className="center-link">
-                No unread notifications
-              </p>
-            )}
           </div>
+          {notifications && notifications.length > 0 ? (
+            <div className="mark-read">
+              <button
+                data-test="mark-read-button"
+                type="submit"
+                href="#"
+                onClick={markRead}
+                className="mark-read-button"
+              >
+                Mark all as read
+              </button>
+            </div>
+          ) : (
+            <p data-test="text-no-notifs" className="center-link">
+              No unread notifications
+            </p>
+          )}
         </div>
         <div
           data-test="modal-overlay"

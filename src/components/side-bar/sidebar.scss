@@ -11,7 +11,10 @@
   position: fixed;
   margin-top: 7rem;
   @media screen and (max-width: 480px) {
-    display: none;
+    position: absolute;
+    width: 80%;
+    z-index: 999;
+    margin-top: 0rem!important;
   }
   .main-nav {
     background-color: inherit;
@@ -61,10 +64,14 @@
   margin-right: 10px;
   font-size: 1em;
 }
-
-@media screen and (max-width: 625px) {
-  .side-bar {
+.side-bar-hamburger{
+  position: fixed;
+    top: 0;
+    left: 0;
+    margin: 23px 0px 0px 10px;
+    color: $background;
     display: none;
-    width: 100%;
-  }
+    @media screen and (max-width: 480px) {
+      display: block;
+    }
 }

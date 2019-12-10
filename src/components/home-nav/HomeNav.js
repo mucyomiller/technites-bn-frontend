@@ -16,6 +16,7 @@ import avatarImg from "../../assets/avatar_img.png";
 import { toggleNotPane } from "../../redux/actions/notificationActions";
 import NotificationPane from "../notification/notificationPane";
 import Chat from "../chat";
+import { authLogout } from "../../services/authServices";
 
 export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
   const [isShown, setIsShown] = useState(false);
@@ -24,13 +25,16 @@ export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => 
   }
   const logout = async () => {
     toggleMenu();
-    await localStorage.removeItem("token");
+    await authLogout();
+    localStorage.removeItem("token");
     window.location.replace("/login");
+  }
+  const showHideSideBar = () => {
+    document.querySelector('.side-bar');
   }
   return (
     <div>
       <nav className="home-wrapper">
-        <FontAwesomeIcon className="hamburger-menu" icon={faBars} />
         <Link to="/" className="home-link">
           <img src={logo} alt="logo" />
         </Link>

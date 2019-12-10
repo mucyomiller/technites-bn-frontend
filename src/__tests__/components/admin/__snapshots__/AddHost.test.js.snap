@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admin Panel for Adding Hosts should render without crashing || snapshot 1`] = `
+<Fragment>
+  <Connect(HomeNav)
+    user={
+      Object {
+        "firstname": "Rugumbira",
+        "image_url": "https://res.cloudinary.com/dodfpnbik/image/upload/v1574070442/Screen_Shot_2019-11-18_at_11.44.38_bdjv7r.png",
+        "role_value": 7,
+      }
+    }
+  />
+  <SideBar
+    userRole={7}
+  />
+  <div
+    className="main-page"
+  >
+    <div
+      className="page-info"
+    >
+      <h1
+        className="page-title"
+      >
+        Add Host
+      </h1>
+      <h4
+        className="sub-title"
+      >
+         
+        <span
+          className="sub-title-info"
+        >
+          <a
+            href="#"
+          >
+            Dashboard 
+          </a>
+        </span>
+        /
+        <span
+          className="sub-title-info"
+        >
+          <a
+            href="#"
+          >
+             Add Host
+          </a>
+        </span>
+      </h4>
+    </div>
+    <div
+      className="wrapper wrapper--addhost"
+    >
+      <form
+        noValidate={true}
+        onSubmit={[Function]}
+      >
+        <Input
+          error=""
+          handler={[Function]}
+          id="email"
+          label="Email"
+          mode={true}
+          name="email"
+          type="text"
+          value=""
+        />
+        <Input
+          error=""
+          handler={[Function]}
+          id="firstname"
+          label="Firstname"
+          mode={true}
+          name="firstname"
+          type="text"
+          value=""
+        />
+        <Input
+          error=""
+          handler={[Function]}
+          id="lastname"
+          label="Lastname"
+          mode={true}
+          name="lastname"
+          type="text"
+          value=""
+        />
+        <Button
+          id="add-host"
+          label="Add Host"
+          type="submit"
+        />
+      </form>
+    </div>
+  </div>
+  <Footer />
+</Fragment>
+`;

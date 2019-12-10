@@ -68,7 +68,7 @@ const PanelHeader = ({
           </select>
         </div>
       </div>
-      <div className="search-container">
+      <div className="search-container search-elements-responsive">
         <select name="name" id="id" className="select-search" onChange={handleSelect}>
           <option key="searchBy" value="">Search by</option>
           <option key="status" value="status">Status</option>

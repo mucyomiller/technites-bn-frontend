@@ -15,6 +15,9 @@
   left: 0;
   right: 0;
   z-index: 1;
+  @media screen and (max-width: 480px) {
+    position: unset;
+  }
 }
 
 #logo {
@@ -26,6 +29,9 @@
 }
 .home-link {
   text-decoration: none;
+  @media screen and (max-width: 480px) {
+  margin-left: 40px;
+  }
   &:hover {
     background: none;
   }

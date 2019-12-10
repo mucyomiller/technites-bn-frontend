@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import Adapter from "enzyme-adapter-react-16/build";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
+import toJson from 'enzyme-to-json';
 import AddHost, {
   AddHost as AddHostComponent,
 } from "../../../components/admin/AddHost";
@@ -152,6 +153,9 @@ describe("Admin Panel for Adding Hosts", () => {
     const nextPropsSuccess = { ...props };
     component.setProps(nextPropsSuccess);
     expect(component).toHaveLength(1);
+  });
+  it("should render without crashing || snapshot", () => {
+    expect(toJson(component2)).toMatchSnapshot();
   });
   it("should trigger componentWillReceiveProps", () => {
     const nextPropsError = {

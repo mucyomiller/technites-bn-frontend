@@ -15,7 +15,7 @@ import AdminRequests, {
 } from "../../../components/admin-requests/AdminRequests";
 import successresponse from "../../../__mocks__/__get_user_request_success__.json";
 import { messages } from "../../../__mocks__/fixtures";
-
+import { mapStateToProps } from '../../../components/admin-requests/AdminRequests';
 Enzyme.configure({ adapter: new Adapter() });
 const mockedStore = configureStore([thunk]);
 const props = {
@@ -213,4 +213,35 @@ describe("Admin Panel for viewing User Requests", () => {
     component2.find("PanelHeader").props().setPageNumbers(2);
     expect(component2.state().postsPerPage).toEqual(2);
   });
+  it("should trigger handleSelect", () => {
+    component2.find("PanelHeader").props().handleSelect({target: { name: "email", value: "test" }});
+    expect(component2.state().currentPage).toEqual(2);
+  });
+  it("should test the search functionality", () => {
+    const nextPropsError = {
+      errors: {},
+    };
+    component2.setProps(nextPropsError);
+    expect(component2).toHaveLength(1);
+  });
+  it("should test the search by options like status, request_type, etc..", () => {
+    const target = { target: { name: "status", value: "status" } };
+
+    const input = component.find("input[className=\"search\"]");
+    input.simulate("change", target);
+
+    const select = component.find("select[className=\"select-search\"]");
+
+    select.simulate("change", target);
+  });
+  it('test mapstate to props ', () => {
+    const state = {
+      Requests: {},
+      searchRequests: {},
+      errors: {},
+      profile: { user: {}}
+    }
+  
+      mapStateToProps(state);
+    });
 });

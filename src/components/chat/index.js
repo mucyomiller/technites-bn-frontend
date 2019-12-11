@@ -59,8 +59,6 @@ export class Chat extends Component {
     }
   }
   scrollToBottom = () => {
-    // const chatBox = document.querySelector('.chat-body');
-    // chatBox.scrollTo(0, chatBox.scrollHeight);
     this.messagesEnd.current.scrollIntoView();
   };
   sendMessageOnKeyPress = e => {

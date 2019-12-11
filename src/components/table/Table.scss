@@ -40,7 +40,9 @@ a {
     height: 700px;
     margin: 160px 10px 0px 0px!important;
   }
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1000px) {
+    width: -webkit-fill-available;
+    height: 700px;
     margin: 160px 10px 0px 0px!important;
   }
   .table-container {

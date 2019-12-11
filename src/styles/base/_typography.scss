@@ -7,6 +7,7 @@
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 6rem;
+    position: absolute;
   
     &--main {
       display: block;
@@ -14,7 +15,7 @@
       font-weight: 400;
       letter-spacing: 3.5rem;
       animation: moveInLeft;
-      animation-duration: 1s;
+      animation-duration: 4s;
       animation-timing-function: ease-in-out;
   
     }
@@ -24,7 +25,7 @@
       font-size: 2rem;
       font-weight: 400;
       letter-spacing: 1.7rem;
-      animation: moveInRight 1s ease-in-out;
+      animation: moveInRight 4s ease-in-out;
     }
   }
 

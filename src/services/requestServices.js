@@ -4,7 +4,7 @@ import http from "./httpServices";
 export const getMostTravelled = async () => {
   try {
     const res = await http.get("/requests/mostTravelledDestinations");
-    return res.data;
+    return res.data || '';
   } catch (error) {
     return null;
   }

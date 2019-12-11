@@ -29,7 +29,7 @@ class MostTravelled extends Component {
           </figure>
         </div>
         <div className="ms-right">
-          <span>{ mostTravelledMsg }</span>
+          <span>{ mostTravelledMsg } </span>
         </div>
       </div>
     );

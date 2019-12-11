@@ -149,7 +149,7 @@ const RoleSettings = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <HomeNav />
       <SideBar userRole={7} />
       <div className="role-card">

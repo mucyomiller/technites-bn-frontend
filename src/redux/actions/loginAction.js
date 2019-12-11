@@ -17,6 +17,7 @@ export const loginUser = data => async dispatch => {
     await dispatch(setToken(response.data.token));
     await dispatch(loginSuccess(response));
     history.push("/dashboard");
+    window.location.assign("/dashboard");
     toast.success("Login successful");
   } catch (error) {
     if (error.message === "Network Error") {

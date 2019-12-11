@@ -13,4 +13,5 @@ module.exports = {
   locations: [],
   hostAccommodations: [],
   isLoading: false,
+  toggleView: false,
 };

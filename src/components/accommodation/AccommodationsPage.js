@@ -46,8 +46,6 @@ AccommodationsPage.propTypes = {
 };
 
 const mapStateToProps = (state) => { 
-  console.log(state);
-  
   return {
   accommodations: state.accommodations.accommodations,
   user: state.profile.user,

@@ -26,13 +26,13 @@ import {
 
 const Router = () => (
   <Switch>
+    <Route exact path="/" component={LandingPage} />
     <Route path="/login" component={LoginPage} />
     <Route path="/register" component={Register} />
     <Route path="/reset-password" component={passwordReset} />
     <Route path="/password-change/:token" component={PasswordChange} />
     <ProtectedRoute path="/profile" component={Profile} />
     <ProtectedRoute path="/requests/:id" component={SingleRequest} />
-    <Route exact path="/" component={LandingPage} />
     <Route path="/requests/:id" component={SingleRequest} />
     <Route path="/host/reset" component={HostReset} />
     <ProtectedRoute path="/accommodations/new" component={AddAccommodation} />

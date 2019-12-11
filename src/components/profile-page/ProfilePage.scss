@@ -35,13 +35,14 @@ input#profileselector {
 
 // edit mode
 .e-profile-content {
+  // top: 6rem;
   margin: 2rem;
   display: grid;
-  margin-left: 12px;
-  grid-template-columns: 1;
-  width: 90vw;
-  position: absolute;
-  right: -18rem;
+  // margin-left: 12px;
+  grid-template-columns: 2;
+  // width: 90vw;
+  // position: absolute;
+  // right: -18rem;
   //edit mode profile divided
   .profile-divider {
     height: 1px;
@@ -94,8 +95,8 @@ input#profileselector {
   }
 }
 
-.select {
-  height: 2rem !important;
+.p-select {
+  height: 3rem !important;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;

@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { retrieveProfile } from '../../redux/actions/profileAction';
 import SideBar from '../side-bar';
 import HomeNav from '../home-nav/HomeNav';
 import Footer from '../footer';
@@ -24,7 +23,6 @@ export class AddAccommodation extends Component {
   };
 
   componentDidMount() {
-    this.props.retrieveProfile();
     this.props.getAllLocations();
   }
 
@@ -69,15 +67,8 @@ export class AddAccommodation extends Component {
     const { isLoading, user, locations } = this.props;
     return (
       <>
-        <HomeNav user={user} />
-        <SideBar userRole={user.role_value} />
-        <>
-          <div className="current-page">
-            <div className="u-margin-bottom-small">
-              <h2 className="heading-secondary--current-page">Add Accomodation</h2>
-            </div>
-          </div>
-        </>
+        <HomeNav />
+        <SideBar />
         <section className="section-book">
           <div className="row">
             <div className="book">
@@ -292,7 +283,7 @@ export class AddAccommodation extends Component {
                   </div>
 
                   <div className="form__group">
-                    <button id="save" className="btn btn--primary">
+                    <button id="save" className="acc-btn acc-btn--primary">
                       {isLoading ? ("Saving...") : (<>Save</> )}
                     </button>
                   </div>
@@ -318,7 +309,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  retrieveProfile,
   createAccommodation,
   getAllLocations
 };

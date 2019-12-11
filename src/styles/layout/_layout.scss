@@ -1,12 +1,5 @@
-.main-page {
-    position: absolute;
-    top: 10rem;
-    width: 80vw;
-    right: 0;
-}
+.main-page {}
 
 @media screen and (max-width: 625px) {
-    .main-page {
-        width: 100%;
-    }
+    .main-page {}
   }

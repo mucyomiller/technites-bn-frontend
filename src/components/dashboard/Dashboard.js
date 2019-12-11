@@ -4,29 +4,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HomeNav from "../home-nav/HomeNav";
 import "./dashboard.scss";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import MostTravelled from "../tripStats/mostTravelled";
 import SideBar from "../side-bar";
 import SingleTrip from "../tripStats/singleTrip";
 import TripStats from "../tripStats/tripStats";
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.retrieveProfile();
-  }
   render() {
     const { total, trips, user } = this.props;
     return (
       <div>
-        <HomeNav user={user} />
-        <SideBar userRole={user.role_value} />
+        <HomeNav />
+        <SideBar />
         <div className="dashboard">
           <div className="dashboard__left-dash">
             <div className="trips-stats dash-div">
               <div className="title dashboard__title">Trips Statistics</div>
               <div className="trip-stat-content">
                 <h3 className="total-trips-title">
-Total trips:
+                  Total trips:
                   {" "}
                   {total}
                 </h3>
@@ -66,4 +62,4 @@ const mapStateToProps = (state) => ({
   user: state.profile.user,
 });
 
-export default connect(mapStateToProps, {retrieveProfile})(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);

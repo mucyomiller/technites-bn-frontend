@@ -3,12 +3,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { connect, useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Link } from "react-router-dom";
 import "./HomeNav.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faLock, faUser, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { retrieveProfile } from '../../redux/actions/profileAction';
 import logo from "../../assets/barefoot_white.svg";
 import messageIcon from "../../assets/message_icon.svg";
 import notificationIcon from "../../assets/notification_icon.svg";
@@ -18,11 +19,18 @@ import NotificationPane from "../notification/notificationPane";
 import Chat from "../chat";
 import { authLogout } from "../../services/authServices";
 
-export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => {
+export const HomeNav = ({ toggleNotPaneHandler, notificationCounter }) => {
   const [isShown, setIsShown] = useState(false);
+  const user = useSelector(state => state.profile.user);
+  const dispatch = useDispatch();
   const toggleMenu = () => {
     setIsShown(!isShown);
   }
+
+  useEffect(() => {
+    dispatch(retrieveProfile());
+  }, []);
+
   const logout = async () => {
     toggleMenu();
     await authLogout();
@@ -33,22 +41,22 @@ export const HomeNav = ({ user, toggleNotPaneHandler, notificationCounter }) => 
     document.querySelector('.side-bar');
   }
   return (
-    <div>
+    <div className="sticky">
       <nav className="home-wrapper">
         <Link to="/" className="home-link">
           <img src={logo} alt="logo" />
         </Link>
         <div className="action-side">
-        <img
-          id="message-btn"
-          src={messageIcon}
-          className="icons clickable"
-          alt="messages icons"
-          onClick={() => {
-            localStorage.setItem("showState", true);
-            window.location.href = window.location.href;
-          }}
-        />
+          <img
+            id="message-btn"
+            src={messageIcon}
+            className="icons clickable"
+            alt="messages icons"
+            onClick={() => {
+              localStorage.setItem("showState", true);
+              window.location.href = window.location.href;
+            }}
+          />
           <div className="notification">
             <img
               src={notificationIcon}

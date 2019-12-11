@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
-import { retrieveProfile, updateProfile } from "../../redux/actions/profileAction";
+import { updateProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
 import SideBar from "../side-bar";
 import Input from "./Input";
@@ -92,11 +92,6 @@ export class ProfilePage extends Component {
     this._handleImageChange = this._handleImageChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-  }
-
-  componentDidMount() {
-    const { fetchProfileInfo } = this.props;
-    fetchProfileInfo();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -248,8 +243,8 @@ export class ProfilePage extends Component {
     }
     return (
       <div>
-        <HomeNav user={{ firstname, image_url }} />
-        <SideBar userRole={role_value} />
+        <HomeNav />
+        <SideBar />
         <div className="e-profile-content">
           <div className="flex flex-row vertical-center space-between">
             <span className="title">Profile</span>
@@ -312,7 +307,6 @@ const mapStateToProps = ({ profile }) => ({
   status: profile.status,
 });
 const mapDispatchToProps = (dispatch) => ({
-  fetchProfileInfo: () => dispatch(retrieveProfile()),
   updateprofileInfo: (data) => dispatch(updateProfile(data)),
 });
 

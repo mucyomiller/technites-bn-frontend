@@ -9,7 +9,6 @@ import {
   getAccommodations,
   getAccommodation,
 } from "../../redux/actions/accommodatinsAction";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import SideBar from "../side-bar";
 import HomeNav from "../home-nav/HomeNav";
 import Footer from "../footer";
@@ -17,7 +16,6 @@ import "../../styles/accommodations.scss";
 
 export class AccommodationsPage extends Component {
   componentDidMount() {
-    this.props.retrieveProfile();
     this.props.getAccommodations();
   }
 
@@ -25,8 +23,8 @@ export class AccommodationsPage extends Component {
     const { user, accommodations } = this.props;
     return (
       <>
-        <HomeNav user={user} />
-        <SideBar userRole={user.role_value} />
+        <HomeNav />
+        <SideBar />
         {!accommodations ? (
           <h2>Loading...</h2>
         ) : (
@@ -54,7 +52,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getAccommodations,
   getAccommodation,
-  retrieveProfile,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccommodationsPage);

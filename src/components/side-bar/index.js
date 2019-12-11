@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -133,4 +134,9 @@ const SideBar = ({ userRole }) => {
     </>
   );
 };
-export default SideBar;
+
+const mapStateToProps = (state) => ({
+  userRole: state.profile.user.role_value,
+});
+
+export default connect(mapStateToProps, null)(SideBar);

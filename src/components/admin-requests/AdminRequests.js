@@ -212,7 +212,7 @@ export class AdminRequests extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   requests: state.Requests,
   errors: state.errors,
   user: state.profile.user

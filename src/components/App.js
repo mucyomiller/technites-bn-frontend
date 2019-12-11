@@ -11,11 +11,10 @@ import Router from "./Router";
 
 const store = configureStore();
 const token = localStorage.getItem("token");
-
-if (token && token !== "null") {
-  const { exp } = getCurrentUser();
+const user = getCurrentUser();
+if (user) {
   const currentTime = Date.now() / 1000;
-  if (exp < currentTime) {
+  if (user.exp < currentTime) {
     localStorage.removeItem("token");
     window.location.replace("/");
   }

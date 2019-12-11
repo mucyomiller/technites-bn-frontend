@@ -11,4 +11,5 @@ export const socialAuthAction = (payload) => async (dispatch) => {
   await dispatch(setToken(payload.token));
   await dispatch(socialAuthSuccess(payload));
   history.push("/dashboard");
+  window.location.assign("/dashboard");
 };

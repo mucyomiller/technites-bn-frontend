@@ -41,7 +41,7 @@ export const HomeNav = ({ toggleNotPaneHandler, notificationCounter }) => {
     document.querySelector('.side-bar');
   }
   return (
-    <div>
+    <div className="sticky">
       <nav className="home-wrapper">
         <Link to="/" className="home-link">
           <img src={logo} alt="logo" />

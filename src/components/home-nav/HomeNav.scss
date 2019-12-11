@@ -1,6 +1,14 @@
 @import '../../styles/App.scss';
 
 /*home-nav styling*/
+
+//make homenav sticky on top w/o making fixed
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
 .home-wrapper {
   display: flex;
   flex-direction: row;
@@ -11,9 +19,6 @@
   flex-wrap: wrap;
   background-color: $primaryColor;
   align-content: center;
-  position: fixed;
-  left: 0;
-  right: 0;
   z-index: 1;
   @media screen and (max-width: 480px) {
     position: unset;

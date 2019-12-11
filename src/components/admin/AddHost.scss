@@ -1,15 +1,11 @@
 @import "../../styles/variables";
 .wrapper {
-  position: absolute;
   background-color: #fff;
   padding: 50px 20px 50px 20px;
-  width: 80%;
   height: auto;
   margin: 0px 20px 0px 10px;
   &--addhost {
-    width: 78vw !important;
-    top: 10rem;
-    right: -1rem;
+    // width: 78vw !important;
   }
 }
 .page-info {

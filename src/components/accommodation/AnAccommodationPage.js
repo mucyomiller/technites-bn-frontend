@@ -18,6 +18,7 @@ import whiteStar from "../../assets/star-white.png";
 import Rating from "react-rating";
 import { rate } from '../../redux/actions/rateAction';
 import { getRate } from '../../redux/actions/getRateAction';
+import Feedback from "../feedback/Feedback";
 import sprite from "../../assets/images/svg/sprite.svg";
 import like from "../../assets/like.svg";
 import like_outline from "../../assets/like_outline.svg";
@@ -131,13 +132,14 @@ export class AnAccommodationPage extends Component {
                   <RoomList rooms={accommodation.Rooms} />
                 )}
             </div>
-
+            <div className="acc__details__feedback">
+            <Feedback accommodationId={accommodation.id} />
+            </div>
             <div className="acc__details__map">
               <MapContainer lat={-1.2884} lng={36.8233} name="Hotel Name" />
             </div>
           </div>
         </>
-
         <Footer />
       </>
     );

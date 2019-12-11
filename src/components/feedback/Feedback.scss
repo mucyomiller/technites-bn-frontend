@@ -1,0 +1,25 @@
+@import "../../styles/cssgrid";
+
+.feedback {
+  z-index: 1;
+  border-radius: 8px;
+  background-color: white;
+  margin: 5rem 1rem;
+  padding: 30px;
+  width: 60%;
+  box-shadow: 0.5px 1px 2px 0px rgba(153, 153, 153, 0.5);
+  // add media screen
+  @include work-until(sm) {
+    width: 100%;
+  }
+}
+
+.feedback-editor {
+  display: flex;
+  justify-content: center;
+  word-break: break-all;
+  min-height: 10rem;
+}
+.save-feedback {
+  width: 20rem;
+}

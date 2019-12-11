@@ -86,20 +86,11 @@ export const setAutoFill = (value) => async (dispatch) => {
   }
 }
 export const mostTravelled = () => async (dispatch) => {
-  try {
     const res = await getMostTravelled();
     dispatch({
       type: actions.MOST_VISITED,
-      payload: res.message,
+      payload: res ? res.message : '',
     });
-  } catch (error) {
-    if (error.response && error.response.data.error) {
-      toast.error(error.response.data.error);
-    }
-    if (!error.response && error.message) {
-      toast.error(error.message);
-    }
-  }
 };
 
 export const tripsStatsAction = (id, years, months, days) => async (dispatch) => {

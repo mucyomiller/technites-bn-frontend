@@ -1,33 +1,42 @@
-@import '../../styles/App.scss';
+@import "../../styles/App.scss";
 
-.notificationsList ul{
+.notificationsList ul {
   background: $secondaryColor;
+  list-style-type: none;
+  a {
+    text-decoration: none;
+  }
+  overflow: scroll;
+}
+
+.notificationsList li{
+  margin: 10px 10px;
+  text-align: left;
+  width: 100%;
 }
 .notificationsList a {
-  border: unset;
-  width:fit-content;
   padding: 5px 5px;
   margin-left: 10%;
-  background: $secondaryColor;
-
+  margin: 10px 10px;
+  font-size: 12px;
+  
 }
 
-.notificationsList a:hover{
+.notificationsList a:hover {
   background: $primaryColor;
   transform: scale(1);
   transition-delay: 200ms;
 }
 
-.mark-read{
+.mark-read {
   background-color: $primaryColor;
   text-align: center;
   display: inline;
   padding: 10px 10px;
   position: relative;
-  top: -20px;
   color: $secondaryColor;
 }
-.mark-read-button{
+.mark-read-button {
   margin: auto;
   padding: 5px 5px;
   background-color: $primaryColor;
@@ -36,5 +45,3 @@
   font-size: inherit;
   cursor: pointer;
 }
-
-

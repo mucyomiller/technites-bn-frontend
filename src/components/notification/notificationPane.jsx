@@ -114,7 +114,7 @@ export class NotificationPane extends Component {
             />
           </div>
           <div className="modal-body">
-            <div className="notificationsList">
+            <div className="notificationsList notificationsList--notif">
               <ul>
                 {notifications &&
                   notifications.map(not => (

@@ -104,7 +104,7 @@ export class NotificationPane extends Component {
           data-test="modal-nav"
           className={`notificationPane modal-notif ${
             displayNots ? "modal-active " : " "
-          }`}
+          } ${notifications && notifications.length === 0 ? 'no-notifs': ''}`}
         >
           <div className="modal-header">
             <h2 className="modal-title">Notifications</h2>

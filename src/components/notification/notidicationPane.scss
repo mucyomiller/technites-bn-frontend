@@ -6,6 +6,7 @@
   a {
     text-decoration: none;
   }
+  height: inherit;
   overflow: scroll;
 }
 
@@ -33,11 +34,10 @@
   text-align: center;
   display: inline;
   padding: 10px 10px;
-  position: relative;
+  margin: 5px 5px;
   color: $secondaryColor;
 }
 .mark-read-button {
-  margin: auto;
   padding: 5px 5px;
   background-color: $primaryColor;
   color: $secondaryColor;

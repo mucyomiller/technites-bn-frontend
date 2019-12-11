@@ -16,6 +16,10 @@ body {
   font-size: 1.6rem;
 }
 
+body {
+  font-size: 1.6rem;
+}
+
 // imports
 @import './footer';
 @import './helpers';
@@ -64,3 +68,9 @@ body {
 }
 
 // fixing dashboard
+.bold {
+  font-weight: bold;
+}
+.bolder {
+  font-weight: bolder;
+}

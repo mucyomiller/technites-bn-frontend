@@ -10,7 +10,8 @@ import {
   faHotel,
   faCog,
   faUser,
-  faBars
+  faBars,
+  faTachometerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 const SideBar = ({ userRole }) => {
   const [showHideSideBar, setShowHideSideBar] = useState(false);
@@ -41,7 +42,7 @@ const SideBar = ({ userRole }) => {
                 <li className="nav-header">DASHBOARD</li>
                 <li className="nav-item" onClick={() => closeSideBarMobile()}>
                   <a href="/dashboard">
-                    <FontAwesomeIcon className="sidebar-icons" icon={faBus} />
+                    <FontAwesomeIcon className="sidebar-icons" icon={faTachometerAlt} />
                     My Dashboard
                   </a>
                 </li>

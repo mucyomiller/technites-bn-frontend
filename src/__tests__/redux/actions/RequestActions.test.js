@@ -233,7 +233,7 @@ describe("Most visited and trips stats Actions", () => {
     });
     await store.dispatch(mostTravelled());
     const calledActions = store.getActions();
-    expect(calledActions.length).toEqual(0);
+    expect(calledActions.length).toEqual(1);
   });
 
   it("dispached MOST_VISITED action on failure", async () => {
@@ -252,7 +252,7 @@ describe("Most visited and trips stats Actions", () => {
     });
     await store.dispatch(mostTravelled());
     const calledActions = store.getActions();
-    expect(calledActions.length).toEqual(0);
+    expect(calledActions.length).toEqual(1);
   });
 
   it("dispached TRIPS_STATS action on success", async () => {

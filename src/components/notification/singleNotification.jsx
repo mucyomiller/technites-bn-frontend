@@ -8,7 +8,7 @@ import { toggleNotPane, markOneRead, getNotifications } from "../../redux/action
 export const SingleNotification = ({
   requestId, message, toggleNotDisplay, notId, markThisRead, loadNotifications
 }) => (
-  <li>
+  <li className="individual-notif">
     <Link
       data-test="single-notification"
       onClick={() => {

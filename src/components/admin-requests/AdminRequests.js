@@ -103,7 +103,7 @@ export class AdminRequests extends Component {
         <td className="table-element" id={request.id}>
           <img
             className="user-avatar"
-            src={request.User.image_url}
+            src={request.User.image_url ? request.User.image_url : "https://res.cloudinary.com/technites/image/upload/v1575018314/zdwsxd8b7tsruzdetcqw.png"}
             alt={`${request.User.firstname} ${request.User.lastname}`}
           />
           <div className="tooltip">

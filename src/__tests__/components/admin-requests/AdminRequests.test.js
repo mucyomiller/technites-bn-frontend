@@ -117,7 +117,7 @@ const props = {
         createdAt: "2019-11-11T06:53:54.602Z",
         updatedAt: "2019-11-11T06:53:54.602Z",
         User: {
-          image_url: "image",
+          image_url: "",
           email: "usertest@gmail.com",
           phone: "123456",
           gender: "male",

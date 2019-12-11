@@ -6,6 +6,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { Register, mapStateToProps as mapStateToPropsNew } from '../../../components/register-page/RegisterPage';
 import { shallow } from 'enzyme';
+import { mapStateToProps as mapStateToPropsProtectedRoute } from '../../../components/protected-route/ProtectedRoute';
 
 describe("<RegisterPage />", () => {
   const wrapper = mount(<Register />);
@@ -89,5 +90,12 @@ describe("<RegisterPage />", () => {
 
   it("should test map state to props of register", () => {
     mapStateToPropsNew({ register: {}, loginState: {} });
+  });
+
+  it("should test map state to props of protected route", () => {
+    const state = {
+      loginState: { isAuthenticated: true }
+    }
+    mapStateToPropsProtectedRoute(state);
   });
 });

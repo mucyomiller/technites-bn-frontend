@@ -142,15 +142,16 @@ export class RequestPage extends Form {
 
       if (requestId === "new") {
         if (this.props.currentUser.auto_fill) {
-          // const { requests } = this.props.requests;
           const lastRequest = sum.reverse()[0];
-          this.setState({
-            data: {
-              ...this.state.data,
-              passport_name: lastRequest.passport_name,
-              passport_number: lastRequest.passport_number
-            }
-          });
+          if (lastRequest) {
+            this.setState({
+              data: {
+                ...this.state.data,
+                passport_name: lastRequest.passport_name,
+                passport_number: lastRequest.passport_number
+              }
+            });
+          }
         }
         return;
       }
@@ -316,8 +317,18 @@ export class RequestPage extends Form {
               currentAccomodations
             )}
             {this.renderSelect("room_id", "Room", currentRooms)}
-            <div>{this.renderInput("passport_name", "Passport Name")}</div>
-            <div>{this.renderInput("passport_number", "Passport Number")}</div>
+            <div>
+              {counter.count < 1 ? (
+                <div>
+                  <div>
+                    {this.renderInput("passport_name", "Passport Name")}
+                  </div>
+                  <div>
+                    {this.renderInput("passport_number", "Passport Number")}
+                  </div>
+                </div>
+              ) : null}
+            </div>
             <p className="reason">Reason</p>
             <p className="reason-label">
               {this.props.match.params.id !== "new" &&

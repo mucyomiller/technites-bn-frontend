@@ -20,7 +20,7 @@ export class ProtectedRoute extends Component {
   }
 }
 
-const mapStateToProps = ({ loginState }) => ({
+export const mapStateToProps = ({ loginState }) => ({
   isAuthenticated: loginState.isAuthenticated
 });
 

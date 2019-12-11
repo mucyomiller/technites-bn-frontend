@@ -24,13 +24,14 @@
 }
 
 .notificationsList a:hover {
-  background: $primaryColor;
+  background: yellowgreen;
+  color: white;
   transform: scale(1);
   transition-delay: 200ms;
 }
 
 .mark-read {
-  background-color: $primaryColor;
+  background-color: yellowgreen;
   text-align: center;
   display: inline;
   padding: 10px 10px;
@@ -39,7 +40,7 @@
 }
 .mark-read-button {
   padding: 5px 5px;
-  background-color: $primaryColor;
+  background-color: yellowgreen;
   color: $secondaryColor;
   border: none;
   font-size: inherit;

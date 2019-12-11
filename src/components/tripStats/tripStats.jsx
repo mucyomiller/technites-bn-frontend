@@ -41,11 +41,14 @@ export class TripStats extends Component {
   };
   
   async componentDidMount() {
-    this.props.getUser()
+    await this.props.getUser();
   }
 
   render() {
     const { years, months, days } = this.state;
+    if (this.props.userRole < 1) {
+      return null
+    }
     return (
       <div className="trip-stat ">
         <form className="ts-form" onSubmit={this.handleSubmit}>
@@ -101,7 +104,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  userId: state.profile.user.id || 0
+  userId: state.profile.user.id || 0,
+  userRole: state.profile.user.role_value || 0
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripStats);

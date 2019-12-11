@@ -3,19 +3,21 @@
 .modal-notif {
   position: fixed;
   top: 9.7%;
-  bottom: 60%;
   left: 70%;
   margin-right: 10%;
   border: 2px solid $primaryColor;
   border-radius: 2%;
   text-align: center;
-  height: 450px;
-  max-height:fit-content;
+  height:40%;
+  min-height: auto;
   z-index: 20;
   background-color: $secondaryColor;
   width: 25%;
   transform: scale(0);
   transition: 200ms ease-in-out;
+}
+.no-notifs{
+  height: 10%;
 }
 .modal-active {
   transform: scale(1);
@@ -42,8 +44,8 @@
   font-weight: bold;
 }
 .modal-body {
-  padding: 10px 15px;
-  height: 85%;
+  height: auto;
+  max-height: 80%;
   overflow: scroll;
 }
 .modal-over-lay {

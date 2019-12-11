@@ -1,4 +1,4 @@
-.btn {
+.acc-btn {
   &,
   &:link,
   &:visited {
@@ -70,7 +70,7 @@
   }
 }
 
-.btn-text {
+.acc-btn-text {
   &:link,
   &:visited {
     font-size: $default-font-size;

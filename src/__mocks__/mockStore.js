@@ -8,6 +8,8 @@ initialState.notifications = {
   notifications: [],
   notPaneDisplay: false,
 };
-initialState.profile.user = {
+
+initialState.profile = {
+  user:{},
 }
 export default mockStore(initialState);

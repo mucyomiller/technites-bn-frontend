@@ -15,7 +15,6 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import moment from "moment";
 import { getUserRequests } from "../../redux/actions/RequestActions";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
 
 import { Table } from "../table";
@@ -43,7 +42,6 @@ export class UserRequests extends Component {
 
   componentDidMount() {
     this.props.getUserRequests("All");
-    this.props.retrieveProfile();
   }
 
   // eslint-disable-next-line camelcase
@@ -148,8 +146,8 @@ export class UserRequests extends Component {
     ));
     return (
       <>
-        <HomeNav user={user} />
-        <SideBar userRole={user.role_value} />
+        <HomeNav />
+        <SideBar />
         <PanelHeader
           pageTitle="My Requests"
           setPageNumbers={setPageNumbers}
@@ -181,4 +179,4 @@ export const mapStateToProps = (state) => ({
   user: state.profile.user,
 });
 
-export default connect(mapStateToProps, { getUserRequests, retrieveProfile })(UserRequests);
+export default connect(mapStateToProps, { getUserRequests })(UserRequests);

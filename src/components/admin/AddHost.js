@@ -7,7 +7,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import Joi from "joi-browser";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import { addHost } from "../../redux/actions/AdminActions";
 import HomeNav from "../home-nav/HomeNav";
 import SideBar from "../side-bar";
@@ -46,10 +45,6 @@ export class AddHost extends Component {
       };
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
-    }
-
-    componentDidMount() {
-      this.props.retrieveProfile();
     }
 
     UNSAFE_componentWillReceiveProps({ errors, user, admin }) {
@@ -110,8 +105,8 @@ export class AddHost extends Component {
       const { errors } = this.state;
       return (
         <>
-          <HomeNav user={user} />
-          <SideBar userRole={user.role_value} />
+          <HomeNav />
+          <SideBar />
           <div className="main-page">
           <div className="page-info">
             <h1 className="page-title">Add Host</h1>
@@ -169,4 +164,4 @@ const mapStateToProps = (state) => ({
   user: state.profile.user,
   admin: state.admin,
 });
-export default connect(mapStateToProps, { retrieveProfile, addHost })(AddHost);
+export default connect(mapStateToProps, { addHost })(AddHost);

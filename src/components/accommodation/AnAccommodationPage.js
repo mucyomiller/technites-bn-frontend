@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import RoomList from "./RoomList";
 import { getAccommodation, LikeUnLikeAccommodation } from "../../redux/actions/accommodatinsAction";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
 import Footer from "../footer";
 import "../../styles/accommodations.scss";
@@ -32,7 +31,6 @@ export class AnAccommodationPage extends Component {
   }
   async componentDidMount() {
     const { accId } = this.props;
-    await this.props.retrieveProfile();
     await this.props.getAccommodation(accId);
     await this.props.getRate(accId);
   }
@@ -59,7 +57,7 @@ export class AnAccommodationPage extends Component {
     const { user, accommodation } = this.props;
     return (
       <>
-        <HomeNav user={user} />
+        <HomeNav />
 
         <>
           <div className="gallery">
@@ -160,7 +158,7 @@ export const mapStateToProps = (state, ownProps) => ({
   likestate: state.accommodations.accommodationsLikes
 });
 
-const mapDispatchToProps = { getAccommodation, retrieveProfile, rate, getRate, LikeUnLikeAccommodation };
+const mapDispatchToProps = { getAccommodation, rate, getRate, LikeUnLikeAccommodation };
 
 export default connect(
   mapStateToProps,

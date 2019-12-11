@@ -8,16 +8,19 @@
   height: 100vh;
   background: #404e67;
   color: $black;
-  position: fixed;
-  margin-top: 7rem;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  // z-index: -1;
   @media screen and (max-width: 480px) {
     position: absolute;
     width: 80%;
     z-index: 999;
-    margin-top: 0rem!important;
+    margin-top: 0rem !important;
   }
   .main-nav {
-    list-style-type: none !important;
+    list-style: none;
+    margin-top: 7rem;
     background-color: inherit;
     width: 100%;
     padding: 20px 10px 0px 20px;
@@ -31,7 +34,7 @@
       font-size: 1em;
     }
     .nav-item {
-      margin: 10px 0px 10px 0px;
+      margin: 20px 10px;
       font-size: 1em;
       // padding-left: 20px;
       &:hover {
@@ -65,14 +68,14 @@
   margin-right: 10px;
   font-size: 1em;
 }
-.side-bar-hamburger{
+.side-bar-hamburger {
   position: fixed;
-    top: 0;
-    left: 0;
-    margin: 23px 0px 0px 10px;
-    color: $background;
-    display: none;
-    @media screen and (max-width: 480px) {
-      display: block;
-    }
+  top: 0;
+  left: 0;
+  margin: 23px 0px 0px 10px;
+  color: $background;
+  display: none;
+  @media screen and (max-width: 480px) {
+    display: block;
+  }
 }

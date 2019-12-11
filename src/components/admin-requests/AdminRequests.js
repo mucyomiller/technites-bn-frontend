@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import moment from "moment";
 import { getMyUsersRequests } from "../../redux/actions/RequestActions";
-import { retrieveProfile } from "../../redux/actions/profileAction";
 import HomeNav from "../home-nav/HomeNav";
 import { Table } from "../table";
 import SideBar from "../side-bar";
@@ -40,8 +39,7 @@ export class AdminRequests extends Component {
   }
 
   componentDidMount() {
-    this.props.getMyUsersRequests('All');
-    this.props.retrieveProfile();
+    this.props.getMyUsersRequests("All");
   }
 
   UNSAFE_componentWillReceiveProps({ requests, errors, user }) {
@@ -189,8 +187,8 @@ export class AdminRequests extends Component {
     ));
     return (
       <>
-        <HomeNav user={user} />
-        <SideBar userRole={user.role_value} />
+        <HomeNav />
+        <SideBar />
         <PanelHeader
           pageTitle="All Requests"
           setPageNumbers={setPageNumbers}
@@ -219,5 +217,4 @@ export const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
   getMyUsersRequests,
-  retrieveProfile
 })(AdminRequests);

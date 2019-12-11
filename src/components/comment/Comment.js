@@ -128,7 +128,6 @@ const CommentEditor = ({ requestId, saveComment }) => {
 
   return (
     <div className="flex flex-row vertical-center">
-      <div className="avatar" />
       <div className="flex flex-column comment-editor">
         <Editor
           editorState={editorState}

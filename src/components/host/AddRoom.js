@@ -76,13 +76,6 @@ export class AddRoom extends Component {
       <>
         <HomeNav user={user} />
         <SideBar userRole={user.role_value} />
-        <>
-          <div className="current-page">
-            <div className="u-margin-bottom-small">
-              <h2 className="heading-secondary--current-page">Add Room</h2>
-            </div>
-          </div>
-        </>
         <section className="section-book">
           <div className="row">
             <div className="book">
@@ -166,7 +159,7 @@ export class AddRoom extends Component {
                     />
                   </div>
                   <div className="form__group">
-                    <button id="save" className="btn btn--primary">
+                    <button id="save" className="acc-btn acc-btn--primary">
                     {isLoading ? ("Saving...") : (<>Save</> )}
                     </button>
                   </div>

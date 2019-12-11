@@ -101,7 +101,7 @@ export class UserRequests extends Component {
     const setPageNumbers = (postsPerPage) => this.setState({ postsPerPage });
 
     const edit = (
-      <a href="#">Edit</a>
+      <a className="options-requests"href="#">Edit</a>
     );
     const elements = currentElements.map((request) => (
       <tr className="table-row" key={request.id}>

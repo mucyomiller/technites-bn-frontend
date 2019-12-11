@@ -200,8 +200,8 @@ export class ProfilePage extends Component {
     }
     formData.append("firstname", firstname);
     formData.append("lastname", lastname);
-    formData.append("gender", gender);
-    formData.append("dob", dob);
+    if (gender) formData.append("gender", gender);
+    if (dob) formData.append("dob", dob);
     formData.append("address", address);
     formData.append("country", country);
     formData.append("language", language);

@@ -86,6 +86,10 @@ const RoleSettings = () => {
   }
 
   const handleChange = (event) => {
+    if (event.target.value == 'select') {
+      setEmail(null);
+      return;
+    };
     setEmail(event.target.value);
     const role = _.find(users, ["email", event.target.value]);
     switch (role.role_value) {
@@ -130,6 +134,10 @@ const RoleSettings = () => {
   };
 
   const assignRole = () => {
+    if(email == null){
+      toast.error('Please select User email!');
+      return;
+    }
     setIsLoading(true);
     let value = 0;
     if (travelAdmin) {
@@ -160,6 +168,7 @@ const RoleSettings = () => {
           <div className="flex flex-column">
             <span className="title">User</span>
             <select name="email" className="input r-select" onChange={handleChange}>
+              <option value="select">Select User by E-mail</option>
               {
                 users.map((item) => <option value={item.email} key={item.id}>{item.email}</option>)
               }
@@ -182,7 +191,7 @@ const RoleSettings = () => {
           </div>
         </div>
         <div>
-          <button type="button" id="assignBtn" className="btn btn-primary assign-btn" style={{ borderRadius: "20px" }} tabIndex={0} onClick={assignRole}>
+          <button type="button" id="assignBtn" className="btn btn-primary assign-btn" style={{ borderRadius: "20px" }} tabIndex={0} onClick={assignRole} >
             <img src={editIcon} witdh={18} height={18} alt="edit icon" />
             <span style={{ marginLeft: "5px", fontWeight: "bold" }}>assign role</span>
             {isLoading

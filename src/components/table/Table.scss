@@ -21,7 +21,12 @@ body{
 .table-title{
   color: #0000008c;
 }
-a {
+.options-requests {
+  text-decoration: none;
+  padding: 5px;
+  border-bottom: 1px solid #00000017;
+}
+a{
   text-decoration: none;
 }
 .flex-parent{
@@ -136,6 +141,7 @@ a {
               &:hover{
                 .dropdown-content{
                   display: block;
+                  display: grid;
                 }
               }
               .drop-btn{

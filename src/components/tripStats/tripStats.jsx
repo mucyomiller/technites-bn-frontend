@@ -11,7 +11,7 @@ export class TripStats extends Component {
     this.state = {
       years: 0,
       months: 0,
-      days: 1,
+      days: 0,
     };
   }
 
@@ -19,7 +19,8 @@ export class TripStats extends Component {
     e.preventDefault();
     const { years, months, days } = this.state;
     const { userId, tripsStat } = this.props;
-    await tripsStat(userId, years, months, days);
+    const dayz = days || 1;
+    await tripsStat(userId, years, months, dayz);
   };
 
   handleYearsChange = (event) => {
@@ -43,7 +44,6 @@ export class TripStats extends Component {
   async componentDidMount() {
     await this.props.getUser();
   }
-
   render() {
     const { years, months, days } = this.state;
     if (this.props.userRole < 1) {
@@ -89,7 +89,7 @@ export class TripStats extends Component {
               onChange={this.handleDaysChange}
             />
           </label>
-          <button className="button" type="submit">
+          <button className="button" type="submit" >
             Calculate Trips
           </button>
         </form>

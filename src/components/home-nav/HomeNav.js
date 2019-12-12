@@ -81,7 +81,7 @@ export const HomeNav = ({ toggleNotPaneHandler, notificationCounter }) => {
             <div id="main-pane" className={isShown ? 'main-modal block' : 'main-modal none'}>
               <div className="main-modal-content">
                 <Link to="/profile"><FontAwesomeIcon icon={faUser} className="m-r-5" /> Profile</Link>
-                <a href="#" onClick={logout}><FontAwesomeIcon icon={faLock} className="m-r-5" /> Logout</a>
+                <a href="#" onClick={logout}><FontAwesomeIcon icon={faLock} data-test="logout-btn"className="m-r-5 logout-btn" /> Logout</a>
               </div>
             </div>
           </div>

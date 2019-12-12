@@ -1,10 +1,9 @@
-@import "../styles/variables";
-
+@import '../styles/variables';
 
 .acc__resources {
   padding: 0px;
   margin: 10px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -45,20 +44,6 @@
     background-size: cover !important;
     background-position: center !important;
   }
-
-  .acc-details {
-    text-align: center;
-    &__map {
-      width: 20%;
-    }
-    &__feedback {
-      width: 50%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      overflow: auto;
-    }
-  }
 }
 
 .yellow-star-icon {
@@ -91,10 +76,8 @@
   }
 
   &__sub {
-    display: flex;
-    height: inherit;
-    justify-content: center;
-    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
   }
 
   &__photo--large {
@@ -123,14 +106,21 @@
   display: flex;
   flex-wrap: wrap;
   &__map {
-    width: 35%;
-    height: 80vh;
-    position: absolute;
-    right: 0;
+    width: 100%;
+    height: 50vh;
+    position: relative;
   }
 
   &__rooms {
-    width: 65%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  &__feedback {
+    height: 50vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -138,11 +128,11 @@
   }
 }
 
-.acc__amenities {
-  height: 50vh;
-  width: 100%;
-  background-color: whitesmoke;
-}
+// .acc__amenities {
+//   height: 50vh;
+//   width: 100%;
+//   background-color: whitesmoke;
+// }
 
 ////////////////////////////////////////
 // HOTEL OVERVIEW

@@ -70,6 +70,28 @@ describe("SideBar Testing", () => {
     fireEvent.click(navItem);
     expect(navItem).toBeDefined();
   });
+  it("should click on one menu item and close the sidebar for host || New Accommodation", () => {
+    const state = {
+      profile: {
+        user: {
+          role_value: 0,
+        }
+      }
+    }
+    const store = mockedStore(state);
+    const { container } = render(
+      <Provider store={store}>
+        <Router>
+          <SideBar />
+        </Router>
+      </Provider>
+    );
+    // changing the state to open the sidebar first
+    fireEvent.click(container.querySelector(".side-bar-hamburger"));
+    const navItem = container.querySelector("#new-accommodation");
+    fireEvent.click(navItem);
+    expect(navItem).toBeDefined();
+  });
   it("should click on one menu item and close the sidebar for host || New Room", () => {
     const state = {
       profile: {

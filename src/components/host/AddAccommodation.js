@@ -298,10 +298,6 @@ export class AddAccommodation extends Component {
   }
 }
 
-AddAccommodation.propTypes = {
-  retrieveProfile: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => ({
   user: state.profile.user,
   locations: state.accommodations.locations,

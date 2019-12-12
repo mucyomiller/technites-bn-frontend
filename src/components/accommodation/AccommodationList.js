@@ -15,15 +15,15 @@ export const AccommodationCard = ({ accommodations, viewAcc }) => {
             <div className="acc__resources__item__img">
               {!accommodation.images ? (
                 <img
-                  class="composition__photo--acc"
+                  className="composition__photo--acc"
                   src="https://img.icons8.com/officel/200/000000/image-file.png"
                   alt="not found icon"
                 />
               ) : (
                 <img
-                  src={accommodation.images[0]}
+                  src={typeof(accommodation.images) === "string" ? accommodation.images : accommodation.images[0]}
                   alt="photo 1"
-                  class="composition__photo--acc"
+                  className="composition__photo--acc"
                 />
               )}
             </div>

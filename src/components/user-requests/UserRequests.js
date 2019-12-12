@@ -137,7 +137,7 @@ export class UserRequests extends Component {
               Actions
             </button>
             <div className="dropdown-content">
-              {request.status === "Pending" ? edit : null}
+              {request.status === "Pending" ? null : null}
               <Link to={`/requests/${request.id}`}>View more</Link>
             </div>
           </div>

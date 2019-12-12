@@ -11,7 +11,7 @@ import {
   faCog,
   faUser,
   faBars,
-  faTachometerAlt,
+  faTachometerAlt
 } from "@fortawesome/free-solid-svg-icons";
 const SideBar = ({ userRole }) => {
   const [showHideSideBar, setShowHideSideBar] = useState(false);
@@ -37,15 +37,18 @@ const SideBar = ({ userRole }) => {
       {showHideSideBar ? (
         <div className="side-bar">
           <ul className="main-nav">
+            <li className="nav-header">DASHBOARD</li>
+            <li className="nav-item" onClick={() => closeSideBarMobile()}>
+              <a href="/dashboard">
+                <FontAwesomeIcon
+                  className="sidebar-icons"
+                  icon={faTachometerAlt}
+                />
+                My Dashboard
+              </a>
+            </li>
             {userRole !== 0 ? (
               <>
-                <li className="nav-header">DASHBOARD</li>
-                <li className="nav-item" onClick={() => closeSideBarMobile()}>
-                  <a href="/dashboard">
-                    <FontAwesomeIcon className="sidebar-icons" icon={faTachometerAlt} />
-                    My Dashboard
-                  </a>
-                </li>
                 <li className="nav-header">REQUESTS</li>
                 <li
                   id="new-request"
@@ -101,7 +104,7 @@ const SideBar = ({ userRole }) => {
             <li className="nav-header">ACCOMMODATIONS</li>
             {userRole === 0 ? (
               <>
-                <li className="nav-item" onClick={() => closeSideBarMobile()}>
+                <li id ="new-accommodation"className="nav-item" onClick={() => closeSideBarMobile()}>
                   <Link to="/accommodations/new">
                     <FontAwesomeIcon className="sidebar-icons" icon={faHotel} />
                     Add Accommodation
@@ -136,8 +139,8 @@ const SideBar = ({ userRole }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  userRole: state.profile.user.role_value,
+const mapStateToProps = state => ({
+  userRole: state.profile.user.role_value
 });
 
 export default connect(mapStateToProps, null)(SideBar);

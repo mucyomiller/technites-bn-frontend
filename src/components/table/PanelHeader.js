@@ -4,16 +4,25 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import {
-  faPlusCircle, faLayerGroup, faLockOpen, faFolderOpen, faFile,
+  faPlusCircle,
+  faLayerGroup,
+  faLockOpen,
+  faFolderOpen,
+  faFile
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./PanelHeader.scss";
 import SearchBox from "../search-box/SearchBox";
 
 const PanelHeader = ({
-  pageTitle, setPageNumbers, getRequests, handleSelect, handleSearch, searchQuery,
+  pageTitle,
+  setPageNumbers,
+  getRequests,
+  handleSelect,
+  handleSearch,
+  searchQuery
 }) => {
-  const handleChange = (e) => {
+  const handleChange = e => {
     setPageNumbers(e.target.value);
   };
   return (
@@ -27,27 +36,45 @@ const PanelHeader = ({
           </span>
           /
           <span className="sub-title-info">
-            <a href="#">
-              {" "}
-              {pageTitle}
-            </a>
+            <a href="#"> {pageTitle}</a>
           </span>
         </h4>
       </div>
       <div className="panel-commands">
-        <button className="transparent-button first-button" type="button" title="New Request">
-          <FontAwesomeIcon className="panel-icons" icon={faPlusCircle} />
-          <span className="button-label">New Request</span>
-        </button>
-        <button className="transparent-button" type="button" title="All Request" onClick={() => getRequests("All")}>
+        <a href="requests/new">
+          <button
+            className="transparent-button first-button"
+            type="button"
+            title="New Request"
+          >
+            <FontAwesomeIcon className="panel-icons" icon={faPlusCircle} />
+            <span className="button-label">New Request</span>
+          </button>
+        </a>
+        <button
+          className="transparent-button"
+          type="button"
+          title="All Request"
+          onClick={() => getRequests("All")}
+        >
           <FontAwesomeIcon className="panel-icons" icon={faLayerGroup} />
           <span className="button-label">All Requests</span>
         </button>
-        <button className="transparent-button" type="button" onClick={() => getRequests("Pending")} title="Open Request">
+        <button
+          className="transparent-button"
+          type="button"
+          onClick={() => getRequests("Pending")}
+          title="Open Request"
+        >
           <FontAwesomeIcon className="panel-icons" icon={faLockOpen} />
           <span className="button-label">Open Requests</span>
         </button>
-        <button className="transparent-button" type="button" onClick={() => getRequests("Past")} title="Past Request">
+        <button
+          className="transparent-button"
+          type="button"
+          onClick={() => getRequests("Past")}
+          title="Past Request"
+        >
           <FontAwesomeIcon className="panel-icons" icon={faFolderOpen} />
           <span className="button-label">Past Requests</span>
         </button>
@@ -58,7 +85,9 @@ const PanelHeader = ({
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option selected value="4">4</option>
+            <option selected value="4">
+              4
+            </option>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -69,13 +98,30 @@ const PanelHeader = ({
         </div>
       </div>
       <div className="search-container search-elements-responsive">
-        <select name="name" id="id" className="select-search" onChange={handleSelect}>
-          <option key="searchBy" value="">Search by</option>
-          <option key="status" value="status">Status</option>
-          <option key="request_type" value="request_type">Request type</option>
-          <option key="reason" value="reason">Reason</option>
+        <select
+          name="name"
+          id="id"
+          className="select-search"
+          onChange={handleSelect}
+        >
+          <option key="searchBy" value="">
+            Search by
+          </option>
+          <option key="status" value="status">
+            Status
+          </option>
+          <option key="request_type" value="request_type">
+            Request type
+          </option>
+          <option key="reason" value="reason">
+            Reason
+          </option>
         </select>
-        <SearchBox className="search" value={searchQuery} onChange={handleSearch} />
+        <SearchBox
+          className="search"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
       </div>
     </div>
   );
@@ -83,6 +129,6 @@ const PanelHeader = ({
 PanelHeader.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   setPageNumbers: PropTypes.func.isRequired,
-  getRequests: PropTypes.func.isRequired,
+  getRequests: PropTypes.func.isRequired
 };
 export default PanelHeader;

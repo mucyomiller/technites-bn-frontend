@@ -174,9 +174,6 @@ export class AddRoom extends Component {
   }
 }
 
-AddRoom.propTypes = {
-  retrieveProfile: PropTypes.func.isRequired
-};
 
 const mapStateToProps = state => ({
   accommodations: state.accommodations.hostAccommodations,

@@ -20,6 +20,10 @@ export class AccommodationsPage extends Component {
   }
 
   render() {
+    const viewAcc = (id) => {
+      this.props.history.push(`/accommodations/${id}`);
+    }
+
     const { user, accommodations } = this.props;
     return (
       <>
@@ -29,7 +33,7 @@ export class AccommodationsPage extends Component {
           <h2>Loading...</h2>
         ) : (
           <div className="acc-page">
-            <AccommodationList accommodations={accommodations} />
+            <AccommodationList accommodations={accommodations} viewAcc={viewAcc}/>
           </div>
         )}
         <Footer />

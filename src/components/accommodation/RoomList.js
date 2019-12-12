@@ -3,24 +3,25 @@ import React, { Component } from 'react';
 
 class RoomList extends Component {
   render() {
-    const { rooms } = this.props;
+    const { rooms } = this.props;    
     return (
       <>
         {rooms.map(room => {
+          console.log(room);
           return (
             <div key={room.id} className="acc__resources__item">
               <div className="acc__resources__item__img">
               {!room.images ? (
                 <img
-                  class="composition__photo--acc"
+                  className="composition__photo--acc"
                   src="https://img.icons8.com/officel/200/000000/image-file.png"
                   alt="not found"
                 />
               ) : (
                 <img
-                  src={room.images[0]}
+                  src={room.images[0].image_url}
                   alt="room"
-                  class="composition__photo--acc"
+                  className="composition__photo--acc"
                 />
               )}
               </div>

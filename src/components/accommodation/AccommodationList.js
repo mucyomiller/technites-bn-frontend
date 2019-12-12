@@ -3,13 +3,15 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import sprite from "../../assets/images/svg/sprite.svg";
 
-export const AccommodationCard = ({ accommodations }) => {
+
+export const AccommodationCard = ({ accommodations, viewAcc }) => {
   return (
     <div className="acc__resources ">
       {accommodations.map(accommodation => {
         return (
-          <div key={accommodation.id} className="acc__resources__item">
+          <div key={accommodation.id} className="acc__resources__item" onClick={() => viewAcc(accommodation.id)}>
             <div className="acc__resources__item__img">
               {!accommodation.images ? (
                 <img
@@ -19,16 +21,14 @@ export const AccommodationCard = ({ accommodations }) => {
                 />
               ) : (
                 <img
-                  src={accommodation.images}
+                  src={accommodation.images[0]}
                   alt="photo 1"
                   class="composition__photo--acc"
                 />
               )}
             </div>
             <div className="acc-details">
-              <a href={`/accommodations/${accommodation.id}`}>
                 <h3>{accommodation.accommodation_name}</h3>
-              </a>
               <p>
                 {accommodation.description || 'Your home away from home...'}
               </p>

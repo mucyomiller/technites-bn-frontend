@@ -7,7 +7,6 @@ class RoomList extends Component {
     return (
       <>
         {rooms.map(room => {
-          console.log(room);
           return (
             <div key={room.id} className="acc__resources__item">
               <div className="acc__resources__item__img">
@@ -19,7 +18,7 @@ class RoomList extends Component {
                 />
               ) : (
                 <img
-                  src={room.images[0].image_url}
+                  src={room.images[0]}
                   alt="room"
                   className="composition__photo--acc"
                 />

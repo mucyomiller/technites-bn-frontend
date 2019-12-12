@@ -44,7 +44,6 @@ export class AccommodationsPage extends Component {
 
 AccommodationsPage.propTypes = {
   getAccommodations: PropTypes.func.isRequired,
-  retrieveProfile: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => { 

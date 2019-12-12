@@ -8,8 +8,7 @@
   border: 2px solid $primaryColor;
   border-radius: 2%;
   text-align: center;
-  height:40%;
-  min-height: auto;
+  height:auto;
   z-index: 20;
   background-color: $secondaryColor;
   width: 25%;
@@ -44,8 +43,7 @@
   font-weight: bold;
 }
 .modal-body {
-  height: auto;
-  max-height: 80%;
+  max-height: 20vmax;
   overflow: scroll;
 }
 .modal-over-lay {

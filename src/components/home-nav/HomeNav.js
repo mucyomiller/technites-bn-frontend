@@ -37,9 +37,9 @@ export const HomeNav = ({ toggleNotPaneHandler, notificationCounter }) => {
     localStorage.removeItem("token");
     window.location.replace("/");
   }
-  const showHideSideBar = () => {
-    document.querySelector('.side-bar');
-  }
+  // const showHideSideBar = () => {
+  //   document.querySelector('.side-bar');
+  // }
   return (
     <div className="sticky">
       <nav className="home-wrapper">
@@ -64,7 +64,7 @@ export const HomeNav = ({ toggleNotPaneHandler, notificationCounter }) => {
               alt="notification icon"
               onClick={toggleNotPaneHandler}
             />
-            <span id="badger" className="badge">{notificationCounter || ""}</span>
+            {notificationCounter ? (<span id="badger" className="badge">{notificationCounter}</span>) : null}
           </div>
           <div>
             <div className="profile-action" onClick={toggleMenu}>

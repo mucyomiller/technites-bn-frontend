@@ -71,24 +71,25 @@ export class AnAccommodationPage extends Component {
             ) : (
               <div className="gallery__items">
                 <img
-                  src={accommodation.images[0] || noImg}
+                
+                  src={typeof(accommodation.images) === "string" ? accommodation.images : accommodation.images[0]}
                   className="gallery__photo--large"
                   alt="accommodation"
                 />
                 <div className="gallery__sub">
                   <div className="composition composition__photo">
                     <img
-                      src={accommodation.images[2] || noImg}
+                      src={typeof(accommodation.images) === "string" ? accommodation.images : accommodation.images[2] || noImg}
                       alt="photo 3"
                       className="composition__photo composition__photo--p1"
                     />
                     <img
-                      src={accommodation.images[1] || noImg}
+                      src={typeof(accommodation.images) === "string" ? accommodation.images : accommodation.images[1] || noImg}
                       alt="photo 2"
                       className="composition__photo composition__photo--p2"
                     />
                     <img
-                      src={accommodation.images[0] || noImg}
+                      src={typeof(accommodation.images) === "string" ? accommodation.images : accommodation.images[0] || noImg}
                       alt="photo 1"
                       className="composition__photo composition__photo--p3"
                     />

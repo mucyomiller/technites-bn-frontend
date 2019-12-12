@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { readFileSync, writeFileSync } from "fs";
 import path from "path";
+import sinon from "sinon";
 import React from "react";
 import { shallow, mount } from "enzyme";
 import thunk from "redux-thunk";
@@ -223,4 +224,9 @@ describe("profile integration tests", () => {
     wrapper = mount(<Select {...props} />);
     expect(wrapper.props().error).toBe("some weird error happened");
   });
+});
+
+sinon.stub(window.location, "assign");
+jest.spyOn(window.location, "assign").mockImplementation((l) => {
+  expect(l).toEqual();
 });

@@ -29,6 +29,9 @@ const props = {
   getUser: jest.fn(),
 };
 const state = {
+  years: 0,
+  months: 0,
+  days: 2,
   profile: {
     user: data
   },
@@ -38,6 +41,7 @@ const state = {
     },
   },
 };
+
 const findByAttr = (wrapper, name) => wrapper.find(`[name="${name}"]`);
 describe("Single Trip component", () => {
   let wrapper;

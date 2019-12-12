@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import AddHost from "../components/admin/AddHost";
 import Provider from "../../.storybook/Provider";
+import '../styles/App.scss';
 import "../components/admin/AddHost.scss";
 import "../components/side-bar/sidebar.scss";
 const props = {

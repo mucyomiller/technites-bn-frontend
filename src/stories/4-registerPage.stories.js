@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import Provider from "../../.storybook/Provider";
 import '../styles/App.scss'
+import '../components/form/form.scss';
 
 import { Register } from '../components/register-page/RegisterPage';
 const props = {

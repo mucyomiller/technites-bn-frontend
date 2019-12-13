@@ -13,8 +13,7 @@ ADD package*.json ./
 RUN yarn import --silent
 RUN yarn add react-scripts -g 
 
-# add app
-ADD . /usr/src/app
+# removed source code from image
 
 # Map port to the Docker daemon
 EXPOSE 3000

@@ -16,4 +16,5 @@ RUN npm i react-scripts -g
 EXPOSE 3000
 
 # Run the start script
+CMD ["npm", "rebuild", "node-sass"]
 CMD [ "npm", "start" ]
